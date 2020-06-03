@@ -1,0 +1,31 @@
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: teal;
+}
+
+.mainMenu {
+    padding: 10px 0px;    
+
+  }
+
+  .mainMenu>li:not(:first-child) {
+    border-left: 1px dotted black;
+  }
+.mainMenu>li {
+    cursor: pointer;
+    list-style-type: none;
+    float: left;
+    transition-property: background-color;
+    padding: 5px 10px;
+    
+}
+
+.mainMenu>li:hover {
+    background-color: #5AA2EB;
+    transition-duration: 0.3s;
+}
+
+.selected {
+    font-weight: 900;
+}

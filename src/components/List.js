@@ -1,4 +1,5 @@
-import React from "react";
+import React from "react";  
+import "../css/List.css";
 
 const List = props => {
 
@@ -8,21 +9,22 @@ const List = props => {
     if (props.selectedMenuItem != "") {
         key = props.selectedMenuItem == "films" ? "title" : "name"
         array = props.currentArray.map( (element,id) => (
-            <li key={id}> {element[key]} </li>
-        ))    
+            <li key={id} onClick={()=>props.onDetailsClick(element[key])}> {props.translate(element[key],props.dictionary)} </li>
+        ));
     }
     
 
+
     return (
         <React.Fragment>
-            <h1>
+            <ul className="selectedList">
                 {array}
-            </h1>
+            </ul>
         </React.Fragment>
     )
 
 
 }
 
-export default List
+export default List;
 

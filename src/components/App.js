@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from './Menu';
-import '../css/App.css';
+import Header from './Header';
+import Styles from '../css/App.css';
 
 class App extends React.Component {
 
@@ -11,12 +12,46 @@ class App extends React.Component {
     species: [],
     starships: [],
     vehicles: [],
-    selectedMenuItem: ""
+    selectedMenuItem: "",
+    selectedDetails:"",
+    menuPositions: [
+      {
+        name: "films",
+        single: "film",
+        selected: false,
+       },
+       {
+         name: "people",
+         single: "character",
+         selected: false,
+       },
+       {
+         name: "planets",
+         single: "planet",
+         selected: false,
+       },
+       {
+         name: "species",
+         single: "type",
+         selected: false,
+       },
+       {
+         name: "starships",
+         single: "starship",
+         selected: false,
+       },
+       {
+         name: "vehicles",
+         single: "vehicle",
+         selected: false,
+       }
+    ]
   }
 
-  componentDidMount() {
-
-    // Object.entries(this.state).forEach(([key,value])=>console.log(key))
+  selectedDetails = (item) => {
+    this.setState({
+      selectedDetails: item,
+    })
   }
 
   setSelectedMenuItem = (item) => {   
@@ -25,10 +60,23 @@ class App extends React.Component {
     .then(data => {
       this.setState({
         [item]: data.results,
-        selectedMenuItem: item
+        selectedMenuItem: item,
       })
-    }
-    )
+    });
+    let menuPositions = this.state.menuPositions;
+    let menuPositionsIndex = menuPositions.findIndex( el => el.name == item);
+    menuPositions.forEach( (el,i) => {
+      if (i != menuPositionsIndex)
+        el.selected = false
+      else 
+      el.selected = true
+    });
+    this.setState({
+      selectedDetails: "",
+      menuPositions 
+    });
+      
+      
   }
 
   translate = (word,array) => {
@@ -36,10 +84,13 @@ class App extends React.Component {
     return result.length > 0 ? result[0][1] : word;
   }
 
+  showDetails = id => {
+    
+  }
+
+
   render(){
-    const menuPositions = [
-      "films", "people","planets","species","starships","vehicles"
-    ]
+
     const dictionary = [
       ["films","Filmy"],
       ["people", "Postaci"],
@@ -94,19 +145,25 @@ class App extends React.Component {
       ["model","Model"],
       ["passengers","Liczba pasażerów"],
       ["starship_class","Klasa"],
-      ["A New Hope","Nowa Nadzieja"],
-      ["A New Hope","Nowa Nadzieja"],
-      ["A New Hope","Nowa Nadzieja"],
-      ["A New Hope","Nowa Nadzieja"],
+      ["Human","Ludzie"],
+      ["film","Film"],
+      ["character","Postać"],
+      ["planet","Planeta"],
+      ["type","Gatunek"],
+      ["starship","Statek kosmiczny"],
+      ["vehicle","Pojazd"],
     ]
 
+  
     return (
       <React.Fragment>
-        {/* <List list={this.state.planets}/> */}
+        <Header/>
         <Menu   
-          categories={menuPositions} 
+          menuPositions={this.state.menuPositions} 
           onMenuClick={this.setSelectedMenuItem} 
+          onDetailsClick={this.selectedDetails}
           selectedMenuItem={this.state.selectedMenuItem}
+          selectedDetails={this.state.selectedDetails}
           films={this.state.films}
           people={this.state.people}
           planets={this.state.planets}
@@ -115,6 +172,7 @@ class App extends React.Component {
           vehicles={this.state.vehicles}
           translate={this.translate}
           dictionary={dictionary}
+          showDetails={this.showDetails}
           />
       </React.Fragment>
     )

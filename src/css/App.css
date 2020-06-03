@@ -3,6 +3,41 @@
   padding: 0
 }
 
-li {
-  cursor: pointer;
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.fl {
+  float: left;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.flex {
+  display: flex;
+}
+
+.grow-1 {
+  flex-grow: 1;
+}
+
+.half {
+  width: 50%;
+}
+
+section.left {
+  width: 50%;
+}
+
+section.right {
+  width: 50%;
+  padding-top: 20px;
 }

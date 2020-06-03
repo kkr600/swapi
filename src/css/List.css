@@ -1,0 +1,18 @@
+ul.selectedList {
+
+    margin-left: 40px;
+    width: 250px;
+}
+
+ul.selectedList>li {
+
+    list-style-type: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition-property: background-color;
+}
+
+ul.selectedList>li:hover {
+    background-color: #5AA2EB;
+    transition-duration: 0.3s;
+}

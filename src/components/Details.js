@@ -2,7 +2,7 @@ import React from "react";
 
 const Details = props => {
     
-    console.log(props);
+    // console.log(props);
 
     let array = [];
     let key="";
@@ -34,22 +34,10 @@ const Details = props => {
             <li key={i}>
                 <div className="flex detailsRow">
                     <div style={{"width": "300px"}}>{props.translate(el,props.dictionary)}: </div>
-                    <div className="grow-1">{array[el]}</div>
+                    <div>{props.getDetails(props.translate(array[el],props.dictionary),el)}</div>
                 </div>
             </li> 
         )
-
-
-        // table = properties.map((e,i)=>(
-        //     // <tr key={i}><td>{props.translate(e,props.dictionary)}</td></tr>
-        // ))
-        
-        // console.log(array)
-        // table = array.map((properties,id) => (
-        //     <li>properties</li>
-            
-        // ))
-        // console.log(table)
 
     }
 

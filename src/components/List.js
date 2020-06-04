@@ -4,11 +4,17 @@ import "../css/List.css";
 const List = props => {
 
 
-    let array,key;
-
+    let array,key,arrayTemp;
+    
+    
     if (props.selectedMenuItem != "") {
+        arrayTemp = props.currentArray;
+        
+        arrayTemp = arrayTemp.sort(props.sortObjects("name"));  
+        console.log(arrayTemp)
+    
         key = props.selectedMenuItem == "films" ? "title" : "name"
-        array = props.currentArray.map( (element,id) => (
+        array = arrayTemp.map( (element,id) => (
             <li key={id} onClick={()=>props.onDetailsClick(element[key])}> {props.translate(element[key],props.dictionary)} </li>
         ));
     }

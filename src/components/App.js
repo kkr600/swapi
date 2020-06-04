@@ -14,6 +14,7 @@ class App extends React.Component {
     vehicles: [],
     selectedMenuItem: "",
     selectedDetails:"",
+    detailPlanets: [],
     menuPositions: [
       {
         name: "films",
@@ -48,6 +49,56 @@ class App extends React.Component {
     ]
   }
 
+  sortObjects = (key) => {
+    let order = "asc";
+    return function innerSort(a, b) {
+      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+        return 0;
+      }
+  
+      const varA = (typeof a[key] === 'string')
+        ? a[key].toUpperCase() : a[key];
+      const varB = (typeof b[key] === 'string')
+        ? b[key].toUpperCase() : b[key];
+  
+      let comparison = 0;
+      if (varA > varB) {
+        comparison = 1;
+      } else if (varA < varB) {
+        comparison = -1;
+      }
+      return comparison
+    };
+  }
+
+  getNextPages = (name, nubmerOfPages) => {
+    let i;
+    for (i = 2; i < nubmerOfPages+1; i++){
+      fetch(`https://swapi.dev/api/${name}/?page=${i}`)
+        .then(response => response.json())
+        .then(data => {
+            this.setState( (prevState,props) => {  
+              return {[name]: prevState[name].concat(data.results)};
+            })
+        })
+    }
+  }
+
+  componentDidMount = () => {
+    this.state.menuPositions.forEach(position => {
+      fetch(`https://swapi.dev/api/${position.name}/`)
+      .then(response => response.json() )
+      .then(data => {
+        let nubmerOfPages = Math.round(data.count/10);
+        this.setState({
+          [position.name]: data.results,
+        });
+        if (nubmerOfPages > 1)
+          this.getNextPages(position.name,nubmerOfPages);
+      })
+    });
+  }
+
   selectedDetails = (item) => {
     this.setState({
       selectedDetails: item,
@@ -55,14 +106,9 @@ class App extends React.Component {
   }
 
   setSelectedMenuItem = (item) => {   
-    fetch(`https://swapi.dev/api/${item}/`)
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-        [item]: data.results,
-        selectedMenuItem: item,
-      })
-    });
+    this.setState({
+      selectedMenuItem: item,
+    })
     let menuPositions = this.state.menuPositions;
     let menuPositionsIndex = menuPositions.findIndex( el => el.name == item);
     menuPositions.forEach( (el,i) => {
@@ -75,17 +121,29 @@ class App extends React.Component {
       selectedDetails: "",
       menuPositions 
     });
-      
-      
   }
 
   translate = (word,array) => {
-    let result = array.filter((a)=>a[0]==word);
+    let result = array.filter((a)=>a[0]===word);
     return result.length > 0 ? result[0][1] : word;
   }
 
-  showDetails = id => {
-    
+  getDetails = (id,el) => {
+    if (typeof id === "string" && id.indexOf("http://") === -1)
+      return id;
+    else if (typeof id === "object") {
+    }
+    else {
+      console.log("else ",id, el);
+      switch(el){
+        case "homeworld":
+          console.log(id)
+          return this.state.planets.filter( planete => planete.url == id)[0].name
+        break;
+        default:
+        break;
+      }
+    }
   }
 
 
@@ -115,6 +173,7 @@ class App extends React.Component {
       ["gender","Płeć"],
       ["hair_color","Kolor włosów"],
       ["height","Wzrost"],
+      ["mass","Waga"],
       ["homeworld","Planeta pochodzenia"],
       ["name","Imię/Nazwa"],
       ["skin_color","Kolor skóry"], 
@@ -132,9 +191,27 @@ class App extends React.Component {
       ["mammal","Ssak"],
       ["designation","Odczuwanie"],
       ["eye_colors","Kolor/y oczu"],
-      ["brown, blue, green, hazel, grey, amber","Brązowe, niebieskie, zielone, piwne,szare,bursztynowe"],
+      ["brown","Brązowe"],
+      ["blue","Niebieskie"],
+      ["green","Zielone"],
+      ["hazel","Piwne"],
+      ["yellow","Żółte"],
+      ["grey","Szare"],
+      ["amber","Bursztynowe"],
       ["hair_colors","Kolor włosów"],
-      ["blonde, brown, black, red","Blond, brązowe,czarne, czerwone"],
+      ["blond","Blond"],
+      ["fair","Biała"],  
+      ["brown","Brązowe"],
+      ["black","Czarne"],
+      ["red","Czerwone"],
+      ["white","Biały/e"],
+      ["gold","Złoty"],
+      ["light","Jasna"],
+      ["brown, grey","Brązowe, szare"],
+      ["white, red","Biała, czerwona"],
+      ["blue-gray","Niebiesko-szare"],
+      ["auburn, white", "Kasztanowe, białe"],
+      ["white, blue", "Biała, niebieskia"],
       ["language","Język"],
       ["cargo_capacity","Pojemność załadunkowa"],
       ["cost_in_credits","Koszt"],
@@ -152,6 +229,11 @@ class App extends React.Component {
       ["type","Gatunek"],
       ["starship","Statek kosmiczny"],
       ["vehicle","Pojazd"],
+      ["none","Brak"],
+      ["male","Mężczyzna"],
+      ["female","Kobieta"],
+      ["n/a","Brak danych"],
+      ["unknown","Nieznana"],
     ]
 
   
@@ -172,7 +254,8 @@ class App extends React.Component {
           vehicles={this.state.vehicles}
           translate={this.translate}
           dictionary={dictionary}
-          showDetails={this.showDetails}
+          getDetails={this.getDetails}
+          sortObjects={this.sortObjects}
           />
       </React.Fragment>
     )

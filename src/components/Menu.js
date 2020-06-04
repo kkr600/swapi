@@ -8,16 +8,13 @@ import '../css/Menu.css';
 //         properties.push(key)
 // });
 const Menu = props => {
-
-    // Object.entries(props.categories).for
-
     const menu = props.menuPositions.map((cat,id) => (
         <li 
             key={id}  
             onClick={()=>{props.onMenuClick(cat.name)}}
             className={cat.selected ? "selected": null}
         >
-                <a >
+                <a>
                     {props.translate(cat.name,props.dictionary)} 
                 </a>
         </li>
@@ -37,7 +34,7 @@ const Menu = props => {
                         onDetailsClick={props.onDetailsClick}
                         dictionary={props.dictionary}
                         translate={props.translate}
-                        showDetails={props.showDetails}
+                        sortObjects={props.sortObjects}
                     />            
                 </section>
                 <section className="right fl">
@@ -48,6 +45,8 @@ const Menu = props => {
                         currentArray={props[props.selectedMenuItem]}
                         dictionary={props.dictionary}
                         translate={props.translate}
+                        getDetails={props.getDetails}
+                        
                     />
                 </section>
             </div>

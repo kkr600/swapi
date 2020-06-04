@@ -102,7 +102,8 @@ class App extends React.Component {
   selectedDetails = (item) => {
     this.setState({
       selectedDetails: item,
-    })
+    });
+    window.scrollTo(0, 0);
   }
 
   setSelectedMenuItem = (item) => {   
@@ -134,7 +135,6 @@ class App extends React.Component {
     else if (typeof id === "object") {
     }
     else {
-      console.log("else ",id, el);
       switch(el){
         case "homeworld":
           console.log(id)
@@ -145,7 +145,23 @@ class App extends React.Component {
       }
     }
   }
-
+  
+  arrayToString = (array,el,dictionary) => {
+    el = el == "characters" || el == "residents" ? "people" : el;
+    let key = el == "films" ? "title" : "name";
+    if (typeof array ==="object" &&  array != null && ){
+      console.log(el,key);
+      console.log(array)
+      let s = array.map( el2 => 
+        this.translate(this.state[el].filter( f => f.url == el2)[0][key],dictionary)
+      )
+      return s.join(", ")
+    }
+    else if (typeof array === "number")
+      return array.toString();
+    else if (typeof array === "string")
+      return array;
+  }
 
   render(){
 
@@ -201,7 +217,7 @@ class App extends React.Component {
       ["hair_colors","Kolor włosów"],
       ["blond","Blond"],
       ["fair","Biała"],  
-      ["brown","Brązowe"],
+      ["brown","Brązowe/a"],
       ["black","Czarne"],
       ["red","Czerwone"],
       ["white","Biały/e"],
@@ -234,6 +250,14 @@ class App extends React.Component {
       ["female","Kobieta"],
       ["n/a","Brak danych"],
       ["unknown","Nieznana"],
+      ["pilots","Piloci"],
+      ["vehicle_class","Klasa pojazdu"],
+      ["consumables","Eksploatacja"],
+      ["landing craft","Barka desantowa"],
+      ["crew", "Załoga"],
+      ["skin_colors","Kolory skóry"],
+      ["residents","Mieszkańcy"],
+      ["opening_crawl","Wstęp"]
     ]
 
   
@@ -256,6 +280,7 @@ class App extends React.Component {
           dictionary={dictionary}
           getDetails={this.getDetails}
           sortObjects={this.sortObjects}
+          arrayToString={this.arrayToString}
           />
       </React.Fragment>
     )

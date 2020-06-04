@@ -46,7 +46,7 @@ const Menu = props => {
                         dictionary={props.dictionary}
                         translate={props.translate}
                         getDetails={props.getDetails}
-                        
+                        arrayToString={props.arrayToString}
                     />
                 </section>
             </div>

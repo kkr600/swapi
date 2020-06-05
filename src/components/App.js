@@ -11,6 +11,12 @@ class App extends React.Component {
     species: [],
     starships: [],
     vehicles: [],
+    loaded_films: false,
+    loaded_people: false,
+    loaded_planets: false,
+    loaded_species: false,
+    loaded_starships: false,
+    loaded_vehicles: false,
     selectedMenuItem: "",
     selectedDetails:"",
     detailPlanets: [],
@@ -70,27 +76,18 @@ class App extends React.Component {
     };
   }
 
-  getNextPages = (name, nubmerOfPages) => {
-    let i;
-    for (i = 2; i < nubmerOfPages+1; i++){
-      fetch(`https://swapi.dev/api/${name}/?page=${i}`)
-        .then(response => response.json())
-        .then(data => {
-            this.setState( (prevState,props) => {  
-              return {[name]: prevState[name].concat(data.results)};
-            })
-        })
-    }
-  }
-
   componentDidMount = () => {
     this.state.menuPositions.forEach(position => {
       fetch(`https://swapi.dev/api/${position.name}/`)
       .then(response => response.json() )
       .then(data => {
         let nubmerOfPages = Math.ceil(data.count/10);
-        this.setState({
-          [position.name]: data.results,
+        this.setState( () => {
+          let loaded = "loaded_" + position.name;
+          return { 
+            [position.name]: data.results,
+            [loaded]: true,
+          };          
         });
         if (nubmerOfPages > 1)
           this.getNextPages(position.name,nubmerOfPages);
@@ -98,20 +95,43 @@ class App extends React.Component {
     });
   }
 
-  selectedDetails = (item) => {
+  getNextPages = (name, nubmerOfPages) => {
+    let i;
+    for (i = 2; i < nubmerOfPages+1; i++){
+      fetch(`https://swapi.dev/api/${name}/?page=${i}`)
+        .then(response => response.json())
+        .then(data => {
+            this.setState( (prevState,props) => {  
+              let loaded = "loaded_" + name;
+              return {
+                      [name]: prevState[name].concat(data.results),
+                      [loaded]: true,
+                    };
+            })
+        })
+        .then(data => {
+          this.setState(
+            { loaded: true})
+        })
+    }
+  }
+
+  
+
+  selectedDetails = (item) => { //when click on position in list 
     this.setState({
       selectedDetails: item,
     });
     window.scrollTo(0, 0);
   }
 
-  setSelectedMenuItem = (item) => {   
+  setSelectedMenuItem = (item) => {   //set clicked main type (films, vehicles etc)
     this.setState({
       selectedMenuItem: item,
     })
     let menuPositions = this.state.menuPositions;
     let menuPositionsIndex = menuPositions.findIndex( el => el.name == item);
-    menuPositions.forEach( (el,i) => {
+    menuPositions.forEach( (el,i) => {  //un-checked other main types 
       if (i != menuPositionsIndex)
         el.selected = false
       else 
@@ -128,56 +148,88 @@ class App extends React.Component {
     return result.length > 0 ? result[0][1] : word;
   }
 
+  awesome = (selectedMenuItem,selectedDetails) => {
+    console.log("selectedMenuItem")
+    console.log(selectedMenuItem)
+    console.log("selectedDetails")
+    console.log(selectedDetails)
+    selectedMenuItem = selectedMenuItem === "homeworld" ? "planets" : selectedMenuItem;
+    this.setSelectedMenuItem(selectedMenuItem);
+    this.selectedDetails(selectedDetails);
+  }
+
   getDetails = (id,el) => {
-    console.log(id)
-    console.log(typeof id)
+    //id - hair_color, name etc
+    //el - planets, vehicles etc
+
     console.log(el)
-    if (id === "") {
+    console.log(id);
+    console.log(typeof id)
+    console.log(id.length)
+
+    const aw = this.awesome;
+    let key = el == "films" ? "title" : "name"
+    el = el == "homeworld" ? "planets" : el;
+    // console.log(el)
+    if (typeof id == "number")
+      return id.toString();
+    else if (typeof id === "object" && id.length === 0) {
       return "Brak";
     } 
-    else if (typeof id === "string" && id.indexOf("http://") === -1)
-       return id;
+    if (typeof id === "object" && id.length > 0) {
+      
+      let s3;
+      // id.forEach( element => 
+      //   console.log(this.state[el].filter( f => f.url === element)[0][key])
+      //   )
+      s3 = id.map( element => 
+        <li key={element}> 
+          <a className="link" onClick={()=>{this.awesome(el,this.state[el].filter( f => f.url === element)[0][key])}}> 
+            {this.state[el].filter( f => f.url === element)[0][key]} 
+          </a> 
+        </li>
+      )
 
+      return <ul>{s3}</ul>;
+
+    }
+    else if (typeof id === "string" && id.indexOf("http://") === -1)
+      return id;
+    else if (id.indexOf("http://") !== -1) {
+      // console.log(id);
+      let filteredValue = this.state[el].filter( element => element.url === id)[0][key]; 
+      // console.log("filteredValue",filteredValue);
+      // console.log("el",el);
+      // return <a className="link" onClick = { function(el,filteredValue) { aw(el,filteredValue) }} >{filteredValue}</a>;
+      // return <a className="link" onClick = { function() { aw(el,filteredValue) }} >{filteredValue}</a>;
+      return filteredValue;
+    }
       
     else 
       return id;
-          // }
-    // else {
-    //   switch(el){
-    //     case "homeworld":
-    //       console.log(id)
-    //       return this.state.planets.filter( planete => planete.url == id)[0].name
-    //     break;
-    //     default:
-    //     break;
-    //   }
-    // }
   }
   
+
+
   arrayToString = (array,el,dictionary) => {
     el = el == "characters" || el == "residents" ? "people" : el;
     let key = el == "films" ? "title" : "name";
-    if (typeof array ==="object" &&  array != null && array != undefined){
-      // console.log(el,key);
-      // console.log(array)
-      // array.forEach( el2 => {
-      //   console.log("prop: ", el);
-      //   console.log("key:", key);
-      //   console.log("szukany: ",el2)
-      //   console.log("Wynik filtra na state:");
-      //   let filer = this.state[el].filter( f => f.url == el2);
-      //   console.log(filer)
-      //   this.translate(this.state[el].filter( f => f.url == el2)[0][key],dictionary)
-      // })     
+    if (typeof array ==="object" &&  array != null && array != undefined){  
+      console.log(array)
       let s = array.map( el2 => 
-        this.translate(this.state[el].filter( f => f.url == el2)[0][key],dictionary)
+        <a key={el2} className="link" onClick={(el,el2) => this.awesome(el,el2)}> {this.translate(this.state[el].filter( f => f.url == el2)[0][key],dictionary)}</a>
+        
       )
-      return s.join(", ")
+      console.log(s)
+      return s
     }
     else if (typeof array === "number")
       return array.toString();
-    else if (typeof array === "string")
+    else if (typeof array === "string") {
+      console.log(array)
       return array;
+      
+    }
   }
 
   render(){
@@ -196,7 +248,7 @@ class App extends React.Component {
       ["release_date","Data premiery"],
       ["title","Tytuł"],
       ["A New Hope","Nowa Nadzieja"],
-      ["The Empire Strikes Back","Impreium Kontratakuje"],
+      ["The Empire Strikes Back","Imperium Kontratakuje"],
       ["Return of the Jedi","Powrót Jedi"],
       ["The Phantom Menace","Mroczne Widmo"],
       ["Attack of the Clones","Atak Klonów"],
@@ -266,7 +318,7 @@ class App extends React.Component {
       ["male","Mężczyzna"],
       ["female","Kobieta"],
       ["n/a","Brak danych"],
-      ["unknown","Nieznana"],
+      ["unknown","Nieznana/e"],
       ["pilots","Piloci"],
       ["vehicle_class","Klasa pojazdu"],
       ["consumables","Eksploatacja"],
@@ -277,7 +329,7 @@ class App extends React.Component {
       ["opening_crawl","Wstęp"]
     ]
 
-  
+    
     return (
       <React.Fragment>
         <Header/>
@@ -293,6 +345,12 @@ class App extends React.Component {
           species={this.state.species}
           starships={this.state.starships}
           vehicles={this.state.vehicles}
+          loaded_films={this.state.loaded_films}
+          loaded_people={this.state.loaded_people}
+          loaded_planets={this.state.loaded_planets}
+          loaded_species={this.state.loaded_species}
+          loaded_starships={this.state.loaded_starships}
+          loaded_vehicles={this.state.loaded_vehicles}         
           translate={this.translate}
           dictionary={dictionary}
           getDetails={this.getDetails}

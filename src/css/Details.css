@@ -1,12 +1,22 @@
 .detailsWrap {
-    display: flex;
-    align-items: stretch;
+    /* display: flex; */
+    /* align-items: stretch; */
+    position: relative;
+    margin-top: 10px
 }
 
 .detailsName {
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    width: 40%;
 }
 
 .detailsProp {
-    flex-grow: 3;
+    /* flex-grow: 1; */
+    /* text-align: left; */
+    width: 60%;
+}
+
+.detailsTitle {
+    text-decoration: underline;
+    font-weight: 600;
 }

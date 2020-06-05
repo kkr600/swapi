@@ -7,6 +7,8 @@ import '../css/Menu.css';
 //     if (key != "created" && key != "edited" && key != "url")
 //         properties.push(key)
 // });
+
+
 const Menu = props => {
     const menu = props.menuPositions.map((cat,id) => (
         <li 
@@ -19,6 +21,18 @@ const Menu = props => {
                 </a>
         </li>
     ));
+
+    const loaded = () => {
+        const {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = props;
+        if (loaded_films && loaded_people && loaded_planets && loaded_species && loaded_starships && loaded_vehicles) 
+          return <span style={{display: "none"}}>Wczytuje</span>
+        else
+          return  <span style={{display: "block"} }>Wczytuje</span>
+          
+      }
+  
+    const loadedSpan = loaded();
+
     return(
         <React.Fragment>
             <nav>
@@ -26,8 +40,9 @@ const Menu = props => {
                     {menu}
                 </ul>
             </nav>
-            <div className="flex clearfix">
-                <section className="left">
+            {loadedSpan}
+            <div className="clearfix">
+                <section className="left fl">
                     <List 
                         selectedMenuItem={props.selectedMenuItem} 
                         currentArray={props[props.selectedMenuItem]}
@@ -37,7 +52,7 @@ const Menu = props => {
                         sortObjects={props.sortObjects}
                     />            
                 </section>
-                <section className="right">
+                <section className="right fr">
                     <Details
                         selectedMenuItem={props.selectedMenuItem}
                         menuPositions={props.menuPositions}  

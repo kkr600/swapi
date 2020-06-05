@@ -1,0 +1,12 @@
+.detailsWrap {
+    display: flex;
+    align-items: stretch;
+}
+
+.detailsName {
+    flex-grow: 1;
+}
+
+.detailsProp {
+    flex-grow: 3;
+}

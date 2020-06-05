@@ -26,8 +26,8 @@ const Menu = props => {
                     {menu}
                 </ul>
             </nav>
-            <div className="wrap clearfix">
-                <section className="left fl">
+            <div className="flex clearfix">
+                <section className="left">
                     <List 
                         selectedMenuItem={props.selectedMenuItem} 
                         currentArray={props[props.selectedMenuItem]}
@@ -37,7 +37,7 @@ const Menu = props => {
                         sortObjects={props.sortObjects}
                     />            
                 </section>
-                <section className="right fl">
+                <section className="right">
                     <Details
                         selectedMenuItem={props.selectedMenuItem}
                         menuPositions={props.menuPositions}  

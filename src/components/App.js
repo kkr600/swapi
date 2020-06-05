@@ -1,7 +1,6 @@
 import React from 'react';
 import Menu from './Menu';
 import Header from './Header';
-import Styles from '../css/App.css';
 
 class App extends React.Component {
 
@@ -89,7 +88,7 @@ class App extends React.Component {
       fetch(`https://swapi.dev/api/${position.name}/`)
       .then(response => response.json() )
       .then(data => {
-        let nubmerOfPages = Math.round(data.count/10);
+        let nubmerOfPages = Math.ceil(data.count/10);
         this.setState({
           [position.name]: data.results,
         });
@@ -130,28 +129,46 @@ class App extends React.Component {
   }
 
   getDetails = (id,el) => {
-    if (typeof id === "string" && id.indexOf("http://") === -1)
+    console.log(id)
+    console.log(typeof id)
+    console.log(el)
+    if (id === "") {
+      return "Brak";
+    } 
+    else if (typeof id === "string" && id.indexOf("http://") === -1)
+       return id;
+
+      
+    else 
       return id;
-    else if (typeof id === "object") {
-    }
-    else {
-      switch(el){
-        case "homeworld":
-          console.log(id)
-          return this.state.planets.filter( planete => planete.url == id)[0].name
-        break;
-        default:
-        break;
-      }
-    }
+          // }
+    // else {
+    //   switch(el){
+    //     case "homeworld":
+    //       console.log(id)
+    //       return this.state.planets.filter( planete => planete.url == id)[0].name
+    //     break;
+    //     default:
+    //     break;
+    //   }
+    // }
   }
   
   arrayToString = (array,el,dictionary) => {
     el = el == "characters" || el == "residents" ? "people" : el;
     let key = el == "films" ? "title" : "name";
-    if (typeof array ==="object" &&  array != null && ){
-      console.log(el,key);
-      console.log(array)
+    if (typeof array ==="object" &&  array != null && array != undefined){
+      // console.log(el,key);
+      // console.log(array)
+      // array.forEach( el2 => {
+      //   console.log("prop: ", el);
+      //   console.log("key:", key);
+      //   console.log("szukany: ",el2)
+      //   console.log("Wynik filtra na state:");
+      //   let filer = this.state[el].filter( f => f.url == el2);
+      //   console.log(filer)
+      //   this.translate(this.state[el].filter( f => f.url == el2)[0][key],dictionary)
+      // })     
       let s = array.map( el2 => 
         this.translate(this.state[el].filter( f => f.url == el2)[0][key],dictionary)
       )

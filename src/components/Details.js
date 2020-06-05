@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/Details.css';
 
 const Details = props => {
     
@@ -31,12 +32,12 @@ const Details = props => {
         console.log(detailsTitle)
 
         detailsList = properties.map( (el,i) =>
-            <li key={i}>
-                <div className="flex detailsRow">
-                    <div style={{"width": "300px"}}>{props.translate(el,props.dictionary)}: </div>
-                    <div>{props.getDetails(props.translate(props.arrayToString(array[el],el,props.dictionary),props.dictionary),el)}</div>
+            // <li key={i}>
+                <div className="detailsWrap">
+                    <div className="detailsName">{props.translate(el,props.dictionary)}: </div>
+                    <div className="detailsProp">{props.getDetails(props.translate(props.arrayToString(array[el],el,props.dictionary),props.dictionary),el)}</div>
                 </div>
-            </li> 
+            // </li> 
         )
 
     }
@@ -46,9 +47,9 @@ const Details = props => {
     return (
         <React.Fragment>
             {detailsTitle}
-            <ul>
+            {/* <ul> */}
                 {detailsList}
-            </ul>
+            {/* </ul> */}
         </React.Fragment>
     )
 }

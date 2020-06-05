@@ -1,6 +1,10 @@
 * {
   margin: 0;
-  padding: 0
+  padding: 0;
+}
+
+body {
+  padding: 0 20px 20px 20px
 }
 
 .clearfix::after {
@@ -23,10 +27,7 @@
 
 .flex {
   display: flex;
-}
-
-.grow-1 {
-  flex-grow: 1;
+  flex-direction: row;
 }
 
 .half {
@@ -34,10 +35,10 @@
 }
 
 section.left {
-  width: 40%;
+  flex-grow: 1;
 }
 
 section.right {
-  width: 60%;
-  padding-top: 20px;
+  flex-grow: 2;
+  padding: 20px 20px 0 50px;
 }

@@ -59,6 +59,8 @@ const Menu = props => {
                         translate={props.translate}
                         sortObjects={props.sortObjects}
                         listVisible={props.listVisible}
+                        inputSearchValue={props.inputSearchValue}
+                        inputSearchChange={props.inputSearchChange}
                     />            
                 </section>
                 <section className="right fr">

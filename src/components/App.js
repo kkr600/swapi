@@ -58,10 +58,17 @@ class App extends React.Component {
        }
     ],
     listVisible: false,
+    inputSearchValue: "",
   }
 
-  sortObjects = (key) => {
-    let order = "asc";
+  inputSearchChange = e => {
+    this.setState({
+      inputSearchValue: e.target.value,
+    })
+
+  }
+
+  sortObjects = key => {
     return function innerSort(a, b) {
       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
         return 0;
@@ -137,7 +144,7 @@ class App extends React.Component {
       listVisible: true,
     })
     let menuPositions = this.state.menuPositions;
-    let menuPositionsIndex = menuPositions.findIndex( el => el.name == item);
+    let menuPositionsIndex = menuPositions.findIndex( el => el.name === item);
     menuPositions.forEach( (el,i) => {  //un-checked other main types 
       if (i != menuPositionsIndex)
         el.selected = false
@@ -156,6 +163,7 @@ class App extends React.Component {
   }
 
   awesome = (selectedMenuItem,selectedDetails) => {
+    console.log()
     selectedMenuItem = selectedMenuItem === "homeworld" ? "planets" : selectedMenuItem;
     this.setSelectedMenuItem(selectedMenuItem);
     this.selectedDetails(selectedDetails);
@@ -175,6 +183,10 @@ class App extends React.Component {
     else if (typeof id === "object" && id.length === 0) {
       return "Brak";
     } 
+    else if (typeof id === "string" && id.indexOf("http://") !== -1) {
+      let filteredValue = this.translate(this.state[el].filter( element => element.url === id)[0][key],dictionary); 
+      return <a className="link" onClick={()=>{this.awesome(el,filteredValue)}}>{filteredValue}</a>;
+    }
     else if (typeof id === "object" && id.length > 0 && this.state[el] !== undefined) {
       let s3;
       s3 = id.map( element => 
@@ -188,11 +200,6 @@ class App extends React.Component {
     }
     else if (typeof id === "string" && id.indexOf("http://") === -1)
       return this.translate(id,dictionary);
-    else if (id.indexOf("http://") !== -1) {
-      console.log("")
-      let filteredValue = this.translate(this.state[el].filter( element => element.url === id)[0][key],dictionary); 
-      return filteredValue;
-    }
     else 
       return this.translate(id,dictionary);
   }
@@ -325,6 +332,8 @@ class App extends React.Component {
           arrayToString={this.arrayToString}
           listVisible={this.state.listVisible}
           listVisibleTrue={this.listVisibleTrue}
+          inputSearchValue={this.state.inputSearchValue}
+          inputSearchChange={this.inputSearchChange}
           />
       </React.Fragment>
     )

@@ -1,4 +1,4 @@
-ul.selectedList {
+.selectedList {
 
     margin: 20px 10px;
     width: 250px;
@@ -6,7 +6,7 @@ ul.selectedList {
     background-color: #2E6F9E;
 }
 
-ul.selectedList>li {
+.selectedList li {
 
     list-style-type: none;
     cursor: pointer;
@@ -15,7 +15,7 @@ ul.selectedList>li {
     transition-property: background-color;
 }
 
-ul.selectedList>li:hover {
+.selectedList li:hover {
     background-color: #5AA2EB;
     transition-duration: 0.3s;
     font-weight: 600;

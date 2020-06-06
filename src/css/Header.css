@@ -15,40 +15,33 @@
     line-height: 150%;
     text-align: justify;
     overflow: hidden;
-    background-color: #050066;
+    background-image: url("../img/starry-sky-998641.jpg");
+    background-size: cover;
+    background-position: center center;
   }
 
 
-  .crawl {
-    /* Position the element so we can adjust the top property in the animation */
-    position: relative;
-    /* Defines the skew origin at the very center when we apply transforms on the animation */
-    transform-origin: 50% 100%;
-    /* Adds the crawl animation, which plays for one minute */
-    animation: crawl 20s linear;
-  }
+.crawl {
+  /* Position the element so we can adjust the top property in the animation */
+  position: relative;
+  /* Defines the skew origin at the very center when we apply transforms on the animation */
+  transform-origin: 50% 100%;
+  /* Adds the crawl animation, which plays for one minute */
+  animation: crawl 20s linear;
+}
 
-  /* We're calling this animation "crawl" */
-  @keyframes crawl {
-    0% {
-      /* The element starts below the screen */
-      top: 250px;
-      /* Rotate the text 20 degrees but keep it close to the viewer */
-      transform: rotateX(30deg) translateZ(0);
-    }
-    100% { 
-      /* This is a magic number, but using a big one to make sure the text is fully off the screen at the end */
-      top: -1600px;
-      /* Slightly increasing the rotation at the end and moving the text far away from the viewer */
-      transform: rotateX(35deg) translateZ(-350px);
-    }
+/* We're calling this animation "crawl" */
+@keyframes crawl {
+  0% {
+    /* The element starts below the screen */
+    top: 250px;
+    /* Rotate the text 20 degrees but keep it close to the viewer */
+    transform: rotateX(30deg) translateZ(0);
   }
-
-  .fade {
-    position: relative;
-    width: 100%;
-    min-height: 60vh;
-    top: -25px;
-    background-image: linear-gradient(0deg, transparent, #08009E 75%);
-    z-index: 1;
+  100% { 
+    /* This is a magic number, but using a big one to make sure the text is fully off the screen at the end */
+    top: -1600px;
+    /* Slightly increasing the rotation at the end and moving the text far away from the viewer */
+    transform: rotateX(35deg) translateZ(-350px);
   }
+}

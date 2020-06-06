@@ -1,4 +1,5 @@
 import React from "react";  
+import '../css/App.css';
 import "../css/List.css";
 
 const List = props => {
@@ -10,20 +11,19 @@ const List = props => {
     if (props.selectedMenuItem != "") {
         arrayTemp = props.currentArray;
         key = props.selectedMenuItem == "films" ? "title" : "name"
-        // console.log("props.selectedMenuItem",props.selectedMenuItem)
-        // console.log("key",key)
         arrayTemp = arrayTemp.sort(props.sortObjects(key));
         
+    
         array = arrayTemp.map( (element,id) => (
             <li key={id} onClick={()=>props.onDetailsClick(element[key])}> {props.translate(element[key],props.dictionary)} </li>
-        ));
+        ));          
+        
     }
-    
-
+    let listVisible = props.listVisible ? {"display": "block"} : {"display": "none"}
 
     return (
         <React.Fragment>
-            <ul className="selectedList">
+            <ul className="selectedList" style={listVisible}>
                 {array}
             </ul>
         </React.Fragment>

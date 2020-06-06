@@ -3,10 +3,9 @@ import List from "./List";
 import Details from "./Details"
 import '../css/App.css';
 import '../css/Menu.css';
-// Object.entries(props.currentArray[0]).forEach(([key,value])=> {
-//     if (key != "created" && key != "edited" && key != "url")
-//         properties.push(key)
-// });
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 
 const Menu = props => {
@@ -24,12 +23,21 @@ const Menu = props => {
 
     const loaded = () => {
         const {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = props;
-        if (loaded_films && loaded_people && loaded_planets && loaded_species && loaded_starships && loaded_vehicles) 
-          return <span style={{display: "none"}}>Wczytuje</span>
+        if (loaded_films && loaded_people && loaded_planets && loaded_species && loaded_starships && loaded_vehicles)  {
+            return <div></div>
+        }
+            
         else
-          return  <span style={{display: "block"} }>Wczytuje</span>
-          
-      }
+            return (
+                <div className="w3-modal">
+                    <div className="w3-modal-content">
+                        <p className="spinner"><FontAwesomeIcon icon={faSpinner} /></p>
+                        Wczytuję dane...
+                    </div>
+                </div>
+            )
+        }
+
   
     const loadedSpan = loaded();
 
@@ -50,6 +58,7 @@ const Menu = props => {
                         dictionary={props.dictionary}
                         translate={props.translate}
                         sortObjects={props.sortObjects}
+                        listVisible={props.listVisible}
                     />            
                 </section>
                 <section className="right fr">

@@ -1,16 +1,22 @@
 * {
   margin: 0;
   padding: 0;
+  color: #1E1F21;
 }
 
 body {
-  padding: 0 20px 20px 20px
+  padding: 0 20px 20px 20px;
+  background-color: #DCE7F0;
 }
 
 .clearfix::after {
   content: "";
   display: block;
   clear: both;
+}
+
+li {
+  list-style-type: none;
 }
 
 .fl {

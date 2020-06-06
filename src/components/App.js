@@ -2,6 +2,11 @@ import React from 'react';
 import Menu from './Menu';
 import Header from './Header';
 
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+
+
+
 class App extends React.Component {
 
   state = {
@@ -51,7 +56,8 @@ class App extends React.Component {
          single: "vehicle",
          selected: false,
        }
-    ]
+    ],
+    listVisible: false,
   }
 
   sortObjects = (key) => {
@@ -128,6 +134,7 @@ class App extends React.Component {
   setSelectedMenuItem = (item) => {   //set clicked main type (films, vehicles etc)
     this.setState({
       selectedMenuItem: item,
+      listVisible: true,
     })
     let menuPositions = this.state.menuPositions;
     let menuPositionsIndex = menuPositions.findIndex( el => el.name == item);
@@ -143,45 +150,33 @@ class App extends React.Component {
     });
   }
 
-  translate = (word,array) => {
+  translate = (word,array) => { 
     let result = array.filter((a)=>a[0]===word);
     return result.length > 0 ? result[0][1] : word;
   }
 
   awesome = (selectedMenuItem,selectedDetails) => {
-    console.log("selectedMenuItem")
-    console.log(selectedMenuItem)
-    console.log("selectedDetails")
-    console.log(selectedDetails)
     selectedMenuItem = selectedMenuItem === "homeworld" ? "planets" : selectedMenuItem;
     this.setSelectedMenuItem(selectedMenuItem);
     this.selectedDetails(selectedDetails);
   }
 
-  getDetails = (id,el) => {
-    //id - hair_color, name etc
-    //el - planets, vehicles etc
+  getDetails = (id,el,dictionary) => {
+    let key = el === "films" ? "title" : "name"
+    el = el === "characters" ? "people": el;
+    el = el === "residents" ? "people" : el;
+    el = el === "pilots" ? "people" : el;
+    el = el === "homeworld" ? "planets" : el;
 
-    console.log(el)
-    console.log(id);
-    console.log(typeof id)
-    console.log(id.length)
-
-    const aw = this.awesome;
-    let key = el == "films" ? "title" : "name"
-    el = el == "homeworld" ? "planets" : el;
-    // console.log(el)
-    if (typeof id == "number")
+    if (id === null)
+      return "Brak";
+    else if (typeof id == "number")
       return id.toString();
     else if (typeof id === "object" && id.length === 0) {
       return "Brak";
     } 
-    if (typeof id === "object" && id.length > 0) {
-      
+    else if (typeof id === "object" && id.length > 0 && this.state[el] !== undefined) {
       let s3;
-      // id.forEach( element => 
-      //   console.log(this.state[el].filter( f => f.url === element)[0][key])
-      //   )
       s3 = id.map( element => 
         <li key={element}> 
           <a className="link" onClick={()=>{this.awesome(el,this.state[el].filter( f => f.url === element)[0][key])}}> 
@@ -189,48 +184,19 @@ class App extends React.Component {
           </a> 
         </li>
       )
-
       return <ul>{s3}</ul>;
-
     }
     else if (typeof id === "string" && id.indexOf("http://") === -1)
-      return id;
+      return this.translate(id,dictionary);
     else if (id.indexOf("http://") !== -1) {
-      // console.log(id);
-      let filteredValue = this.state[el].filter( element => element.url === id)[0][key]; 
-      // console.log("filteredValue",filteredValue);
-      // console.log("el",el);
-      // return <a className="link" onClick = { function(el,filteredValue) { aw(el,filteredValue) }} >{filteredValue}</a>;
-      // return <a className="link" onClick = { function() { aw(el,filteredValue) }} >{filteredValue}</a>;
+      console.log("")
+      let filteredValue = this.translate(this.state[el].filter( element => element.url === id)[0][key],dictionary); 
       return filteredValue;
     }
-      
     else 
-      return id;
+      return this.translate(id,dictionary);
   }
   
-
-
-  arrayToString = (array,el,dictionary) => {
-    el = el == "characters" || el == "residents" ? "people" : el;
-    let key = el == "films" ? "title" : "name";
-    if (typeof array ==="object" &&  array != null && array != undefined){  
-      console.log(array)
-      let s = array.map( el2 => 
-        <a key={el2} className="link" onClick={(el,el2) => this.awesome(el,el2)}> {this.translate(this.state[el].filter( f => f.url == el2)[0][key],dictionary)}</a>
-        
-      )
-      console.log(s)
-      return s
-    }
-    else if (typeof array === "number")
-      return array.toString();
-    else if (typeof array === "string") {
-      console.log(array)
-      return array;
-      
-    }
-  }
 
   render(){
 
@@ -318,7 +284,7 @@ class App extends React.Component {
       ["male","Mężczyzna"],
       ["female","Kobieta"],
       ["n/a","Brak danych"],
-      ["unknown","Nieznana/e"],
+      ["unknown","Brak danych"],
       ["pilots","Piloci"],
       ["vehicle_class","Klasa pojazdu"],
       ["consumables","Eksploatacja"],
@@ -326,10 +292,11 @@ class App extends React.Component {
       ["crew", "Załoga"],
       ["skin_colors","Kolory skóry"],
       ["residents","Mieszkańcy"],
-      ["opening_crawl","Wstęp"]
+      ["opening_crawl","Wstęp"],
+      ["indefinite", "Brak danych"]
     ]
 
-    
+
     return (
       <React.Fragment>
         <Header/>
@@ -356,6 +323,8 @@ class App extends React.Component {
           getDetails={this.getDetails}
           sortObjects={this.sortObjects}
           arrayToString={this.arrayToString}
+          listVisible={this.state.listVisible}
+          listVisibleTrue={this.listVisibleTrue}
           />
       </React.Fragment>
     )

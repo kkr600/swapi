@@ -1,11 +1,12 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom'
 import Menu from './Menu';
 import Header from './Header';
-
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-
-
+import List from "./List";
+import Search from "./Search"
+import Details from "./Details"
+import {BrowserRouter as Router} from 'react-router-dom'
+import "../css/List.css";
 
 class App extends React.Component {
 
@@ -22,42 +23,38 @@ class App extends React.Component {
     loaded_species: false,
     loaded_starships: false,
     loaded_vehicles: false,
-    selectedMenuItem: "",
-    selectedDetails:"",
-    detailPlanets: [],
     menuPositions: [
       {
         name: "films",
         single: "film",
-        selected: false,
+        path: "/films"
        },
        {
          name: "people",
          single: "character",
-         selected: false,
+         path: "/people"
        },
        {
          name: "planets",
          single: "planet",
-         selected: false,
+         path: "/planets"
        },
        {
          name: "species",
          single: "type",
-         selected: false,
+         path: "/species"
        },
        {
          name: "starships",
          single: "starship",
-         selected: false,
+         path: "/starships"
        },
        {
          name: "vehicles",
          single: "vehicle",
-         selected: false,
+         path: "/vehicles"
        }
     ],
-    listVisible: false,
     inputSearchValue: "",
   }
 
@@ -65,7 +62,6 @@ class App extends React.Component {
     this.setState({
       inputSearchValue: e.target.value,
     })
-
   }
 
   sortObjects = key => {
@@ -89,7 +85,7 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount = () => {
+  componentWillMount = () => {
     this.state.menuPositions.forEach(position => {
       fetch(`https://swapi.dev/api/${position.name}/`)
       .then(response => response.json() )
@@ -122,39 +118,14 @@ class App extends React.Component {
                     };
             })
         })
-        .then(data => {
-          this.setState(
-            { loaded: true})
-        })
     }
   }
 
-  
-
-  selectedDetails = (item) => { //when click on position in list 
+  onDetailsClick = (item) => { //when click on position in list 
     this.setState({
       selectedDetails: item,
     });
     window.scrollTo(0, 0);
-  }
-
-  setSelectedMenuItem = (item) => {   //set clicked main type (films, vehicles etc)
-    this.setState({
-      selectedMenuItem: item,
-      listVisible: true,
-    })
-    let menuPositions = this.state.menuPositions;
-    let menuPositionsIndex = menuPositions.findIndex( el => el.name === item);
-    menuPositions.forEach( (el,i) => {  //un-checked other main types 
-      if (i != menuPositionsIndex)
-        el.selected = false
-      else 
-      el.selected = true
-    });
-    this.setState({
-      selectedDetails: "",
-      menuPositions 
-    });
   }
 
   translate = (word,array) => { 
@@ -162,46 +133,41 @@ class App extends React.Component {
     return result.length > 0 ? result[0][1] : word;
   }
 
-  awesome = (selectedMenuItem,selectedDetails) => {
-    console.log()
-    selectedMenuItem = selectedMenuItem === "homeworld" ? "planets" : selectedMenuItem;
-    this.setSelectedMenuItem(selectedMenuItem);
-    this.selectedDetails(selectedDetails);
-  }
+  getDetails = (value,property,dictionary) => {
+    const {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = this.state;
 
-  getDetails = (id,el,dictionary) => {
-    let key = el === "films" ? "title" : "name"
-    el = el === "characters" ? "people": el;
-    el = el === "residents" ? "people" : el;
-    el = el === "pilots" ? "people" : el;
-    el = el === "homeworld" ? "planets" : el;
-
-    if (id === null)
-      return "Brak";
-    else if (typeof id == "number")
-      return id.toString();
-    else if (typeof id === "object" && id.length === 0) {
-      return "Brak";
+    if (loaded_films && loaded_people && loaded_planets && loaded_species && loaded_starships && loaded_vehicles) {
+      let key = property === "films" ? "title" : "name"
+      property = property === "characters" ? "people": property;
+      property = property === "residents" ? "people" : property;
+      property = property === "pilots" ? "people" : property;
+      property = property === "homeworld" ? "planets" : property;
+      
+      if (value === null)
+        return "Brak";
+      if (typeof value == "number")
+        return value.toString();
+      if (typeof value === "object" && value.length === 0) {
+        return "Brak";
+      } 
+      if (typeof value === "string" && value.indexOf("http://") !== -1) {
+        let filteredValue = this.translate(this.state[property].filter( element => element.url === value)[0][key],dictionary); 
+        return filteredValue === "Brak danych" ? "Brak danych" : <NavLink to={`/${property}/${filteredValue}`}>{filteredValue}</NavLink>
+      }
+      if (typeof value === "object" && value.length > 0 && this.state[property] !== undefined) {
+        let s3 = "";
+        s3 = value.map( element => (
+          <li key={element}> 
+            <NavLink to={`/${property}/${this.state[property].filter( f => f.url === element)[0][key]}`}>{this.state[property].filter( f => f.url === element)[0][key]}</NavLink>
+          </li>)
+        ) 
+        return <ul>{s3}</ul>
+      }
+      if (typeof value === "string" && value.indexOf("http://") === -1) 
+        return this.translate(value,dictionary);
+      else 
+        return this.translate(value,dictionary);
     } 
-    else if (typeof id === "string" && id.indexOf("http://") !== -1) {
-      let filteredValue = this.translate(this.state[el].filter( element => element.url === id)[0][key],dictionary); 
-      return <a className="link" onClick={()=>{this.awesome(el,filteredValue)}}>{filteredValue}</a>;
-    }
-    else if (typeof id === "object" && id.length > 0 && this.state[el] !== undefined) {
-      let s3;
-      s3 = id.map( element => 
-        <li key={element}> 
-          <a className="link" onClick={()=>{this.awesome(el,this.state[el].filter( f => f.url === element)[0][key])}}> 
-            {this.state[el].filter( f => f.url === element)[0][key]} 
-          </a> 
-        </li>
-      )
-      return <ul>{s3}</ul>;
-    }
-    else if (typeof id === "string" && id.indexOf("http://") === -1)
-      return this.translate(id,dictionary);
-    else 
-      return this.translate(id,dictionary);
   }
   
 
@@ -303,39 +269,62 @@ class App extends React.Component {
       ["indefinite", "Brak danych"]
     ]
 
+    let {menuPositions, inputSearchValue} = this.state;
+    let {films, people, planets, species, starships, vehicles} = this.state;
+    let {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = this.state;
+    let {translate, getDetails, sortObjects, inputSearchChange} = this;
 
     return (
-      <React.Fragment>
+      <Router>
         <Header/>
         <Menu   
-          menuPositions={this.state.menuPositions} 
-          onMenuClick={this.setSelectedMenuItem} 
-          onDetailsClick={this.selectedDetails}
-          selectedMenuItem={this.state.selectedMenuItem}
-          selectedDetails={this.state.selectedDetails}
-          films={this.state.films}
-          people={this.state.people}
-          planets={this.state.planets}
-          species={this.state.species}
-          starships={this.state.starships}
-          vehicles={this.state.vehicles}
-          loaded_films={this.state.loaded_films}
-          loaded_people={this.state.loaded_people}
-          loaded_planets={this.state.loaded_planets}
-          loaded_species={this.state.loaded_species}
-          loaded_starships={this.state.loaded_starships}
-          loaded_vehicles={this.state.loaded_vehicles}         
-          translate={this.translate}
+          menuPositions={menuPositions} 
+          loaded_films={loaded_films}
+          loaded_people={loaded_people}
+          loaded_planets={loaded_planets}
+          loaded_species={loaded_species}
+          loaded_starships={loaded_starships}
+          loaded_vehicles={loaded_vehicles}         
+          translate={translate}
           dictionary={dictionary}
-          getDetails={this.getDetails}
-          sortObjects={this.sortObjects}
-          arrayToString={this.arrayToString}
-          listVisible={this.state.listVisible}
-          listVisibleTrue={this.listVisibleTrue}
-          inputSearchValue={this.state.inputSearchValue}
-          inputSearchChange={this.inputSearchChange}
+          getDetails={getDetails}
           />
-      </React.Fragment>
+          <div className="clearfix">
+            <section className="left fl">
+            <Search
+                    inputSearchValue={inputSearchValue}
+                    inputSearchChange={inputSearchChange}
+                />  
+              <List 
+                menuPositions={menuPositions} 
+                films={films}
+                people={people}
+                planets={planets}
+                species={species}
+                starships={starships}
+                vehicles={vehicles}
+                dictionary={dictionary}
+                translate={translate}
+                sortObjects={sortObjects}
+                inputSearchValue={inputSearchValue}
+                inputSearchChange={inputSearchChange}
+              />            
+            </section>
+            <section className="right fr">
+              <Details
+                films={films}
+                people={people}
+                planets={planets}
+                species={species}
+                starships={starships}
+                vehicles={vehicles}
+                dictionary={dictionary}
+                translate={translate}
+                getDetails={getDetails}
+              />
+            </section>
+          </div>
+      </Router>
     )
   }
 }

@@ -47,23 +47,28 @@ nav {
 }
 
 
-.mainMenu>li:not(:first-child) {
+nav.mainMenu li:not(:first-child) {
     border-left: 1px dotted black;
   }
-.mainMenu>li {
+
+  nav.mainMenu li {
+    float: left;
+  }
+
+nav.mainMenu a {
+    display: block;
     cursor: pointer;
     float: left;
     transition-property: background-color;
     padding: 5px 10px;
-    
 }
 
-.mainMenu>li:hover {
+nav.mainMenu a:hover {
     background-color: #5AA2EB;
     transition-duration: 0.3s;
 }
 
-.selected {
+nav.mainMenu a.active {
     font-weight: 900;
 }
 

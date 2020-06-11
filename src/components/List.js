@@ -1,52 +1,118 @@
 import React from "react";  
-import Search from "./Search"
+import {Route, NavLink} from 'react-router-dom'
+
+import Films from "../Lists/Films"
+import People from "../Lists/People"
+import Planets from "../Lists/Planets"
+import Species from "../Lists/Species"
+import Starships from "../Lists/Starships"
+import Vehicles from "../Lists/Vehicles"
+
 import '../css/App.css';
 import "../css/List.css";
 
 const List = props => {
 
+    const {sortObjects, translate, dictionary, menuPositions, inputSearchValue, inputSearchChange} = props;
+    const {films, people, planets, species, starships, vehicles} = props;
 
-    let array,key,arrayTemp;
-    
-    
-    if (props.selectedMenuItem != "") {
-        arrayTemp = props.currentArray;
-        key = props.selectedMenuItem == "films" ? "title" : "name"
-        arrayTemp = arrayTemp.sort(props.sortObjects(key));
-        
-        if (props.inputSearchValue.length > 2){
-            array = arrayTemp.filter( element => ( 
-                element[key].toUpperCase().includes(props.inputSearchValue.toUpperCase()) || props.translate(element[key],props.dictionary).toUpperCase().includes(props.inputSearchValue.toUpperCase())
-            ));
-            console.log(array)
-            array = array.map( (element,id) => (
-                <li key={id} onClick={()=>props.onDetailsClick(element[key])}> {props.translate(element[key],props.dictionary)} </li>
-            )); 
+    function buildList(array, path, inputSearchValue) {
+        let arrayReturn = "";
+        if (array !== undefined && path !== undefined && array.length > 0) {
+            let arrayTemp = array;
+            const key = path.substring(1) === "films" ? "title" : "name"
+            
+            arrayTemp = arrayTemp.sort(sortObjects(key));
+ 
+            if (inputSearchValue.length > 2) {
+                arrayReturn = arrayTemp.filter( element => (
+                    element[key].toUpperCase().includes(inputSearchValue.toUpperCase()) || translate(element[key],dictionary).toUpperCase().includes(inputSearchValue.toUpperCase())
+                ))
+                arrayReturn = arrayReturn.map( element => (
+                    <li key={element[key]}> 
+                        <NavLink to={`${path}/${element[key]}`}>
+                            {translate(element[key],dictionary)}
+                        </NavLink>                      
+                    </li>))
+            }
+            else {
+                arrayReturn = array.map( (element) => (
+                    <li key={element[key]} > 
+                        <NavLink to={`${path}/${element[key]}`}>
+                            {translate(element[key],dictionary)}
+                        </NavLink>                     
+                    </li>)); 
+
+            }
         }
-        else {
-            array = arrayTemp.map( (element,id) => (
-                <li key={id} onClick={()=>props.onDetailsClick(element[key])}> {props.translate(element[key],props.dictionary)} </li>
-            ));          
-        }
+        return arrayReturn;
     }
-    let listVisible = props.listVisible ? {"display": "block"} : {"display": "none"}
 
     return (
-        <React.Fragment>
-            <div className="selectedList" style={listVisible}>
-                <Search
-                    inputSearchValue={props.inputSearchValue}
-                    inputSearchChange={props.inputSearchChange}
-                />
-                <ul>
-                    {array}
-                </ul>
-            </div>
-        </React.Fragment>
+        <>
+            <Route path="/films" component={() => {
+                return (
+                    <Films 
+                        array = {films} 
+                        path = {menuPositions.filter(el => el.name === "films")[0].path}
+                        buildList = {buildList} 
+                        inputSearchValue = {inputSearchValue}
+                        inputSearchChange = {inputSearchChange}
+                    />)
+            }} />
+            <Route path="/people" component={() => {
+                return (
+                    <People 
+                        array = {people} 
+                        path = {menuPositions.filter(el => el.name === "people")[0].path}
+                        buildList = {buildList} 
+                        inputSearchValue = {inputSearchValue}
+                        inputSearchChange = {inputSearchChange}
+                    />)
+            }} />
+            <Route path="/planets" component={() => {
+                return (
+                    <Planets 
+                        array = {planets} 
+                        path = {menuPositions.filter(el => el.name === "planets")[0].path}
+                        buildList = {buildList} 
+                        inputSearchValue = {inputSearchValue}
+                        inputSearchChange = {inputSearchChange}
+                    />)
+            }} />
+            <Route path="/species" component={() => {
+                return (
+                    <Species 
+                        array = {species} 
+                        path = {menuPositions.filter(el => el.name === "species")[0].path}
+                        buildList = {buildList} 
+                        inputSearchValue = {inputSearchValue}
+                        inputSearchChange = {inputSearchChange}
+                    />)
+            }} />
+            <Route path="/starships" component={() => {
+                return (
+                    <Starships 
+                        array = {starships} 
+                        path = {menuPositions.filter(el => el.name === "starships")[0].path}
+                        buildList = {buildList} 
+                        inputSearchValue = {inputSearchValue}
+                        inputSearchChange = {inputSearchChange}
+                    />)
+            }} />
+            <Route path="/vehicles" component={() => {
+                return (
+                    <Vehicles 
+                        array = {vehicles} 
+                        path = {menuPositions.filter(el => el.name === "vehicles")[0].path}
+                        buildList = {buildList} 
+                        inputSearchValue = {inputSearchValue}
+                        inputSearchChange = {inputSearchChange}
+                    />)
+            }} />
+        </>
     )
-
-
 }
 
-export default List;
+export default List
 

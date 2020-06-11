@@ -1,23 +1,19 @@
 import React from "react";
-import List from "./List";
-import Details from "./Details"
+import {NavLink} from 'react-router-dom';
+
 import '../css/App.css';
 import '../css/Menu.css';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
-
 const Menu = props => {
-    const menu = props.menuPositions.map((cat,id) => (
+    const menu = props.menuPositions.map( cat => (
         <li 
-            key={id}  
-            onClick={()=>{props.onMenuClick(cat.name)}}
-            className={cat.selected ? "selected": null}
+            key={cat.name}  
         >
-                <a>
-                    {props.translate(cat.name,props.dictionary)} 
-                </a>
+            <NavLink to={cat.path} >
+                {props.translate(cat.name,props.dictionary)} 
+            </NavLink>
         </li>
     ));
 
@@ -26,7 +22,6 @@ const Menu = props => {
         if (loaded_films && loaded_people && loaded_planets && loaded_species && loaded_starships && loaded_vehicles)  {
             return <div></div>
         }
-            
         else
             return (
                 <div className="w3-modal">
@@ -36,53 +31,19 @@ const Menu = props => {
                     </div>
                 </div>
             )
-        }
-
-  
-    const loadedSpan = loaded();
+    }
 
     return(
-        <React.Fragment>
-            <nav>
-                <ul className="mainMenu clearfix">
+        <>
+            <nav className="mainMenu">
+                <ul className="clearfix">
                     {menu}
                 </ul>
             </nav>
-            {loadedSpan}
-            <div className="clearfix">
-                <section className="left fl">
-                    <List 
-                        selectedMenuItem={props.selectedMenuItem} 
-                        currentArray={props[props.selectedMenuItem]}
-                        onDetailsClick={props.onDetailsClick}
-                        dictionary={props.dictionary}
-                        translate={props.translate}
-                        sortObjects={props.sortObjects}
-                        listVisible={props.listVisible}
-                        inputSearchValue={props.inputSearchValue}
-                        inputSearchChange={props.inputSearchChange}
-                    />            
-                </section>
-                <section className="right fr">
-                    <Details
-                        selectedMenuItem={props.selectedMenuItem}
-                        menuPositions={props.menuPositions}  
-                        selectedDetails={props.selectedDetails}
-                        currentArray={props[props.selectedMenuItem]}
-                        dictionary={props.dictionary}
-                        translate={props.translate}
-                        getDetails={props.getDetails}
-                        arrayToString={props.arrayToString}
-                    />
-                </section>
-            </div>
-        </React.Fragment>
+            {loaded()}
+        </>
     )
-
-        
-
 
 }
 
-
-export default Menu;
+export default Menu

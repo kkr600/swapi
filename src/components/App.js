@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom'
+import Start from './Start';
 import Menu from './Menu';
 import Header from './Header';
 import List from "./List";
@@ -24,6 +25,11 @@ class App extends React.Component {
     loaded_starships: false,
     loaded_vehicles: false,
     menuPositions: [
+      {
+        name: "start",
+        path: "/",
+        exact: true
+       },
       {
         name: "films",
         single: "film",
@@ -56,6 +62,8 @@ class App extends React.Component {
        }
     ],
     inputSearchValue: "",
+    inputSearchVisible: false,
+    startVisible: true,
   }
 
   inputSearchChange = e => {
@@ -63,6 +71,20 @@ class App extends React.Component {
       inputSearchValue: e.target.value,
     })
   }
+
+  inputSearchSetVisible = () =>{
+    this.setState({
+      inputSearchVisible: true
+    })
+  }
+
+  startSetVisible = (bool) =>{
+    bool = bool === undefined ? false : bool;
+    this.setState({
+      startVisible: bool
+    })
+  }
+
 
   sortObjects = key => {
     return function innerSort(a, b) {
@@ -87,20 +109,22 @@ class App extends React.Component {
 
   componentWillMount = () => {
     this.state.menuPositions.forEach(position => {
-      fetch(`https://swapi.dev/api/${position.name}/`)
-      .then(response => response.json() )
-      .then(data => {
-        let nubmerOfPages = Math.ceil(data.count/10);
-        this.setState( () => {
-          let loaded = "loaded_" + position.name;
-          return { 
-            [position.name]: data.results,
-            [loaded]: true,
-          };          
-        });
-        if (nubmerOfPages > 1)
-          this.getNextPages(position.name,nubmerOfPages);
-      })
+      if (position.name !== "start") {
+        fetch(`https://swapi.dev/api/${position.name}/`)
+        .then(response => response.json() )
+        .then(data => {
+          let nubmerOfPages = Math.ceil(data.count/10);
+          this.setState( () => {
+            let loaded = "loaded_" + position.name;
+            return { 
+              [position.name]: data.results,
+              [loaded]: true,
+            };          
+          });
+          if (nubmerOfPages > 1)
+            this.getNextPages(position.name,nubmerOfPages);
+        })
+      }
     });
   }
 
@@ -121,7 +145,7 @@ class App extends React.Component {
     }
   }
 
-  onDetailsClick = (item) => { //when click on position in list 
+  onDetailsClick = (item) => {
     this.setState({
       selectedDetails: item,
     });
@@ -170,7 +194,6 @@ class App extends React.Component {
     } 
   }
   
-
   render(){
 
     const dictionary = [
@@ -266,13 +289,14 @@ class App extends React.Component {
       ["skin_colors","Kolory skóry"],
       ["residents","Mieszkańcy"],
       ["opening_crawl","Wstęp"],
-      ["indefinite", "Brak danych"]
+      ["indefinite", "Brak danych"],
+      ["start","Start"]
     ]
 
-    let {menuPositions, inputSearchValue} = this.state;
+    let {menuPositions, inputSearchValue, inputSearchVisible, startVisible} = this.state;
     let {films, people, planets, species, starships, vehicles} = this.state;
     let {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = this.state;
-    let {translate, getDetails, sortObjects, inputSearchChange} = this;
+    let {translate, getDetails, sortObjects, inputSearchChange, inputSearchSetVisible, startSetVisible} = this;
 
     return (
       <Router>
@@ -288,13 +312,20 @@ class App extends React.Component {
           translate={translate}
           dictionary={dictionary}
           getDetails={getDetails}
+          inputSearchSetVisible={inputSearchSetVisible}
+          startSetVisible={startSetVisible}
           />
           <div className="clearfix">
+            <section className="start">
+              <Start startVisible={startVisible}
+              />
+            </section>
             <section className="left fl">
-            <Search
-                    inputSearchValue={inputSearchValue}
-                    inputSearchChange={inputSearchChange}
-                />  
+              <Search
+                inputSearchValue={inputSearchValue}
+                inputSearchChange={inputSearchChange}
+                inputSearchVisible={inputSearchVisible}
+              />  
               <List 
                 menuPositions={menuPositions} 
                 films={films}

@@ -1,16 +1,18 @@
-import React from "react";  
+import React from "react";
 import "../css/Search.css";
 
 const Search = props => {
-    return (
-        <input
-            type = "text"
-            className = "search"
-            placeholder = "Wyszukaj... (min. 3 znaki)"
-            onChange = {props.inputSearchChange.bind(this)}
-            value = {props.inputSearchValue}
-        />
-    )
+    const {inputSearchValue, inputSearchChange, inputSearchVisible} = props;
+    if (inputSearchVisible || (window.location.pathname != "/" && window.location.pathname != "/swapi")) 
+        return <input
+                type = "text"
+                className = "search"
+                placeholder = "Wyszukaj... (min. 3 znaki)"
+                onChange = {inputSearchChange.bind(this)}
+                value = {inputSearchValue}
+            />
+    else 
+        return "";
 }
 
 export default Search;

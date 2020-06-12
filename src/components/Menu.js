@@ -7,12 +7,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 const Menu = props => {
+    const {inputSearchSetVisible, startSetVisible, translate, dictionary} = props
     const menu = props.menuPositions.map( cat => (
         <li 
             key={cat.name}  
+            onClick = {inputSearchSetVisible, startSetVisible.bind(this, cat.exact)}
         >
-            <NavLink to={cat.path} >
-                {props.translate(cat.name,props.dictionary)} 
+            <NavLink 
+                to={cat.path} 
+                exact={cat.exact}
+            >
+                {translate(cat.name,dictionary)} 
             </NavLink>
         </li>
     ));

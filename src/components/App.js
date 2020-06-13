@@ -1,12 +1,12 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom'
+import {BrowserRouter as Router, NavLink} from 'react-router-dom'
+import axios from 'axios';
 import Start from './Start';
 import Menu from './Menu';
 import Header from './Header';
 import List from "./List";
 import Search from "./Search"
 import Details from "./Details"
-import {BrowserRouter as Router} from 'react-router-dom'
 import "../css/List.css";
 
 class App extends React.Component {
@@ -24,6 +24,12 @@ class App extends React.Component {
     loaded_species: false,
     loaded_starships: false,
     loaded_vehicles: false,
+    filmsNo: 1,
+    peopleNo: 0, 
+    planetsNo: 0,
+    speciesNo: 0,
+    starshipsNo: 36,
+    vehiclesNo: 39,  
     menuPositions: [
       {
         name: "start",
@@ -85,7 +91,6 @@ class App extends React.Component {
     })
   }
 
-
   sortObjects = key => {
     return function innerSort(a, b) {
       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
@@ -107,43 +112,38 @@ class App extends React.Component {
     };
   }
 
-  componentWillMount = () => {
-    this.state.menuPositions.forEach(position => {
-      if (position.name !== "start") {
-        fetch(`https://swapi.dev/api/${position.name}/`)
-        .then(response => response.json() )
-        .then(data => {
-          let nubmerOfPages = Math.ceil(data.count/10);
-          this.setState( () => {
-            let loaded = "loaded_" + position.name;
-            return { 
-              [position.name]: data.results,
-              [loaded]: true,
-            };          
-          });
-          if (nubmerOfPages > 1)
-            this.getNextPages(position.name,nubmerOfPages);
-        })
-      }
-    });
-  }
+  componentDidMount = () => {
+    const {menuPositions} = this.state;
+    const {loadData} = this;
 
-  getNextPages = (name, nubmerOfPages) => {
-    let i;
-    for (i = 2; i < nubmerOfPages+1; i++){
-      fetch(`https://swapi.dev/api/${name}/?page=${i}`)
-        .then(response => response.json())
-        .then(data => {
-            this.setState( (prevState,props) => {  
-              let loaded = "loaded_" + name;
-              return {
-                      [name]: prevState[name].concat(data.results),
-                      [loaded]: true,
-                    };
-            })
-        })
-    }
+    menuPositions.forEach(position => {
+      if (position.name !== "start")
+        loadData(position.name);  
+    })
+
+    const path = window.location.pathname;
+    if (path !== "/" && path !== "/swapi")
+      this.setState({startVisible: false})
   }
+     
+  loadData = (name, page = 1) => {
+    axios.get(`https://swapi.dev/api/${name}/?page=${page}`)
+      .then(response =>{
+        let nextPage = response.data.next;
+        let nameNo = name + "No";
+        let loaded = "loaded_" + name;
+        this.setState( prevState => {
+          return {
+            [name]: prevState[name].concat(response.data.results),
+            [nameNo]: response.data.count
+          }
+        });
+        if (nextPage !== null)
+          this.loadData(name, ++page);
+        else 
+            this.setState({[loaded]:true});
+      })
+ }
 
   onDetailsClick = (item) => {
     this.setState({
@@ -159,7 +159,7 @@ class App extends React.Component {
 
   getDetails = (value,property,dictionary) => {
     const {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = this.state;
-
+    
     if (loaded_films && loaded_people && loaded_planets && loaded_species && loaded_starships && loaded_vehicles) {
       let key = property === "films" ? "title" : "name"
       property = property === "characters" ? "people": property;
@@ -183,9 +183,8 @@ class App extends React.Component {
         s3 = value.map( element => (
           <li key={element}> 
             <NavLink to={`/${property}/${this.state[property].filter( f => f.url === element)[0][key]}`}>{this.state[property].filter( f => f.url === element)[0][key]}</NavLink>
-          </li>)
-        ) 
-        return <ul>{s3}</ul>
+          </li>))
+          return <ul>{s3}</ul>
       }
       if (typeof value === "string" && value.indexOf("http://") === -1) 
         return this.translate(value,dictionary);
@@ -193,6 +192,8 @@ class App extends React.Component {
         return this.translate(value,dictionary);
     } 
   }
+  
+
   
   render(){
 
@@ -295,6 +296,7 @@ class App extends React.Component {
 
     let {menuPositions, inputSearchValue, inputSearchVisible, startVisible} = this.state;
     let {films, people, planets, species, starships, vehicles} = this.state;
+    
     let {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = this.state;
     let {translate, getDetails, sortObjects, inputSearchChange, inputSearchSetVisible, startSetVisible} = this;
 
@@ -317,8 +319,7 @@ class App extends React.Component {
           />
           <div className="clearfix">
             <section className="start">
-              <Start startVisible={startVisible}
-              />
+              <Start startVisible={startVisible}/>
             </section>
             <section className="left fl">
               <Search

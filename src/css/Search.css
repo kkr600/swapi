@@ -3,4 +3,9 @@ input.search {
     padding: 5px 10px;
     outline: 0;
 }
-  
+
+input.stick {
+    position: fixed;
+    left: 320px;
+    top: 50px;
+  }

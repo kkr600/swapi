@@ -1,16 +1,31 @@
-nav {
-    display: flex;
-    justify-content: center;
-    background-color: teal;
+nav.noStick {
+  display: flex;
+  justify-content: center;
+  background-color: teal;
+}
+
+nav.stick {
+  position: fixed;
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0px;
+  background-color: teal;
+  z-index: 1;
 }
 
 .mainMenu {
-    padding: 10px 0px;    
+    padding: 10px 0px;   
+}
 
-  }
+ul.stick {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
   
-
-
 .w3-modal {
   z-index:3;
   display:block;
@@ -77,10 +92,15 @@ section.left {
     width: 360px;
   }
   
-  section.right {
-    /* flex-grow: 2; */
-    right: 50px;
-    width: 600px;
-    padding: 20px 20px 0 50px;
-    
-  }
+section.right {
+  /* flex-grow: 2; */
+  right: 50px;
+  width: 600px;
+  padding: 20px 20px 0 50px;
+}
+
+section.stick {
+  position: fixed;
+  right: 0px;
+  top: 70px;
+}

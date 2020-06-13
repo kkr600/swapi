@@ -1,9 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 import './css/index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
-import Styles from './css/App.css';
+
+
+$(window).scroll(()=>{
+  if ($(window).scrollTop() > 200) {
+    $(".mainMenu").removeClass("noStick").addClass("stick");
+    $("ul.s").addClass("stick")
+  }
+  else {
+    $(".mainMenu").removeClass("stick").addClass("noStick");
+    $("ul.s").removeClass("stick")
+  }
+  // if ($(window).scrollTop() > 274) {
+  //   $("section.right").addClass("stick");
+  //   $("input.search").addClass("stick");
+  // }
+  // else {
+  //   $("section.right").removeClass("stick")
+  //   $("input.search").removeClass("stick")
+  // }
+});
+
+
 
 ReactDOM.render(
   <React.StrictMode>

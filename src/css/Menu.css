@@ -76,6 +76,8 @@ nav.mainMenu a {
     float: left;
     transition-property: background-color;
     padding: 5px 10px;
+    text-decoration: none;
+    font-size: 1rem
 }
 
 nav.mainMenu a:hover {
@@ -84,7 +86,7 @@ nav.mainMenu a:hover {
 }
 
 nav.mainMenu a.active {
-    font-weight: 900;
+  text-decoration: underline;
 }
 
 section.left {

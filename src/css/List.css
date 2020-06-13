@@ -1,22 +1,29 @@
 .selectedList {
-
     margin: 20px 10px;
     width: 250px;
-    padding: 15px 20px;
+    padding: 0px 20px; 
     background-color: #2E6F9E;
 }
 
-.selectedList li {
+.selectedList a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+}
 
+.selectedList li {
     list-style-type: none;
     cursor: pointer;
-    margin-top: 5px;
-    padding: 10px 5px;
+    padding: 0;
     transition-property: background-color;
 }
 
-.selectedList li:hover {
+.selectedList a:hover {
     background-color: #5AA2EB;
     transition-duration: 0.3s;
+    font-weight: 600;
+}
+
+.selectedList a.active {
     font-weight: 600;
 }

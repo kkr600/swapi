@@ -1,5 +1,6 @@
 import React from "react";
 import {Route, Switch} from 'react-router-dom'
+
 import FilmsDetails from "../Details/FilmsDetails"
 import PeopleDetails from "../Details/PeopleDetails"
 import PlanetsDetails from "../Details/PlanetsDetails"
@@ -12,13 +13,14 @@ import '../css/Details.css';
 
 const Details = props => {
 
-    const {translate, dictionary, getDetails} = props;
+    const {translate, dictionary, getDetails, scrollUp} = props;
     const {films, people, planets, species, starships, vehicles} = props;
 
     let detailsTitle ="";
     let detailsList = "";
 
     function buildDetails(array, id, category) {
+        scrollUp();
         let properties = [];
         const key = category === "films" ? "title" : "name";
         if (array !== undefined && array.length > 0) {
@@ -36,9 +38,12 @@ const Details = props => {
                     <div className="detailsProp fl">{getDetails(arrayTemp[el],el,dictionary)}</div>
                 </div>
             )
+
+
+
             return (
                 <div>
-                    <p>{detailsTitle}</p>
+                    <p className="detailsTitle">{detailsTitle}</p>
                     {detailsList}
                 </div>
             )
@@ -53,6 +58,7 @@ const Details = props => {
                         <FilmsDetails
                             array = {films}
                             buildDetails = {buildDetails}
+                            scrollUp={scrollUp}
                         />
                     )
                 }}/>
@@ -61,6 +67,7 @@ const Details = props => {
                         <PeopleDetails
                             array = {people}
                             buildDetails = {buildDetails}
+                            scrollUp={scrollUp}
                         />
                     )
                 }}/>
@@ -69,6 +76,7 @@ const Details = props => {
                         <PlanetsDetails
                             array = {planets}
                             buildDetails = {buildDetails}
+                            scrollUp={scrollUp}
                         />
                     )
                 }}/>
@@ -77,6 +85,7 @@ const Details = props => {
                         <SpeciesDetails
                             array = {species}
                             buildDetails = {buildDetails}
+                            scrollUp={scrollUp}
                         />
                     )
                 }}/>
@@ -85,6 +94,7 @@ const Details = props => {
                         <StarshipsDetails
                             array = {starships}
                             buildDetails = {buildDetails}
+                            scrollUp={scrollUp}
                         />
                     )
                 }}/>
@@ -93,6 +103,7 @@ const Details = props => {
                         <VehiclesDetails
                             array = {vehicles}
                             buildDetails = {buildDetails}
+                            scrollUp={scrollUp}
                         />
                     )
                 }}/>

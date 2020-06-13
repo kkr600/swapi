@@ -1,13 +1,16 @@
 import React from 'react';
-import {BrowserRouter as Router, NavLink} from 'react-router-dom'
+import {BrowserRouter as Router, NavLink, Route, Redirect} from 'react-router-dom'
 import axios from 'axios';
 import Start from './Start';
 import Menu from './Menu';
 import Header from './Header';
-import List from "./List";
+import ListP from './ListP';
 import Search from "./Search"
 import Details from "./Details"
 import "../css/List.css";
+
+
+import { faHome, faFilm, faRedditAlien, faGlobe, faDna, faFighterJet, faTruckMonster } from '@fortawesome/free-solid-svg-icons'
 
 class App extends React.Component {
 
@@ -34,36 +37,43 @@ class App extends React.Component {
       {
         name: "start",
         path: "/",
+        // icon: {faHome},
         exact: true
        },
       {
         name: "films",
         single: "film",
+        // icon: {faFilm},
         path: "/films"
        },
        {
          name: "people",
          single: "character",
+        //  icon: {faRedditAlien},
          path: "/people"
        },
        {
          name: "planets",
          single: "planet",
+        //  icon: {faGlobe},
          path: "/planets"
        },
        {
          name: "species",
          single: "type",
+        //  icon: {faDna},
          path: "/species"
        },
        {
          name: "starships",
          single: "starship",
+        //  icon: {faFighterJet},
          path: "/starships"
        },
        {
          name: "vehicles",
          single: "vehicle",
+        //  icon: {faTruckMonster},
          path: "/vehicles"
        }
     ],
@@ -93,21 +103,20 @@ class App extends React.Component {
 
   sortObjects = key => {
     return function innerSort(a, b) {
-      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key))
         return 0;
-      }
   
       const varA = (typeof a[key] === 'string')
         ? a[key].toUpperCase() : a[key];
       const varB = (typeof b[key] === 'string')
         ? b[key].toUpperCase() : b[key];
-  
+
       let comparison = 0;
-      if (varA > varB) {
+      if (varA > varB)
         comparison = 1;
-      } else if (varA < varB) {
+      else if (varA < varB) 
         comparison = -1;
-      }
+
       return comparison
     };
   }
@@ -121,9 +130,33 @@ class App extends React.Component {
         loadData(position.name);  
     })
 
-    const path = window.location.pathname;
-    if (path !== "/" && path !== "/swapi")
+    const path = window.location.pathname.substring(1);
+    if (path !== "" && path !== "swapi")
       this.setState({startVisible: false})
+  }
+
+  componentDidUpdate = () => {
+
+    console.log(0)
+    return (
+      // <Route>
+        <Redirect to="/species/Aleena" />
+      // </Route>
+    )
+    // const path = window.location.pathname.substring(1);
+    // if (path !== "" && path.indexOf("/") === -1){
+    //   const key = path === "films" ? "title" : "name"
+    //   if (this.state[path].length > 0) {
+    //     const firstPosition = this.state[path][0][key];
+    //     const newPath = `/${path}/${firstPosition}` 
+    //     console.log(newPath);
+    //     return (
+    //       <Route>
+    //         <Redirect to={newPath} />
+    //       </Route>
+    //     )
+    //   }
+    // }
   }
      
   loadData = (name, page = 1) => {
@@ -145,10 +178,7 @@ class App extends React.Component {
       })
  }
 
-  onDetailsClick = (item) => {
-    this.setState({
-      selectedDetails: item,
-    });
+  scrollUp = () => {
     window.scrollTo(0, 0);
   }
 
@@ -159,7 +189,8 @@ class App extends React.Component {
 
   getDetails = (value,property,dictionary) => {
     const {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = this.state;
-    
+    const {translate} = this;
+
     if (loaded_films && loaded_people && loaded_planets && loaded_species && loaded_starships && loaded_vehicles) {
       let key = property === "films" ? "title" : "name"
       property = property === "characters" ? "people": property;
@@ -175,21 +206,21 @@ class App extends React.Component {
         return "Brak";
       } 
       if (typeof value === "string" && value.indexOf("http://") !== -1) {
-        let filteredValue = this.translate(this.state[property].filter( element => element.url === value)[0][key],dictionary); 
+        let filteredValue = translate(this.state[property].filter( element => element.url === value)[0][key],dictionary); 
         return filteredValue === "Brak danych" ? "Brak danych" : <NavLink to={`/${property}/${filteredValue}`}>{filteredValue}</NavLink>
       }
       if (typeof value === "object" && value.length > 0 && this.state[property] !== undefined) {
         let s3 = "";
         s3 = value.map( element => (
           <li key={element}> 
-            <NavLink to={`/${property}/${this.state[property].filter( f => f.url === element)[0][key]}`}>{this.state[property].filter( f => f.url === element)[0][key]}</NavLink>
+            <NavLink to={`/${property}/${this.state[property].filter( f => f.url === element)[0][key]}`}>{translate(this.state[property].filter( f => f.url === element)[0][key],dictionary)}</NavLink>
           </li>))
           return <ul>{s3}</ul>
       }
       if (typeof value === "string" && value.indexOf("http://") === -1) 
-        return this.translate(value,dictionary);
+        return translate(value,dictionary);
       else 
-        return this.translate(value,dictionary);
+        return translate(value,dictionary);
     } 
   }
   
@@ -298,7 +329,7 @@ class App extends React.Component {
     let {films, people, planets, species, starships, vehicles} = this.state;
     
     let {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = this.state;
-    let {translate, getDetails, sortObjects, inputSearchChange, inputSearchSetVisible, startSetVisible} = this;
+    let {translate, getDetails, sortObjects, inputSearchChange, inputSearchSetVisible, startSetVisible, scrollUp} = this;
 
     return (
       <Router>
@@ -327,7 +358,7 @@ class App extends React.Component {
                 inputSearchChange={inputSearchChange}
                 inputSearchVisible={inputSearchVisible}
               />  
-              <List 
+              <ListP
                 menuPositions={menuPositions} 
                 films={films}
                 people={people}
@@ -335,11 +366,18 @@ class App extends React.Component {
                 species={species}
                 starships={starships}
                 vehicles={vehicles}
+                loaded_films={loaded_films}
+                loaded_people={loaded_people}
+                loaded_planets={loaded_planets}
+                loaded_species={loaded_species}
+                loaded_starships={loaded_starships}
+                loaded_vehicles={loaded_vehicles}   
                 dictionary={dictionary}
                 translate={translate}
                 sortObjects={sortObjects}
                 inputSearchValue={inputSearchValue}
                 inputSearchChange={inputSearchChange}
+                scrollUp={scrollUp}
               />            
             </section>
             <section className="right fr">
@@ -353,6 +391,7 @@ class App extends React.Component {
                 dictionary={dictionary}
                 translate={translate}
                 getDetails={getDetails}
+                scrollUp={scrollUp}
               />
             </section>
           </div>

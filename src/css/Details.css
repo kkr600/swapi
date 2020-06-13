@@ -39,7 +39,18 @@
     font-weight: 600;
 }
 
-.detailsTitle {
-    text-decoration: underline;
+.detailsProp a:hover {
+    background-color: #5AA2EB;
+    transition-duration: 0.3s;
     font-weight: 600;
+}
+
+p.detailsTitle {
+    /* text-decoration: underline; */
+    /* font-weight: 600; */
+    color: white;
+}
+
+@keyframes toTop {
+    
 }

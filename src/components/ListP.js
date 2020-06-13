@@ -1,6 +1,13 @@
 import React from "react";  
 import {Route, NavLink} from 'react-router-dom'
 
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { FixedSizeList } from 'react-window'; 
+
+
+
 import Films from "../Lists/Films"
 import People from "../Lists/People"
 import Planets from "../Lists/Planets"
@@ -11,12 +18,19 @@ import Vehicles from "../Lists/Vehicles"
 import '../css/App.css';
 import "../css/List.css";
 
-const List = props => {
+const ListP = props => {
 
     const {sortObjects, translate, dictionary, menuPositions, inputSearchValue, inputSearchChange} = props;
-    const {films, people, planets, species, starships, vehicles} = props;
+    const {films, people, planets, species, starships, vehicles, scrollUp} = props;
+    const {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = props;
 
+    
+    
+ 
+ 
     function buildList(array, path, inputSearchValue) {
+        scrollUp();
+
         let arrayReturn = "";
         if (array !== undefined && path !== undefined && array.length > 0) {
             let arrayTemp = array;
@@ -37,14 +51,25 @@ const List = props => {
             }
             else {
                 arrayReturn = array.map( (element) => (
-                    <li key={element[key]} > 
-                        <NavLink to={`${path}/${element[key]}`}>
-                            {translate(element[key],dictionary)}
-                        </NavLink>                     
-                    </li>)); 
-
+                    // <li key={element[key]} > 
+                    //     <NavLink to={`${path}/${element[key]}`}>
+                    //         {translate(element[key],dictionary)}
+                    //     </NavLink>                     
+                    // </li>
+                    
+                        <ListItem key={element[key]}>
+                            <ListItemText>
+                                <NavLink to={`${path}/${element[key]}`}>
+                                    {translate(element[key],dictionary)}
+                                </NavLink>   
+                            </ListItemText>
+                        </ListItem>
+                    
+                ));
             }
         }
+        // arrayReturn = <FixedSizeList height={400} width={300} itemSize={46} itemCount={200}>{arrayReturn}</FixedSizeList>
+        arrayReturn = <List>{arrayReturn}</List>
         return arrayReturn;
     }
 
@@ -114,5 +139,5 @@ const List = props => {
     )
 }
 
-export default List
+export default ListP
 

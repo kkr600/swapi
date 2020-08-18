@@ -1,0 +1,41 @@
+.detailsSection {
+    padding: 10px;
+    background-color: #2E6F9E;
+    color: #DCE7F0;
+}
+
+.detailsWrap {
+    position: relative; 
+    margin-top: 10px;   
+    &:not(:first-of-type) {
+        border-top: 1px solid black;
+    }
+}
+
+.detailsName {
+    width: 40%;
+    color: #DCE7F0;
+}
+
+.detailsProp {
+    width: 60%;
+    color: #DCE7F0; 
+    a {
+        color: #DCE7F0;
+    
+    }
+    li:hover {
+        background-color: #5AA2EB;
+        transition-duration: 0.3s;
+        font-weight: 600;
+    }
+    a:hover {
+        background-color: #5AA2EB;
+        transition-duration: 0.3s;
+        font-weight: 600;
+    }
+}
+
+p.detailsTitle {
+    color: white;
+}

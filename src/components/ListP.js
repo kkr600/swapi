@@ -22,11 +22,6 @@ const ListP = props => {
 
     const {sortObjects, translate, dictionary, menuPositions, inputSearchValue, inputSearchChange} = props;
     const {films, people, planets, species, starships, vehicles, scrollUp} = props;
-    const {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = props;
-
-    
-    
- 
  
     function buildList(array, path, inputSearchValue) {
         scrollUp();
@@ -50,13 +45,7 @@ const ListP = props => {
                     </li>))
             }
             else {
-                arrayReturn = array.map( (element) => (
-                    // <li key={element[key]} > 
-                    //     <NavLink to={`${path}/${element[key]}`}>
-                    //         {translate(element[key],dictionary)}
-                    //     </NavLink>                     
-                    // </li>
-                    
+                arrayReturn = array.map( (element) => (                    
                         <ListItem key={element[key]}>
                             <ListItemText>
                                 <NavLink to={`${path}/${element[key]}`}>
@@ -68,7 +57,6 @@ const ListP = props => {
                 ));
             }
         }
-        // arrayReturn = <FixedSizeList height={400} width={300} itemSize={46} itemCount={200}>{arrayReturn}</FixedSizeList>
         arrayReturn = <List>{arrayReturn}</List>
         return arrayReturn;
     }

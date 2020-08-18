@@ -9,7 +9,7 @@ import StarshipsDetails from "../Details/StarshipsDetails"
 import VehiclesDetails from "../Details/VehiclesDetails"
 
 import '../css/App.css';
-import '../css/Details.css';
+import '../css/Details.scss';
 
 const Details = props => {
 
@@ -38,8 +38,6 @@ const Details = props => {
                     <div className="detailsProp fl">{getDetails(arrayTemp[el],el,dictionary)}</div>
                 </div>
             )
-
-
 
             return (
                 <div>

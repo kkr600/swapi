@@ -1,7 +1,7 @@
 import React from "react";
 import {NavLink} from 'react-router-dom';
 
-import '../css/Menu.css';
+import '../css/Menu.scss';
 import '../css/App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner, faHome } from '@fortawesome/free-solid-svg-icons'
@@ -9,17 +9,16 @@ import { faSpinner, faHome } from '@fortawesome/free-solid-svg-icons'
 const Menu = props => {
     const {menuPositions, inputSearchSetVisible, startSetVisible, translate, dictionary} = props
 
-    const menu = menuPositions.map( cat => (
+    const menu = menuPositions.map( (category,index) => (
         <li 
-            key={cat.name}  
-            onClick = {inputSearchSetVisible, startSetVisible.bind(this, cat.exact)}
+            key={index}  
+            onClick = {inputSearchSetVisible, startSetVisible.bind(this, category.exact)}
         >
             <NavLink 
-                to={cat.path} 
-                exact={cat.exact}
+                to={category.path} 
+                exact={category.exact}
             >
-                {/* <FontAwesomeIcon icon={cat.icon} /> {translate(cat.name,dictionary)}  */}
-                {translate(cat.name,dictionary)} 
+                {translate(category.name,dictionary)} 
             </NavLink>
         </li>
     ));

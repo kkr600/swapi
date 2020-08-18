@@ -9,6 +9,7 @@ import Search from "./Search"
 import Details from "./Details"
 import "../css/List.css";
 
+import dictionary from './dictionary'
 
 import { faHome, faFilm, faRedditAlien, faGlobe, faDna, faFighterJet, faTruckMonster } from '@fortawesome/free-solid-svg-icons'
 
@@ -92,7 +93,7 @@ class App extends React.Component {
     this.setState({
       inputSearchVisible: true
     })
-  }
+  } 
 
   startSetVisible = (bool) =>{
     bool = bool === undefined ? false : bool;
@@ -135,30 +136,6 @@ class App extends React.Component {
       this.setState({startVisible: false})
   }
 
-  componentDidUpdate = () => {
-
-    console.log(0)
-    return (
-      // <Route>
-        <Redirect to="/species/Aleena" />
-      // </Route>
-    )
-    // const path = window.location.pathname.substring(1);
-    // if (path !== "" && path.indexOf("/") === -1){
-    //   const key = path === "films" ? "title" : "name"
-    //   if (this.state[path].length > 0) {
-    //     const firstPosition = this.state[path][0][key];
-    //     const newPath = `/${path}/${firstPosition}` 
-    //     console.log(newPath);
-    //     return (
-    //       <Route>
-    //         <Redirect to={newPath} />
-    //       </Route>
-    //     )
-    //   }
-    // }
-  }
-     
   loadData = (name, page = 1) => {
     axios.get(`https://swapi.dev/api/${name}/?page=${page}`)
       .then(response =>{
@@ -227,103 +204,6 @@ class App extends React.Component {
 
   
   render(){
-
-    const dictionary = [
-      ["films","Filmy"],
-      ["people", "Postaci"],
-      ["planets","Planety"],
-      ["species","Gatunki"],
-      ["starships","Statki kosmiczne"],
-      ["vehicles","Pojazdy"],
-      ["characters","Postaci"],
-      ["director","Reżyser"],
-      ["episode_id","Część"],
-      ["producer", "Producent/ci"],
-      ["release_date","Data premiery"],
-      ["title","Tytuł"],
-      ["A New Hope","Nowa Nadzieja"],
-      ["The Empire Strikes Back","Imperium Kontratakuje"],
-      ["Return of the Jedi","Powrót Jedi"],
-      ["The Phantom Menace","Mroczne Widmo"],
-      ["Attack of the Clones","Atak Klonów"],
-      ["Revenge of the Sith","Zemsta Sithów"],
-      ["birth_year","Rok urodzenia"],
-      ["eye_color","Kolor oczu"],
-      ["gender","Płeć"],
-      ["hair_color","Kolor włosów"],
-      ["height","Wzrost"],
-      ["mass","Waga"],
-      ["homeworld","Planeta pochodzenia"],
-      ["name","Imię/Nazwa"],
-      ["skin_color","Kolor skóry"], 
-      ["climate","Klimat"],
-      ["diameter","Średnica"],
-      ["gravity","Przyciąganie"],
-      ["orbital_period","Okres orbitowania"],
-      ["population","Populacja"],
-      ["rotation_period","Czas obrotu"],
-      ["surface_water","Powierznia wody"],
-      ["terrain","Rodzaj terenu"],
-      ["average_height","Przeciętny wzrost"],
-      ["average_lifespan","Przeciętna długość życia"],
-      ["classification","Rodzaj"],
-      ["mammal","Ssak"],
-      ["designation","Odczuwanie"],
-      ["eye_colors","Kolor/y oczu"],
-      ["brown","Brązowe"],
-      ["blue","Niebieskie"],
-      ["green","Zielone"],
-      ["hazel","Piwne"],
-      ["yellow","Żółte"],
-      ["grey","Szare"],
-      ["amber","Bursztynowe"],
-      ["hair_colors","Kolor włosów"],
-      ["blond","Blond"],
-      ["fair","Biała"],  
-      ["brown","Brązowe/a"],
-      ["black","Czarne"],
-      ["red","Czerwone"],
-      ["white","Biały/e"],
-      ["gold","Złoty"],
-      ["light","Jasna"],
-      ["brown, grey","Brązowe, szare"],
-      ["white, red","Biała, czerwona"],
-      ["blue-gray","Niebiesko-szare"],
-      ["auburn, white", "Kasztanowe, białe"],
-      ["white, blue", "Biała, niebieskia"],
-      ["language","Język"],
-      ["cargo_capacity","Pojemność załadunkowa"],
-      ["cost_in_credits","Koszt"],
-      ["hyperdrive_rating","Hipernapęd"],
-      ["length","Długość"],
-      ["manufacturer","Producent"],
-      ["max_atmosphering_speed","Maks. prędkość w atmosferze"],
-      ["model","Model"],
-      ["passengers","Liczba pasażerów"],
-      ["starship_class","Klasa"],
-      ["Human","Ludzie"],
-      ["film","Film"],
-      ["character","Postać"],
-      ["planet","Planeta"],
-      ["type","Gatunek"],
-      ["starship","Statek kosmiczny"],
-      ["vehicle","Pojazd"],
-      ["none","Brak"],
-      ["male","Mężczyzna"],
-      ["female","Kobieta"],
-      ["n/a","Brak danych"],
-      ["unknown","Brak danych"],
-      ["pilots","Piloci"],
-      ["vehicle_class","Klasa pojazdu"],
-      ["consumables","Eksploatacja"],
-      ["landing craft","Barka desantowa"],
-      ["crew", "Załoga"],
-      ["skin_colors","Kolory skóry"],
-      ["residents","Mieszkańcy"],
-      ["opening_crawl","Wstęp"],
-      ["indefinite", "Brak danych"],
-      ["start","Start"]
-    ]
 
     let {menuPositions, inputSearchValue, inputSearchVisible, startVisible} = this.state;
     let {films, people, planets, species, starships, vehicles} = this.state;

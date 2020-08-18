@@ -1,9 +1,10 @@
-.star-wars {
+.starWars {
+    margin: 20px 0;
     /* Flexbox to center the entire element on the screen */
     display: flex;
     justify-content: center;
     /* This is a magic number based on the context in which this snippet is used and effects the perspective */
-    height: 200px;
+    // height: 200px;
     /* This sets allows us to transform the text on a 3D plane, and is somewhat a magic number */
     perspective: 400px;
     /* The rest is totally up to personal styling preferences */
@@ -15,9 +16,9 @@
     line-height: 150%;
     text-align: justify;
     overflow: hidden;
-    background-image: url("../img/starry-sky-998641.jpg");
-    background-size: cover;
-    background-position: center center;
+    // background-image: url("../img/starry-sky-998641.jpg");
+    // background-size: cover;
+    // background-position: center center;
   }
 
 

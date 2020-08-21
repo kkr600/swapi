@@ -1,14 +1,12 @@
 import React from 'react'
-import "../css/List.css";
+import "../css/List.scss";
 
 const Starships = props => {
     const {array, inputSearchValue, path} = props;
     return (
-        <>
-            <div className="selectedList">
-                {props.buildList(array,path,inputSearchValue)}
-            </div>
-        </>
+        <div className="selectedList">
+            {props.buildList(array,path,inputSearchValue)}
+        </div>
     )
 }
 

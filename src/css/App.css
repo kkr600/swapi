@@ -3,6 +3,7 @@
   padding: 0;
   color: #1E1F21;
   font-size: 0.9rem;
+  /* box-sizing: border-box */
 }
 
 body {
@@ -11,12 +12,10 @@ body {
   background-size: cover;
   /* background-position: center center; */
   /* background-size: auto; */
-  height: 300vh;
+  height: 100vh;
 }
 
-#root {
-  position: relative;
-}
+
 
 .clearfix::after {
   content: "";
@@ -28,13 +27,12 @@ li {
   list-style-type: none;
 }
 
-.fl {
-  float: left;
+.contentWrap {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
 }
 
-.fr {
-  float: right;
-}
 
 .relative {
   position: relative;

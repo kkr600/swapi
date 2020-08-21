@@ -1,39 +1,18 @@
 nav {
   background-color: black;
   padding: 20px 0px;
-  
-  .noStick {
-    display: flex;
-    justify-content: center;
-    background-color: teal;
-  }
-  .stick {
-    position: fixed;
-    display: block;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    top: 0px;
-    background-color: teal;
-    z-index: 1;
-  }
   .mainMenu {
     padding: 10px 0px; 
-  }  
-    ul {
-      width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
-    .stick {
-      display: block;
-      width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
-    }
+  }
+  ul {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
     li {
-      float: left;
+      display: block;
       &:not(:first-child) {
-        border-left: 1px dotted black;
+        border-left: 1px dotted grey;
       }
       a {
         display: block;
@@ -43,22 +22,29 @@ nav {
         padding: 5px 10px;
         text-decoration: none;
         text-transform: uppercase;
-        font-size: 1rem;
-        color: grey;
-        &.active {
-          text-decoration: underline;
-          font-weight: 700;
-          color: lightgrey
+        span {
+          color: lightgrey;
+          font-size: 1.2rem;
+          margin-left: 5px;
         }
-        &:hover {
-          color: lightgrey
+        svg > path {
+          fill: lightgrey;
+        }
+        &.active {
+
+          span {
+            color: white;
+            text-decoration: underline;
+            font-weight: 700;
+          }
+        }
+        &:hover span {
+          color: white; 
         }
       }
     }
   }
 }
-
-
   
 .w3-modal {
   z-index:3;

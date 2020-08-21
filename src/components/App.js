@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, NavLink, Route, Redirect} from 'react-router-dom'
+import {BrowserRouter as Router, NavLink} from 'react-router-dom'
 import axios from 'axios';
 import Start from './Start';
 import Menu from './Menu';
@@ -7,11 +7,8 @@ import Header from './Header';
 import ListP from './ListP';
 import Search from "./Search"
 import Details from "./Details"
-import "../css/List.css";
 
 import dictionary from './dictionary'
-
-import { faHome, faFilm, faRedditAlien, faGlobe, faDna, faFighterJet, faTruckMonster } from '@fortawesome/free-solid-svg-icons'
 
 class App extends React.Component {
 
@@ -37,44 +34,44 @@ class App extends React.Component {
     menuPositions: [
       {
         name: "start",
-        path: "/",
-        // icon: {faHome},
+        path: "/start",
+        icon: 'home',
         exact: true
        },
       {
         name: "films",
         single: "film",
-        // icon: {faFilm},
+        icon: 'film',
         path: "/films"
        },
        {
          name: "people",
          single: "character",
-        //  icon: {faRedditAlien},
+         icon: 'street-view',
          path: "/people"
        },
        {
          name: "planets",
          single: "planet",
-        //  icon: {faGlobe},
+         icon: 'globe',
          path: "/planets"
        },
        {
          name: "species",
          single: "type",
-        //  icon: {faDna},
+         icon: 'dna',
          path: "/species"
        },
        {
          name: "starships",
          single: "starship",
-        //  icon: {faFighterJet},
+         icon: 'fighter-jet',
          path: "/starships"
        },
        {
          name: "vehicles",
          single: "vehicle",
-        //  icon: {faTruckMonster},
+         icon: 'snowplow',
          path: "/vehicles"
        }
     ],
@@ -155,10 +152,6 @@ class App extends React.Component {
       })
  }
 
-  scrollUp = () => {
-    window.scrollTo(0, 0);
-  }
-
   translate = (word,array) => { 
     let result = array.filter((a)=>a[0]===word);
     return result.length > 0 ? result[0][1] : word;
@@ -209,7 +202,7 @@ class App extends React.Component {
     let {films, people, planets, species, starships, vehicles} = this.state;
     
     let {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = this.state;
-    let {translate, getDetails, sortObjects, inputSearchChange, inputSearchSetVisible, startSetVisible, scrollUp} = this;
+    let {translate, getDetails, sortObjects, inputSearchChange, inputSearchSetVisible, startSetVisible} = this;
 
     return (
       <Router>
@@ -227,54 +220,52 @@ class App extends React.Component {
           getDetails={getDetails}
           inputSearchSetVisible={inputSearchSetVisible}
           startSetVisible={startSetVisible}
-          />
-          <div className="clearfix">
-            <section className="start">
-              <Start startVisible={startVisible}/>
-            </section>
-            <section className="left fl">
-              <Search
-                inputSearchValue={inputSearchValue}
-                inputSearchChange={inputSearchChange}
-                inputSearchVisible={inputSearchVisible}
-              />  
-              <ListP
-                menuPositions={menuPositions} 
-                films={films}
-                people={people}
-                planets={planets}
-                species={species}
-                starships={starships}
-                vehicles={vehicles}
-                loaded_films={loaded_films}
-                loaded_people={loaded_people}
-                loaded_planets={loaded_planets}
-                loaded_species={loaded_species}
-                loaded_starships={loaded_starships}
-                loaded_vehicles={loaded_vehicles}   
-                dictionary={dictionary}
-                translate={translate}
-                sortObjects={sortObjects}
-                inputSearchValue={inputSearchValue}
-                inputSearchChange={inputSearchChange}
-                scrollUp={scrollUp}
-              />            
-            </section>
-            <section className="right fr">
-              <Details
-                films={films}
-                people={people}
-                planets={planets}
-                species={species}
-                starships={starships}
-                vehicles={vehicles}
-                dictionary={dictionary}
-                translate={translate}
-                getDetails={getDetails}
-                scrollUp={scrollUp}
-              />
-            </section>
-          </div>
+        />
+        <section className="">
+          <Start startVisible={startVisible}/>
+        </section>
+        <Search
+              inputSearchValue={inputSearchValue}
+              inputSearchChange={inputSearchChange}
+              inputSearchVisible={inputSearchVisible}
+            />  
+        <div className="contentWrap">
+          <section className="left">
+            <ListP
+              menuPositions={menuPositions} 
+              films={films}
+              people={people}
+              planets={planets}
+              species={species}
+              starships={starships}
+              vehicles={vehicles}
+              loaded_films={loaded_films}
+              loaded_people={loaded_people}
+              loaded_planets={loaded_planets}
+              loaded_species={loaded_species}
+              loaded_starships={loaded_starships}
+              loaded_vehicles={loaded_vehicles}   
+              dictionary={dictionary}
+              translate={translate}
+              sortObjects={sortObjects}
+              inputSearchValue={inputSearchValue}
+              inputSearchChange={inputSearchChange}
+            />            
+          </section>
+          <section className="right">
+            <Details
+              films={films}
+              people={people}
+              planets={planets}
+              species={species}
+              starships={starships}
+              vehicles={vehicles}
+              dictionary={dictionary}
+              translate={translate}
+              getDetails={getDetails}
+            />
+          </section>
+        </div>
       </Router>
     )
   }

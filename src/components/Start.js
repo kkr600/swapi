@@ -1,23 +1,20 @@
 import React from "react";  
-import '../css/Start.css';
+import '../css/Start.scss';
 import '../css/App.css';
 
 const Start = props =>{
-    let {startVisible} = props;
-    if (startVisible) 
+    if (props.startVisible) { 
         return (
-            <div className = "start noSelect">
-                <h1>Strona główna</h1>
-                <p>Witaj na stronie poświęconej sadze Gwiezdnych Wojen.</p>
-                <p>W menu znajdziesz informacje między innymi o bohaterach, planetach i pojazdach pojawiających się w częściach od I do VI.</p>
+            <div className = "start">
+                <div className = "board">
+                    <p>Witaj na stronie poświęconej sadze Gwiezdnych Wojen.</p>
+                    <p>W menu znajdziesz informacje między innymi o bohaterach, planetach i pojazdach pojawiających się w częściach od I do VI.</p>
+                    <p>Aplikacja została wykonana w środowisku Create React App.</p>
+                </div>
             </div>
         )
-    else 
-     
-
-
-
-        return ""
+    }
+    else return null;
 }
 
 export default Start;

@@ -16,16 +16,14 @@ import Starships from "../Lists/Starships"
 import Vehicles from "../Lists/Vehicles"
 
 import '../css/App.css';
-import "../css/List.css";
+import "../css/List.scss";
 
 const ListP = props => {
 
     const {sortObjects, translate, dictionary, menuPositions, inputSearchValue, inputSearchChange} = props;
-    const {films, people, planets, species, starships, vehicles, scrollUp} = props;
+    const {films, people, planets, species, starships, vehicles} = props;
  
     function buildList(array, path, inputSearchValue) {
-        scrollUp();
-
         let arrayReturn = "";
         if (array !== undefined && path !== undefined && array.length > 0) {
             let arrayTemp = array;
@@ -59,7 +57,7 @@ const ListP = props => {
         }
         arrayReturn = <List>{arrayReturn}</List>
         return arrayReturn;
-    }
+    }   
 
     return (
         <>

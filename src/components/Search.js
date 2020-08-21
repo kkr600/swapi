@@ -1,9 +1,9 @@
 import React from "react";
-import "../css/Search.css";
+import "../css/Search.scss";
 
 const Search = props => {
     const {inputSearchValue, inputSearchChange, inputSearchVisible} = props;
-    if (inputSearchVisible || (window.location.pathname != "/" && window.location.pathname != "/swapi")) 
+    if (inputSearchVisible || (window.location.pathname != "/" && window.location.pathname != "/swapi" && window.location.pathname != "/start")) 
         return <input
                 type = "text"
                 className = "search"

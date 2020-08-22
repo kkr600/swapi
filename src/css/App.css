@@ -7,15 +7,10 @@
 }
 
 body {
-  /* background-color: black; */
   background: url("../img/pexels-free-nature-stock-1005309.jpg");
   background-size: cover;
-  /* background-position: center center; */
-  /* background-size: auto; */
   height: 100vh;
 }
-
-
 
 .clearfix::after {
   content: "";

@@ -12,5 +12,31 @@ div.start {
             margin: 20px 0;
         }
     }
-
 }
+
+@media (orientation: portrait) and (max-width: 1024px) {
+    div.start {
+        div.board {
+            width: 70%;
+            padding: 20px 30px;
+            p {
+                font-size: 1.4rem;
+                margin: 20px 0;
+            }
+        }
+    }
+}
+
+@media (orientation: landscape) and (max-width: 1366px) {
+    div.start {
+        div.board {
+            width: 70%;
+            padding: 20px 30px;
+            p {
+                font-size: 1.4rem;
+                margin: 20px 0;
+            }
+        }
+    }
+}
+

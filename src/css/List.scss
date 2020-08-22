@@ -4,7 +4,6 @@
     overflow: auto;
     padding: 0px 20px; 
     background-color: black;
-    
     a {
         display: block;
         padding: 5px 10px;
@@ -25,5 +24,52 @@
         cursor: pointer;
         padding: 0;
         transition-property: background-color;
+    }
+}
+
+@media (orientation: portrait) and (max-width: 1024px) {
+    .selectedList {
+        width: 250px;
+        max-height: 900px;
+        ul li div span a {
+            font-size: 1.3rem;
+        }
+    }
+}
+
+@media (orientation: landscape) and (max-width: 1366px) {
+    .selectedList {
+        width: 300px;
+        max-height:550px;
+        ul li a {
+            font-size: 1.3rem;
+        }
+        ul li div span a {
+            font-size: 1.3rem;
+        }
+    }
+}
+
+@media (orientation: portrait) and (max-width: 768px) {
+    .selectedList {
+        max-height: 570px;
+        width: 250px;
+        overflow: auto;
+        ul li div span a {
+            font-size: 1.3rem;
+        }
+    }
+}
+
+@media (orientation: landscape) and (max-width: 1024px) {
+    .selectedList {
+        width: 300px;
+        max-height:340px;
+        ul li a {
+            font-size: 1.1rem;
+        }
+        ul li div span a {
+            font-size: 1.1rem;
+        }
     }
 }

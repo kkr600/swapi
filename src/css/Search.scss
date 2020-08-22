@@ -5,3 +5,31 @@ input {
         outline: 0;
     }
 } 
+
+@media (orientation: portrait) and (max-width: 1024px) {
+    input {
+        &.search {
+            margin: 20px 0 0 30px;
+            font-size: 1.3rem;
+        }
+    } 
+}
+
+@media (orientation: landscape) and (max-width: 1366px) {
+    input {
+        &.search {
+            margin: 20px 0 0 130px;
+            font-size: 1.3rem;
+        }
+    } 
+}
+
+
+@media (orientation: landscape) and (max-width: 1024px) {
+    input {
+        &.search {
+            margin: 20px 0 0 40px;
+            font-size: 1.1rem;
+        }
+    } 
+}

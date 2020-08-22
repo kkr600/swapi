@@ -1,7 +1,7 @@
 import React from 'react'
 import "../css/List.scss";
 
-const Planets = props => {
+const ListComponent = props => {
     const {array, inputSearchValue, path} = props;
     return (
         <div className="selectedList">
@@ -10,4 +10,4 @@ const Planets = props => {
     )
 }
 
-export default Planets
+export default ListComponent

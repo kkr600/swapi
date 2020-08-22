@@ -1,3 +1,6 @@
+// @import "./fontawesome/scss/fontawesome.scss";
+// @import "./fontawesome/scss/solid.scss";
+
 nav {
   background-color: black;
   padding: 20px 0px;
@@ -24,11 +27,12 @@ nav {
         text-transform: uppercase;
         span {
           color: lightgrey;
-          font-size: 1.2rem;
+          font-size: 1.3rem;
           margin-left: 5px;
         }
         svg > path {
           fill: lightgrey;
+          font-size: 3rem;
         }
         &.active {
 
@@ -75,26 +79,46 @@ nav {
   color: #556661;
   animation: spin 2s linear infinite;
 }
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-
-section {
-  .left {
-    width: 360px;
-  }
-  .right {
-    right: 50px;
-    width: 600px;
-    padding: 20px 20px 0 50px;
-  }
-  .stick {
-    position: fixed;
-    right: 0px;
-    top: 70px;
-  }
-}
   
+@media (orientation: portrait) and (max-width: 1024px) {
+  div.icon > span {
+    font-size: 1.5rem;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1366px) {
+
+}
+
+@media (orientation: portrait) and (max-width: 768px) {
+  div.icon > span {
+    font-size: 1rem;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1024px) {
+  nav {
+    padding: 10px 0px;
+  }
+  div.icon > span {
+    font-size: 1.2rem;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 414px) {
+  nav {
+    display: none;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 1024px) {
+  nav {
+    padding: 10px 0px;
+  }
+  div.icon > span {
+    font-size: 1.2rem;
+  }
+}
+
+
+

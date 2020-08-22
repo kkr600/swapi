@@ -4,16 +4,8 @@ import {Route, NavLink} from 'react-router-dom'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import { FixedSizeList } from 'react-window'; 
 
-
-
-import Films from "../Lists/Films"
-import People from "../Lists/People"
-import Planets from "../Lists/Planets"
-import Species from "../Lists/Species"
-import Starships from "../Lists/Starships"
-import Vehicles from "../Lists/Vehicles"
+import ListComponent from "./ListComponent"
 
 import '../css/App.css';
 import "../css/List.scss";
@@ -63,7 +55,7 @@ const ListP = props => {
         <>
             <Route path="/films" component={() => {
                 return (
-                    <Films 
+                    <ListComponent 
                         array = {films} 
                         path = {menuPositions.filter(el => el.name === "films")[0].path}
                         buildList = {buildList} 
@@ -73,7 +65,7 @@ const ListP = props => {
             }} />
             <Route path="/people" component={() => {
                 return (
-                    <People 
+                    <ListComponent 
                         array = {people} 
                         path = {menuPositions.filter(el => el.name === "people")[0].path}
                         buildList = {buildList} 
@@ -83,7 +75,7 @@ const ListP = props => {
             }} />
             <Route path="/planets" component={() => {
                 return (
-                    <Planets 
+                    <ListComponent 
                         array = {planets} 
                         path = {menuPositions.filter(el => el.name === "planets")[0].path}
                         buildList = {buildList} 
@@ -93,7 +85,7 @@ const ListP = props => {
             }} />
             <Route path="/species" component={() => {
                 return (
-                    <Species 
+                    <ListComponent 
                         array = {species} 
                         path = {menuPositions.filter(el => el.name === "species")[0].path}
                         buildList = {buildList} 
@@ -103,7 +95,7 @@ const ListP = props => {
             }} />
             <Route path="/starships" component={() => {
                 return (
-                    <Starships 
+                    <ListComponent 
                         array = {starships} 
                         path = {menuPositions.filter(el => el.name === "starships")[0].path}
                         buildList = {buildList} 
@@ -113,13 +105,14 @@ const ListP = props => {
             }} />
             <Route path="/vehicles" component={() => {
                 return (
-                    <Vehicles 
+                    <ListComponent 
                         array = {vehicles} 
                         path = {menuPositions.filter(el => el.name === "vehicles")[0].path}
                         buildList = {buildList} 
                         inputSearchValue = {inputSearchValue}
                         inputSearchChange = {inputSearchChange}
-                    />)
+                    />
+                   )
             }} />
         </>
     )

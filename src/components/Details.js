@@ -8,7 +8,7 @@ import SpeciesDetails from "../Details/SpeciesDetails"
 import StarshipsDetails from "../Details/StarshipsDetails"
 import VehiclesDetails from "../Details/VehiclesDetails"
 
-import '../css/App.css';
+import '../css/App.scss';
 import '../css/Details.scss';
 
 const Details = props => {

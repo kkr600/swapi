@@ -1,6 +1,6 @@
 import React from "react";  
 import '../css/Start.scss';
-import '../css/App.css';
+import '../css/App.scss';
 
 const Start = props =>{
     if (props.startVisible) { 

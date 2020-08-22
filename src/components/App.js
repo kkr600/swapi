@@ -206,7 +206,7 @@ class App extends React.Component {
 
     return (
       <Router>
-        {/* <Header/> */}
+        <Header/>
         <Menu   
           menuPositions={menuPositions} 
           loaded_films={loaded_films}

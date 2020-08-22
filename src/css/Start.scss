@@ -40,3 +40,15 @@ div.start {
     }
 }
 
+@media (orientation: portrait) and (max-width: 414px) {
+    div.start {
+        div.board {
+            width: 70%;
+            padding: 10px 20px;
+            p {
+                font-size: 1rem;
+                margin: 10px 0;
+            }
+        }
+    }
+}

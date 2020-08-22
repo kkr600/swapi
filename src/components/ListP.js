@@ -7,7 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 import ListComponent from "./ListComponent"
 
-import '../css/App.css';
+import '../css/App.scss';
 import "../css/List.scss";
 
 const ListP = props => {

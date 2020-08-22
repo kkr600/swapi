@@ -2,7 +2,7 @@ import React from "react";
 import {NavLink} from 'react-router-dom';
 
 import '../css/Menu.scss';
-import '../css/App.css';
+import '../css/App.scss';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

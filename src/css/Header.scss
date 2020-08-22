@@ -11,6 +11,14 @@
     text-align: justify;
   }
 
-@media (orientation: portrait) and (max-width: 375) {
-  
+@media (orientation: portrait) and (max-width: 414px) {
+  .starWars {
+    padding: 10px 0;
+  } 
+}
+
+@media (orientation: landscape) and (max-width: 736px) {
+  .starWars {
+    padding: 5px 0;
+  } 
 }

@@ -33,3 +33,21 @@ input {
         }
     } 
 }
+
+@media (orientation: portrait) and (max-width: 414px) {
+    input {
+        &.search {
+            margin: 10px 0 0 65px;
+            font-size: 1rem;
+        }
+    } 
+}
+
+@media (orientation: landscape) and (max-width: 736px) {
+    input {
+        &.search {
+            margin: 5px 0 0 20px;
+            font-size: 0.9rem;
+        }
+    } 
+}

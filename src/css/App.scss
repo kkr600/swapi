@@ -22,13 +22,6 @@ li {
   list-style-type: none;
 }
 
-.contentWrap {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px 0;
-}
-
-
 .relative {
   position: relative;
 }
@@ -60,4 +53,24 @@ li {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+
+.contentWrap {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+@media (orientation: portrait) and (max-width: 414px) {
+  .contentWrap {
+    flex-wrap: wrap;
+    margin: 10px 0;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 736px) {
+  .contentWrap {
+    flex-wrap: wrap;
+    margin: 10px 0;
+  }
 }

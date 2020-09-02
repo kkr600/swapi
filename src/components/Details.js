@@ -1,12 +1,7 @@
 import React from "react";
 import {Route, Switch, Redirect } from 'react-router-dom'
 
-import FilmsDetails from "../Details/FilmsDetails"
-import PeopleDetails from "../Details/PeopleDetails"
-import PlanetsDetails from "../Details/PlanetsDetails"
-import SpeciesDetails from "../Details/SpeciesDetails"
-import StarshipsDetails from "../Details/StarshipsDetails"
-import VehiclesDetails from "../Details/VehiclesDetails"
+import DetailsComponent from './DetailsComponent'
 
 import '../css/App.scss';
 import '../css/Details.scss';
@@ -61,7 +56,7 @@ const Details = props => {
         <Switch>
             <Route path="/films" exact component={() => {
                 return (
-                    <FilmsDetails
+                    <DetailsComponent
                         array = {undefined}
                         buildDetails = {buildDetails}
                         scrollUp={scrollUp}
@@ -70,7 +65,7 @@ const Details = props => {
             }}/>
             <Route path="/films/:id" component={() => {
                 return (
-                    <FilmsDetails
+                    <DetailsComponent
                         array = {films}
                         buildDetails = {buildDetails}
                         scrollUp={scrollUp}
@@ -79,7 +74,7 @@ const Details = props => {
             }}/>
             <Route path="/people" exact component={() => {
                 return (
-                    <PeopleDetails
+                    <DetailsComponent
                         array = {undefined}
                         buildDetails = {buildDetails}
                         scrollUp={scrollUp}
@@ -88,7 +83,7 @@ const Details = props => {
             }}/>
             <Route path="/people/:id" component={() => {
                 return (
-                    <PeopleDetails
+                    <DetailsComponent
                         array = {people}
                         buildDetails = {buildDetails}
                         scrollUp={scrollUp}
@@ -97,7 +92,7 @@ const Details = props => {
             }}/>
             <Route path="/planets" exact component={() => {
                 return (
-                    <PlanetsDetails
+                    <DetailsComponent
                         array = {undefined}
                         buildDetails = {buildDetails}
                         scrollUp={scrollUp}
@@ -106,7 +101,7 @@ const Details = props => {
             }}/>
             <Route path="/planets/:id" component={() => {
                 return (
-                    <PlanetsDetails
+                    <DetailsComponent
                         array = {planets}
                         buildDetails = {buildDetails}
                         scrollUp={scrollUp}
@@ -115,7 +110,7 @@ const Details = props => {
             }}/>
             <Route path="/species" exact component={() => {
                 return (
-                    <SpeciesDetails
+                    <DetailsComponent
                         array = {undefined}
                         buildDetails = {buildDetails}
                         scrollUp={scrollUp}
@@ -124,7 +119,7 @@ const Details = props => {
             }}/>
             <Route path="/species/:id" component={() => {
                 return (
-                    <SpeciesDetails
+                    <DetailsComponent
                         array = {species}
                         buildDetails = {buildDetails}
                         scrollUp={scrollUp}
@@ -133,7 +128,7 @@ const Details = props => {
             }}/>
             <Route path="/starships" exact component={() => {
                 return (
-                    <StarshipsDetails
+                    <DetailsComponent
                         array = {undefined}
                         buildDetails = {buildDetails}
                         scrollUp={scrollUp}
@@ -142,7 +137,7 @@ const Details = props => {
             }}/>
             <Route path="/starships/:id" component={() => {
                 return (
-                    <StarshipsDetails
+                    <DetailsComponent
                         array = {starships}
                         buildDetails = {buildDetails}
                         scrollUp={scrollUp}
@@ -151,7 +146,7 @@ const Details = props => {
             }}/>
             <Route path="/vehicles" exact component={() => {
                 return (
-                    <VehiclesDetails
+                    <DetailsComponent
                         array = {undefined}
                         buildDetails = {buildDetails}
                         scrollUp={scrollUp}
@@ -160,7 +155,7 @@ const Details = props => {
             }}/>
             <Route path="/vehicles/:id" component={() => {
                 return (
-                    <VehiclesDetails
+                    <DetailsComponent
                         array = {vehicles}
                         buildDetails = {buildDetails}
                         scrollUp={scrollUp}

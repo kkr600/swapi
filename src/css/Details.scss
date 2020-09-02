@@ -64,9 +64,23 @@
 }
 
 @media (orientation: portrait) and (min-width: 411px) {
-    .detailsSection p.detailsTitle {
-        font-size: 1rem;
-    }   
+    .detailsSection {
+        p.detailsTitle {
+            font-size: 1.1rem;
+        }
+        .detailsWrap {
+            .detailsName {
+                font-size: .9rem;
+            }
+            .detailsProp {
+                font-size: 0.9rem;
+                a {
+                    color: #DCE7F0;
+                    font-size: .9rem;
+                }
+            }
+        }
+    }
 }
 
 @media (orientation: portrait) and (min-width: 768px) {
@@ -97,7 +111,6 @@
         max-height: 100%;
         overflow: auto;
         box-sizing: border-box;
-        // display: flex;
         p.detailsTitle {
             color: white;
             text-transform: uppercase;
@@ -111,15 +124,15 @@
             }
             .detailsName {
                 width: 40%;
-                font-size: 0.7rem;
+                font-size: 0.8rem;
                 color: #DCE7F0;
             }
             .detailsProp {
                 color: #DCE7F0;
-                font-size: 0.7rem;
+                font-size: 0.8rem;
                 a {
                     color: #DCE7F0;
-                    font-size: .7rem;
+                    font-size: .8rem;
                 }
                 li:hover {
                     background-color: #5AA2EB;
@@ -136,3 +149,41 @@
     }
 }
 
+@media (orientation: landscape) and (min-width: 1024px) {
+    .detailsSection {
+        p.detailsTitle {
+            font-size: 1.2rem;
+        }
+        .detailsWrap {
+            .detailsName {
+                font-size: 1rem;
+            }
+            .detailsProp {
+                font-size: 1rem;
+                a {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+
+@media (orientation: landscape) and (min-width: 1366px) {
+    .detailsSection {
+        p.detailsTitle {
+            font-size: 1.6rem;
+        }
+        .detailsWrap {
+            .detailsName {
+                font-size: 1.5rem;
+            }
+            .detailsProp {
+                font-size: 1.5rem;
+                a {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+}

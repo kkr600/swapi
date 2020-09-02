@@ -4,7 +4,6 @@
             margin: 5px 0px 10px 0px;
             font-size: .8rem;
             padding: 5px 10px;
-            outline: 0;
             width: 100%;
         }
     }    
@@ -46,7 +45,6 @@
             margin: 5px 0px;
             font-size: .8rem;
             padding: 5px 10px;
-            outline: 0;
             width: 200px;
         }
     }  
@@ -56,6 +54,26 @@
     input {
         &.search {
             margin: 5px 10px;
+        }
+    }    
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+    input {
+        &.search {
+            font-size: 1.2rem;
+            width: 300px;
+            margin: 15px 10px;
+        }
+    }    
+}
+
+@media (orientation: landscape) and (min-width: 1366px) {
+    input {
+        &.search {
+            margin: 15px 20px;
+            font-size: 1.5rem;
+            width: 400px;
         }
     }    
 }

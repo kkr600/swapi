@@ -1,3 +1,7 @@
+.selectedList a {
+    font-size: 3.5rem;
+}
+
 @media (orientation: portrait) and (min-width: 280px) {
     .selectedList {
         flex-grow: 1;
@@ -30,6 +34,14 @@
     }
 }
 
+@media (orientation: portrait) and (min-width: 414px) {
+    .selectedList {
+        a {
+            font-size: 0.9rem;
+        }
+    }
+}
+
 @media (orientation: portrait) and (min-width: 768px) {
     .selectedList {
         a {
@@ -48,7 +60,7 @@
         a {
             display: block;
             padding: 5px 10px;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             text-decoration: none;
             color: lightgrey;
             &:hover {
@@ -67,6 +79,18 @@
             padding: 0;
             transition-property: background-color;
         }
+    }
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+    .selectedList a {
+        font-size: 1rem;
+    }
+}
+
+@media (orientation: landscape) and (min-width: 1366px) {
+    .selectedList a {
+        font-size: 1.5rem;
     }
 }
 

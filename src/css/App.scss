@@ -71,8 +71,6 @@
   } 
 }
 
-
-
 @media (orientation: landscape) and (min-width: 720px) {
   .contentWrap {
     margin-bottom: 5px;
@@ -85,5 +83,30 @@
   }
 }
 
+@media (orientation: landscape) and (min-width: 1024px) {
+  .mainWrap {
+    .halfWrap {
+      height: 40%;
+    }
+    .contentWrap {
+      margin: 20px 0 5px 0;
+      height: 60%;
+    }
+  }
+}
 
+@media (orientation: landscape) and (min-width: 1440px) {
+  .mainWrap {
+    overflow: auto;
+    max-height: 4252px;
+    .halfWrap {
+      height: auto;
+    }
+    .contentWrap {
+      margin: 40px 0 5px 0;
+      overflow: auto;
+      height: auto;
+    }
+  }
+}
 

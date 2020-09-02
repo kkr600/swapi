@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams, useRouteMatch } from 'react-router-dom'
  
 
-const SpeciesDetails = (props) => {
+const DetailsComponent = (props) => {
     const {id} = useParams();
     const {path} = useRouteMatch();
     const category = path.substring(1,path.indexOf("/",1));
@@ -10,4 +10,4 @@ const SpeciesDetails = (props) => {
     return <div className="detailsSection">{buildDetails(array, id, category)}</div>
 }
 
-export default SpeciesDetails
+export default DetailsComponent

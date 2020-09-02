@@ -11,8 +11,8 @@ import { faRedditAlien} from '@fortawesome/free-brands-svg-icons';
 library.add(faHome, faFilm, faGlobe, faDna, faSpinner, faRedditAlien, faFighterJet, faSnowplow, faStreetView);
 
 const Menu = props => {
-    const {menuPositions, inputSearchSetVisible, startSetVisible, translate, dictionary} = props;
-
+    const { loaded, menuPositions, inputSearchSetVisible, startSetVisible, translate, dictionary } = props;
+    
     const menu = menuPositions.map( (category,index) => (
         <li 
             key={index}  
@@ -30,9 +30,8 @@ const Menu = props => {
         </li>
     ));
     
-    const loaded = () => {
-        const {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = props;
-        if (loaded_films && loaded_people && loaded_planets && loaded_species && loaded_starships && loaded_vehicles)  {
+    const ifLoaded = () => {
+        if (loaded.films && loaded.people && loaded.planets && loaded.starships && loaded.vehicles)  {
             return <div></div>
         }
         else
@@ -53,7 +52,7 @@ const Menu = props => {
                     {menu}
                 </ul>
             </nav>
-            {loaded()}
+            {ifLoaded()}
         </div>
     )
 

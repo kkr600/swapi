@@ -1,67 +1,79 @@
-.detailsSection {
-    padding: 10px;
-    background-color: black;
-    color: #DCE7F0;
-    width: 500px;
-    p.detailsTitle {
-        color: white;
-        text-transform: uppercase;
-        font-size: 1.4rem;
-    }   
-    .detailsWrap {
-        position: relative; 
+@media (orientation: portrait) and (min-width: 280px) {
+    .detailsSection {
+        padding: 10px;
+        background-color: black;
+        color: #DCE7F0;
+        width: auto;
+        max-height: 100%;
+        overflow: auto;
+        box-sizing: border-box;
         display: flex;
-        margin: 10px 0;   
-        &:not(:first-of-type) {
-            border-top: 1px solid grey;
+        div {
+            width: 100%;
         }
-        .detailsName {
-            width: 40%;
-            color: #DCE7F0;
-        }
-        .detailsProp {
-            color: #DCE7F0; 
-            a {
+        p.detailsTitle {
+            color: white;
+            text-transform: uppercase;
+            font-size: .9rem;
+        }   
+        .detailsWrap {
+            position: relative; 
+            display: flex;
+            margin: 10px 0;   
+            flex-basis: 100%;
+            &:not(:first-of-type) {
+                border-top: 1px solid grey;
+            }
+            .detailsName {
+                flex-basis: 40%;
+                font-size: 0.8rem;
                 color: #DCE7F0;
             }
-            li:hover {
-                background-color: #5AA2EB;
-                transition-duration: 0.3s;
-                font-weight: 600;
-            }
-            a:hover {
-                background-color: #5AA2EB;
-                transition-duration: 0.3s;
-                font-weight: 600;
-            }
-        }
-    }
-}
-
-@media (orientation: portrait) and (max-width: 1024px) {
-    .detailsSection {
-        width: 600px;
-        max-height: 850px;
-        overflow: auto;
-        .detailsWrap {
-            .detailsName {
-                font-size: 1.3rem;
-            }
             .detailsProp {
-                font-size: 1.3rem;
+                color: #DCE7F0;
+                font-size: 0.8rem;
+                flex-basis: 60%;
                 a {
-                    font-size: 1.3rem;
+                    color: #DCE7F0;
+                    font-size: .8rem;
+                }
+                li:hover {
+                    background-color: #5AA2EB;
+                    transition-duration: 0.3s;
+                    font-weight: 600;
+                }
+                a:hover {
+                    background-color: #5AA2EB;
+                    transition-duration: 0.3s;
+                    font-weight: 600;
                 }
             }
         }
     }
 }
 
-@media (orientation: landscape) and (max-width: 1366px) {
+@media (orientation: portrait) and (min-width: 360px) {
     .detailsSection {
-        width: 500px;
-        max-height: 530px;
-        overflow: auto;
+        div {
+            flex-grow: 1;
+        }
+        p.detailsTitle {
+            color: white;
+        }
+    }
+}
+
+@media (orientation: portrait) and (min-width: 411px) {
+    .detailsSection p.detailsTitle {
+        font-size: 1rem;
+    }   
+}
+
+@media (orientation: portrait) and (min-width: 768px) {
+    .detailsSection {
+        p.detailsTitle {
+            font-size: 1.7rem;
+        }
         .detailsWrap {
             .detailsName {
                 font-size: 1.5rem;
@@ -72,113 +84,55 @@
                     font-size: 1.5rem;
                 }
             }
-        }
+        } 
     }
 }
 
-@media (orientation: portrait) and (max-width: 768px) {
+@media (orientation: landscape) and (min-width: 568px) {
     .detailsSection {
-        width: 350px;
-        max-height: 550px;
+        padding: 10px;
+        width: 99%;
+        background-color: black;
+        color: #DCE7F0;
+        max-height: 100%;
         overflow: auto;
-        .detailsWrap {
-            .detailsName {
-                font-size: 1.3rem;
-            }
-            .detailsProp {
-                font-size: 1.3rem;
-                a {
-                    font-size: 1.3rem;
-                }
-            }
-        }
-    }
-}
-
-@media (orientation: landscape) and (max-width: 1024px) {
-    .detailsSection {
-        width: 500px;
-        max-height: 320px;
-        overflow: auto;
-        .detailsWrap {
-            .detailsName {
-                font-size: 1.1rem;
-            }
-            .detailsProp {
-                font-size: 1.1rem;
-                a {
-                    font-size: 1.1rem;
-                }
-            }
-        }
-    }
-}
-
-@media (orientation: portrait) and (max-width: 414px) {
-    .detailsSection {
-        width: 350px;
-        max-height: 260px;
-        overflow: auto;
+        box-sizing: border-box;
+        // display: flex;
         p.detailsTitle {
-            font-size: 1.1rem;
-        }  
+            color: white;
+            text-transform: uppercase;
+            font-size: .9rem;
+        }   
         .detailsWrap {
+            display: flex;
+            margin: 10px 0;   
+            &:not(:first-of-type) {
+                border-top: 1px solid grey;
+            }
             .detailsName {
-                font-size: 0.9rem;
+                width: 40%;
+                font-size: 0.7rem;
+                color: #DCE7F0;
             }
             .detailsProp {
-                font-size: 0.9rem;
+                color: #DCE7F0;
+                font-size: 0.7rem;
                 a {
-                    font-size: .9rem;
+                    color: #DCE7F0;
+                    font-size: .7rem;
+                }
+                li:hover {
+                    background-color: #5AA2EB;
+                    transition-duration: 0.3s;
+                    font-weight: 600;
+                }
+                a:hover {
+                    background-color: #5AA2EB;
+                    transition-duration: 0.3s;
+                    font-weight: 600;
                 }
             }
         }
     }
 }
 
-@media (orientation: landscape) and (max-width: 736px) {
-    .detailsSection {
-        width: 400px;
-        max-height: 110px;
-        p.detailsTitle {
-            font-size: 1rem;
-        }  
-        .detailsWrap {
-            .detailsName {
-                font-size: 0.8rem;
-            }
-            .detailsProp {
-                font-size: 0.8rem;
-                a {
-                    font-size: .8rem;
-                }
-            }
-        }
-    }
-}
-
-
-
-
-
-@media (orientation: portrait) and (min-width: 280px) {
-    .detailsSection {
-        width: 100px;
-        max-height: 110px;
-        p.detailsTitle {
-            font-size: 1rem;
-        }  
-        .detailsWrap {
-            .detailsName {
-                font-size: 0.8rem;
-            }
-            .detailsProp {
-                font-size: 0.8rem;
-                a {
-                    font-size: .8rem;
-                }
-            }
-        }
-    }
-
-}

@@ -1,24 +1,37 @@
-.starWars {
-    padding: 20px 0;
+@media (orientation: portrait) and (min-width: 280px) {
+  .starWars {
+    padding: 15px 0;
     display: flex;
     justify-content: center;
-    color: #feda4a;
-    font-family: 'Pathway Gothic One', sans-serif;
-    font-size: 1em;
-    font-weight: 600;
-    letter-spacing: 2px;
-    line-height: 150%;
-    text-align: justify;
   }
+}
 
-@media (orientation: portrait) and (max-width: 414px) {
+@media (orientation: portrait) and (min-width: 360px) {
+  .starWars {
+    padding: 15px 0;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 411px) {
   .starWars {
     padding: 10px 0;
+  }
+}
+
+
+@media (orientation: landscape) and (min-width: 568px) {
+  .starWars {
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
   } 
 }
 
-@media (orientation: landscape) and (max-width: 736px) {
+@media (orientation: landscape) and (min-width: 731px) {
   .starWars {
-    padding: 5px 0;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
   } 
 }
+

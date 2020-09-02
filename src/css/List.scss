@@ -1,102 +1,72 @@
-.selectedList {
-    width: 250px;
-    max-height: 300px;
-    overflow: auto;
-    padding: 0px 20px; 
-    background-color: black;
-    a {
-        display: block;
-        padding: 5px 10px;
-        text-decoration: none;
-        color: lightgrey;
-        &:hover {
-            background-color: grey;
-            transition-duration: 0.3s;
-            font-weight: 600;
-        }
-        &.active {
-            font-weight: 600;
-            background-color: grey;
-        }
-    }
-    li {
-        list-style-type: none;
-        cursor: pointer;
-        padding: 0;
-        transition-property: background-color;
-    }
-}
-
-@media (orientation: portrait) and (max-width: 1024px) {
+@media (orientation: portrait) and (min-width: 280px) {
     .selectedList {
-        width: 250px;
-        max-height: 900px;
-        ul li div span a {
-            font-size: 1.3rem;
-        }
-    }
-}
-
-@media (orientation: landscape) and (max-width: 1366px) {
-    .selectedList {
-        width: 300px;
-        max-height:550px;
-        ul li a {
-            font-size: 1.3rem;
-        }
-        ul li div span a {
-            font-size: 1.3rem;
-        }
-    }
-}
-
-@media (orientation: portrait) and (max-width: 768px) {
-    .selectedList {
-        max-height: 570px;
-        width: 250px;
+        flex-grow: 1;
+        max-height: 95%;
         overflow: auto;
-        ul li div span a {
-            font-size: 1.3rem;
+        padding: 0px 10px; 
+        background-color: black;
+        a {
+            display: block;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            color: lightgrey;
+            &:hover {
+                background-color: grey;
+                transition-duration: 0.3s;
+                font-weight: 600;
+            }
+            &.active {
+                font-weight: 600;
+                background-color: grey;
+            }
+        }
+        li {
+            list-style-type: none;
+            cursor: pointer;
+            padding: 0;
+            transition-property: background-color;
         }
     }
 }
 
-@media (orientation: landscape) and (max-width: 1024px) {
+@media (orientation: portrait) and (min-width: 768px) {
     .selectedList {
-        width: 300px;
-        max-height:340px;
-        ul li a {
-            font-size: 1.1rem;
-        }
-        ul li div span a {
-            font-size: 1.1rem;
+        a {
+            font-size: 1.5rem;
         }
     }
 }
 
-@media (orientation: portrait) and (max-width: 414px) {
+@media (orientation: landscape) and (min-width: 568px) {
     .selectedList {
-        max-height: 100px;
-        width: 250px;
+        width: 95%;
+        height: 100%;
         overflow: auto;
-        margin-bottom: 10px;
-        padding: 0px 20px;
-        ul li div span a {
-            font-size: 1rem;
-            padding: 0px 5px;
+        padding: 0px 10px; 
+        background-color: black;
+        a {
+            display: block;
+            padding: 5px 10px;
+            font-size: 0.7rem;
+            text-decoration: none;
+            color: lightgrey;
+            &:hover {
+                background-color: grey;
+                transition-duration: 0.3s;
+                font-weight: 600;
+            }
+            &.active {
+                font-weight: 600;
+                background-color: grey;
+            }
+        }
+        li {
+            list-style-type: none;
+            cursor: pointer;
+            padding: 0;
+            transition-property: background-color;
         }
     }
 }
 
-@media (orientation: landscape) and (max-width: 736px) {
-    .selectedList {
-        max-height: 130px;
-        width: 250px;
-        padding: 0px 5px;
-        ul li div span a {
-            font-size: .8rem;
-            padding: 0px 5px;
-        }
-    }
-
-}

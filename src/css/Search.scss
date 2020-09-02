@@ -1,53 +1,61 @@
-input {
-    &.search {
-        margin: 20px 0 0 15%;
-        padding: 5px 10px;
-        outline: 0;
-    }
-} 
-
-@media (orientation: portrait) and (max-width: 1024px) {
+@media (orientation: portrait) and (min-width: 280px) {
     input {
         &.search {
-            margin: 20px 0 0 30px;
-            font-size: 1.3rem;
+            margin: 5px 0px 10px 0px;
+            font-size: .8rem;
+            padding: 5px 10px;
+            outline: 0;
+            width: 100%;
         }
-    } 
+    }    
 }
 
-@media (orientation: landscape) and (max-width: 1366px) {
+@media (orientation: portrait) and (min-width: 375px) {
     input {
         &.search {
-            margin: 20px 0 0 130px;
-            font-size: 1.3rem;
+            margin: 5px 0px 5px 0px;
+            font-size: .9rem;
+            padding: 5px 10px;
         }
-    } 
+    }    
 }
 
-
-@media (orientation: landscape) and (max-width: 1024px) {
+@media (orientation: portrait) and (min-width: 411px) {
     input {
         &.search {
-            margin: 20px 0 0 40px;
-            font-size: 1.1rem;
+            margin: 5px 0px 5px 0px;
+            font-size: .9rem;
+            padding: 5px 10px;
         }
-    } 
+    }    
 }
 
-@media (orientation: portrait) and (max-width: 414px) {
+@media (orientation: portrait) and (min-width: 768px) {
     input {
         &.search {
-            margin: 10px 0 0 65px;
-            font-size: 1rem;
+            margin: 15px 0px;
+            font-size: 1.7rem;
+            padding: 5px 10px;
         }
-    } 
+    }    
 }
 
-@media (orientation: landscape) and (max-width: 736px) {
+@media (orientation: landscape) and (min-width: 568px) {
     input {
         &.search {
-            margin: 5px 0 0 20px;
-            font-size: 0.9rem;
+            margin: 5px 0px;
+            font-size: .8rem;
+            padding: 5px 10px;
+            outline: 0;
+            width: 200px;
         }
-    } 
+    }  
+}
+
+@media (orientation: landscape) and (min-width: 720px) {
+    input {
+        &.search {
+            margin: 5px 10px;
+        }
+    }    
 }

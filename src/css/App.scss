@@ -1,76 +1,89 @@
-* {
-  margin: 0;
-  padding: 0;
-  color: #1E1F21;
-  font-size: 0.9rem;
-  /* box-sizing: border-box */
-}
-
-body {
-  background: url("../img/pexels-free-nature-stock-1005309.jpg");
-  background-size: cover;
-  height: 100vh;
-}
-
-.clearfix::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-li {
-  list-style-type: none;
-}
-
-.relative {
-  position: relative;
-}
-
-.absolute {
-  position: absolute;
-}
-
-.flex {
-  display: flex;
-  flex-direction: row;
-}
-
-.half {
-  width: 50%;
-}
-
-.link {
-  cursor: pointer;
-  text-decoration: underline;
-  color: blue;
-}
-
-.noSelect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
-}
-
-.contentWrap {
-  display: flex;
-  justify-content: space-around;
-  margin: 20px 0;
-}
-
-@media (orientation: portrait) and (max-width: 414px) {
+@media (orientation: portrait) and (min-width: 280px) {
+  .mainWrap {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
   .contentWrap {
-    flex-wrap: wrap;
-    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; 
+    .left {
+      display: flex;
+      overflow: hidden;
+      height: 40%;
+    }
+    .right {
+      overflow: hidden;
+      height: 60%;
+    }
   }
 }
 
-@media (orientation: landscape) and (max-width: 736px) {
+@media (orientation: portrait) and (min-width: 320px) {
   .contentWrap {
-    flex-wrap: wrap;
-    margin: 10px 0;
+    .left {
+      height: 30%;
+    }
+    .right {
+      height: 70%;
+    }
   }
 }
+
+@media (orientation: portrait) and (min-width: 540px) {
+  .contentWrap {
+    align-items: center;
+    margin-bottom: 10px;
+    .left {
+      width: 95%;
+    }
+    .right {
+      width: 95%;
+    }
+  }
+}
+
+@media (orientation: landscape) and (min-width: 568px) {
+  .mainWrap {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .halfWrap {
+    height: 45%;
+  }
+  .contentWrap {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    .left {
+      display: flex;
+      overflow: auto;
+      width: 30%;
+    }
+    .right {
+      overflow: auto;
+      width: 70%;
+    }
+  } 
+}
+
+
+
+@media (orientation: landscape) and (min-width: 720px) {
+  .contentWrap {
+    margin-bottom: 5px;
+    .left {
+      justify-content: center;
+    }
+    .right {
+      justify-content: center;
+    }
+  }
+}
+
+
+

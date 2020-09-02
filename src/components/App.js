@@ -19,12 +19,14 @@ class App extends React.Component {
     species: [],
     starships: [],
     vehicles: [],
-    loaded_films: false,
-    loaded_people: false,
-    loaded_planets: false,
-    loaded_species: false,
-    loaded_starships: false,
-    loaded_vehicles: false,
+    loaded: {
+      films: false,
+      people: false,
+      planets: false,
+      species: false,
+      starships: false,
+      vehicles: false, 
+    },
     filmsNo: 1,
     peopleNo: 0, 
     planetsNo: 0,
@@ -138,7 +140,6 @@ class App extends React.Component {
       .then(response =>{
         let nextPage = response.data.next;
         let nameNo = name + "No";
-        let loaded = "loaded_" + name;
         this.setState( prevState => {
           return {
             [name]: prevState[name].concat(response.data.results),
@@ -147,8 +148,11 @@ class App extends React.Component {
         });
         if (nextPage !== null)
           this.loadData(name, ++page);
-        else 
-            this.setState({[loaded]:true});
+        else {
+          let newState = this.state.loaded;
+          newState[name] = true;
+          this.setState({loaded: newState})
+        } 
       })
  }
 
@@ -158,10 +162,10 @@ class App extends React.Component {
   }
 
   getDetails = (value,property,dictionary) => {
-    const {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = this.state;
+    const {loaded} = this.state;
     const {translate} = this;
 
-    if (loaded_films && loaded_people && loaded_planets && loaded_species && loaded_starships && loaded_vehicles) {
+    if (loaded.films && loaded.people && loaded.planets && loaded.species && loaded.starships && loaded.vehicles) {
       let key = property === "films" ? "title" : "name"
       property = property === "characters" ? "people": property;
       property = property === "residents" ? "people" : property;
@@ -194,77 +198,66 @@ class App extends React.Component {
     } 
   }
   
-
-  
   render(){
 
     let {menuPositions, inputSearchValue, inputSearchVisible, startVisible} = this.state;
-    let {films, people, planets, species, starships, vehicles} = this.state;
-    
-    let {loaded_films, loaded_people, loaded_planets, loaded_species, loaded_starships, loaded_vehicles} = this.state;
+    let {loaded, films, people, planets, species, starships, vehicles} = this.state;
     let {translate, getDetails, sortObjects, inputSearchChange, inputSearchSetVisible, startSetVisible} = this;
 
     return (
       <Router>
-        <Header/>
-        <Menu   
-          menuPositions={menuPositions} 
-          loaded_films={loaded_films}
-          loaded_people={loaded_people}
-          loaded_planets={loaded_planets}
-          loaded_species={loaded_species}
-          loaded_starships={loaded_starships}
-          loaded_vehicles={loaded_vehicles}         
-          translate={translate}
-          dictionary={dictionary}
-          getDetails={getDetails}
-          inputSearchSetVisible={inputSearchSetVisible}
-          startSetVisible={startSetVisible}
-        />
-        <section>
-          <Start startVisible={startVisible}/>
-        </section>
-        <Search
-              inputSearchValue={inputSearchValue}
-              inputSearchChange={inputSearchChange}
-              inputSearchVisible={inputSearchVisible}
-            />  
-        <div className="contentWrap">
-          <section className="left">
-            <ListP
+        <div className="mainWrap">
+          <div className="halfWrap">
+            <Header/>
+            <Menu   
               menuPositions={menuPositions} 
-              films={films}
-              people={people}
-              planets={planets}
-              species={species}
-              starships={starships}
-              vehicles={vehicles}
-              loaded_films={loaded_films}
-              loaded_people={loaded_people}
-              loaded_planets={loaded_planets}
-              loaded_species={loaded_species}
-              loaded_starships={loaded_starships}
-              loaded_vehicles={loaded_vehicles}   
-              dictionary={dictionary}
+              loaded={loaded}      
               translate={translate}
-              sortObjects={sortObjects}
-              inputSearchValue={inputSearchValue}
-              inputSearchChange={inputSearchChange}
-            />            
-          </section>
-          <section className="right">
-            <Details
-              films={films}
-              people={people}
-              planets={planets}
-              species={species}
-              starships={starships}
-              vehicles={vehicles}
               dictionary={dictionary}
-              translate={translate}
               getDetails={getDetails}
+              inputSearchSetVisible={inputSearchSetVisible}
+              startSetVisible={startSetVisible}
             />
-          </section>
+            <section>
+              <Start startVisible={startVisible}/>
+            </section>
+            <Search
+                  inputSearchValue={inputSearchValue}
+                  inputSearchChange={inputSearchChange}
+                  inputSearchVisible={inputSearchVisible}
+            />  
+          </div>
+          <div className="contentWrap"> 
+            <section className="left">
+              <ListP
+                menuPositions={menuPositions} 
+                films={films}
+                people={people}
+                planets={planets}
+                species={species}
+                starships={starships}
+                vehicles={vehicles}
+                dictionary={dictionary}
+                translate={translate}
+                sortObjects={sortObjects}
+                inputSearchValue={inputSearchValue}
+                inputSearchChange={inputSearchChange}
+              />            
+            </section>
+            <section className="right">
+              <Details
+                films={films}
+                people={people}
+                planets={planets}
+                species={species}
+                starships={starships}
+                vehicles={vehicles}
+                dictionary={dictionary}
+                translate={translate}
+                getDetails={getDetails}
+              />
+            </section>
+          </div>
         </div>
       </Router>
     )

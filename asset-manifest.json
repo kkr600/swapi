@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/swapi/static/css/main.dc4ae158.chunk.css",
-    "main.js": "/swapi/static/js/main.8f65a280.chunk.js",
-    "main.js.map": "/swapi/static/js/main.8f65a280.chunk.js.map",
+    "main.js": "/swapi/static/js/main.c594d1db.chunk.js",
+    "main.js.map": "/swapi/static/js/main.c594d1db.chunk.js.map",
     "runtime-main.js": "/swapi/static/js/runtime-main.22a7b150.js",
     "runtime-main.js.map": "/swapi/static/js/runtime-main.22a7b150.js.map",
     "static/js/2.d8ab6df6.chunk.js": "/swapi/static/js/2.d8ab6df6.chunk.js",
     "static/js/2.d8ab6df6.chunk.js.map": "/swapi/static/js/2.d8ab6df6.chunk.js.map",
     "index.html": "/swapi/index.html",
-    "precache-manifest.59e4a1bbb70ef7119d7c7ff2a91a53d9.js": "/swapi/precache-manifest.59e4a1bbb70ef7119d7c7ff2a91a53d9.js",
+    "precache-manifest.d945de04ebf39788b0dd6ec0a686d1e0.js": "/swapi/precache-manifest.d945de04ebf39788b0dd6ec0a686d1e0.js",
     "service-worker.js": "/swapi/service-worker.js",
     "static/css/main.dc4ae158.chunk.css.map": "/swapi/static/css/main.dc4ae158.chunk.css.map",
     "static/js/2.d8ab6df6.chunk.js.LICENSE.txt": "/swapi/static/js/2.d8ab6df6.chunk.js.LICENSE.txt",
@@ -22,6 +22,6 @@
     "static/js/runtime-main.22a7b150.js",
     "static/js/2.d8ab6df6.chunk.js",
     "static/css/main.dc4ae158.chunk.css",
-    "static/js/main.8f65a280.chunk.js"
+    "static/js/main.c594d1db.chunk.js"
   ]
 }

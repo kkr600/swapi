@@ -187,3 +187,23 @@
         }
     }
 }
+
+@media screen and (min-width: 1366px) {
+    .detailsSection {
+        p.detailsTitle {
+            font-size: 1.2rem;
+        }
+        .detailsWrap {
+            .detailsName {
+                font-size: 1rem;
+            }
+            .detailsProp {
+                font-size: 1rem;
+                a {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+  

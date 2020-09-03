@@ -9,24 +9,29 @@
   height:100%;
   overflow:auto;
   background-color:rgb(0,0,0);
-  background-color:rgba(0,0,0,0.4)
+  background-color:rgba(0,0,0,0.4);
+  .w3-modal-content {
+    margin:auto;
+    background-color:#fff;
+    position:relative;
+    padding:10px 20px;
+    outline:0;
+    width:300px;
+    text-align: center;
+    svg > path{
+      color: gray;
+    }
+    svg {
+      animation: spin 1500ms linear infinite;
+    }
+    .svg-inline--fa {
+      font-size: 5em;
+    }
+  }
 }
 
-.w3-modal-content {
-  margin:auto;
-  background-color:#fff;
-  position:relative;
-  padding:0;
-  outline:0;
-  width:300px;
-  text-align: center;
-}
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
-.spinner{
-  font-size: 5em;
-  color: #556661;
-  animation: spin 2s linear infinite;
-}
   
 @media (orientation: portrait) and (min-width: 280px) {
   nav {
@@ -90,7 +95,7 @@
 
 @media (orientation: portrait) and (min-width: 768px) {
   nav ul li a {
-    padding: 10px 45px;
+    padding: 10px 35px;
     span {
       font-size: 1.5rem;
     }
@@ -114,8 +119,6 @@
     }
   }
 }
-
-
 
 @media (orientation: landscape) and (min-width: 568px) {
   nav {
@@ -186,7 +189,7 @@
   }
 }
 
-@media (orientation: landscape) and (min-width: 1366px) {
+@media screen and (orientation: landscape) and (min-width: 1366px) {
   nav ul li a {
     span {
       font-size: 1.7rem;
@@ -197,13 +200,19 @@
   }
 }
 
-@media (orientation: landscape) and (min-width: 1440px) {
-  nav ul li a {
-    span {
-      font-size: 1rem;
-    }
-    .svg-inline--fa {
-      font-size: 1rem;
+@media screen and (min-width: 1024px) {
+  nav ul li {
+    &:not(:first-child) {
+      border-left: 1px dotted white;
+    }    
+    a {
+
+      span {
+        font-size: 1.1rem;
+      }
+      .svg-inline--fa {
+        font-size: 1.1rem;
+      }
     }
   }
 }

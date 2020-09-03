@@ -16,7 +16,6 @@
     }
     .right {
       overflow: hidden;
-      height: 60%;
     }
   }
 }
@@ -90,17 +89,17 @@
     }
     .contentWrap {
       margin: 20px 0 5px 0;
-      height: 60%;
     }
   }
 }
 
-@media (orientation: landscape) and (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
   .mainWrap {
     overflow: auto;
-    max-height: 4252px;
+    height: 100vh;
     .halfWrap {
       height: auto;
+      height: 35%;
     }
     .contentWrap {
       margin: 40px 0 5px 0;
@@ -109,4 +108,5 @@
     }
   }
 }
+
 

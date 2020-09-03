@@ -77,3 +77,13 @@
         }
     }    
 }
+
+@media screen and (min-width: 1024px) {
+    input {
+        &.search {
+            font-size: 1.1rem;
+            width: 300px;
+            margin: 15px 10px;
+        }
+    }    
+}

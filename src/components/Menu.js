@@ -15,7 +15,7 @@ const Menu = props => {
     
     const menu = menuPositions.map( (category,index) => (
         <li 
-            key={index}  
+            key={index}
             onClick = {inputSearchSetVisible, startSetVisible.bind(this, category.exact)}
         >
             <NavLink 
@@ -39,7 +39,7 @@ const Menu = props => {
                 <div className="w3-modal soSelect">
                     <div className="w3-modal-content">
                         <p className="spinner"><FontAwesomeIcon icon={faSpinner} /></p>
-                        Wczytuję dane...
+                        <span>Wczytuję dane...</span>
                     </div>
                 </div>
             )

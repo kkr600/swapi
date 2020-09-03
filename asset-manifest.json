@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/swapi/static/css/main.18a3be77.chunk.css",
+    "main.js": "/swapi/static/js/main.54d904c7.chunk.js",
+    "main.js.map": "/swapi/static/js/main.54d904c7.chunk.js.map",
+    "runtime-main.js": "/swapi/static/js/runtime-main.22a7b150.js",
+    "runtime-main.js.map": "/swapi/static/js/runtime-main.22a7b150.js.map",
+    "static/js/2.9a6f6e2b.chunk.js": "/swapi/static/js/2.9a6f6e2b.chunk.js",
+    "static/js/2.9a6f6e2b.chunk.js.map": "/swapi/static/js/2.9a6f6e2b.chunk.js.map",
+    "index.html": "/swapi/index.html",
+    "precache-manifest.d855728db204a0b79af894dd518f4559.js": "/swapi/precache-manifest.d855728db204a0b79af894dd518f4559.js",
+    "service-worker.js": "/swapi/service-worker.js",
+    "static/css/main.18a3be77.chunk.css.map": "/swapi/static/css/main.18a3be77.chunk.css.map",
+    "static/js/2.9a6f6e2b.chunk.js.LICENSE.txt": "/swapi/static/js/2.9a6f6e2b.chunk.js.LICENSE.txt",
+    "static/media/300_182px-Star_Wars_Logo.png": "/swapi/static/media/300_182px-Star_Wars_Logo.ec1e5917.png",
+    "static/media/480_290px-Star_Wars_Logo.png": "/swapi/static/media/480_290px-Star_Wars_Logo.91470f01.png",
+    "static/media/800_483px-Star_Wars_Logo.png": "/swapi/static/media/800_483px-Star_Wars_Logo.bd76d377.png",
+    "static/media/Star_Wars_Logo._225x137.png": "/swapi/static/media/Star_Wars_Logo._225x137.138aae26.png",
+    "static/media/index.css": "/swapi/static/media/pexels-free-nature-stock-1005309.acf2488d.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.22a7b150.js",
+    "static/js/2.9a6f6e2b.chunk.js",
+    "static/css/main.18a3be77.chunk.css",
+    "static/js/main.54d904c7.chunk.js"
+  ]
+}

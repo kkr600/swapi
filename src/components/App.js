@@ -1,11 +1,9 @@
 import React from 'react';
 import {BrowserRouter as Router, NavLink} from 'react-router-dom'
 import axios from 'axios';
-import Start from './Start';
 import Menu from './Menu';
 import Header from './Header';
 import ListP from './ListP';
-import Search from "./Search"
 import Details from "./Details"
 
 import dictionary from './dictionary'
@@ -78,26 +76,11 @@ class App extends React.Component {
        }
     ],
     inputSearchValue: "",
-    inputSearchVisible: false,
-    startVisible: true,
   }
 
   inputSearchChange = e => {
     this.setState({
       inputSearchValue: e.target.value,
-    })
-  }
-
-  inputSearchSetVisible = () =>{
-    this.setState({
-      inputSearchVisible: true
-    })
-  } 
-
-  startSetVisible = (bool) =>{
-    bool = bool === undefined ? false : bool;
-    this.setState({
-      startVisible: bool
     })
   }
 
@@ -200,9 +183,9 @@ class App extends React.Component {
   
   render(){
 
-    let {menuPositions, inputSearchValue, inputSearchVisible, startVisible} = this.state;
-    let {loaded, films, people, planets, species, starships, vehicles} = this.state;
-    let {translate, getDetails, sortObjects, inputSearchChange, inputSearchSetVisible, startSetVisible} = this;
+    let { menuPositions, inputSearchValue } = this.state;
+    let { loaded, films, people, planets, species, starships, vehicles} = this.state;
+    let { translate, getDetails, sortObjects, inputSearchChange } = this;
 
     return (
       <Router>
@@ -215,17 +198,9 @@ class App extends React.Component {
               translate={translate}
               dictionary={dictionary}
               getDetails={getDetails}
-              inputSearchSetVisible={inputSearchSetVisible}
-              startSetVisible={startSetVisible}
+              inputSearchValue={inputSearchValue}
+              inputSearchChange={inputSearchChange}
             />
-            <section>
-              <Start startVisible={startVisible}/>
-            </section>
-            <Search
-                  inputSearchValue={inputSearchValue}
-                  inputSearchChange={inputSearchChange}
-                  inputSearchVisible={inputSearchVisible}
-            />  
           </div>
           <div className="contentWrap"> 
             <section className="left">

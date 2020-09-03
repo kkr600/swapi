@@ -1,5 +1,7 @@
 import React from "react";
-import {NavLink} from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
+import Start from './Start';
+import Search from './Search';
 
 import '../css/Menu.scss';
 import '../css/App.scss';
@@ -11,12 +13,12 @@ import { faRedditAlien} from '@fortawesome/free-brands-svg-icons';
 library.add(faHome, faFilm, faGlobe, faDna, faSpinner, faRedditAlien, faFighterJet, faSnowplow, faStreetView);
 
 const Menu = props => {
-    const { loaded, menuPositions, inputSearchSetVisible, startSetVisible, translate, dictionary } = props;
+    const { loaded, menuPositions, translate, dictionary } = props;
+    const { inputSearchValue, inputSearchChange } = props;
     
     const menu = menuPositions.map( (category,index) => (
         <li 
             key={index}
-            onClick = {inputSearchSetVisible, startSetVisible.bind(this, category.exact)}
         >
             <NavLink 
                 to={category.path} 
@@ -46,14 +48,63 @@ const Menu = props => {
     }
 
     return(
-        <div>
-            <nav className="mainMenu">
-                <ul className="">
-                    {menu}
-                </ul>
-            </nav>
-            {ifLoaded()}
-        </div>
+        <>
+            <Route path="/" exact component={() => {
+                return (
+                    <div>
+                        <nav className="mainMenu">
+                            <ul className="">
+                                {menu}
+                            </ul>
+                        </nav>
+                        {ifLoaded()}
+                        <Start />
+                </div>
+                )
+            }} />
+            <Route path="/swapi" exact component={() => {
+                return (
+                    <div>
+                        <nav className="mainMenu">
+                            <ul className="">
+                                {menu}
+                            </ul>
+                        </nav>
+                        {ifLoaded()}
+                        <Start />
+                </div>
+                )
+            }} />
+            <Route path="/start" exact component={() => {
+                return (
+                    <div>
+                        <nav className="mainMenu">
+                            <ul className="">
+                                {menu}
+                            </ul>
+                        </nav>
+                        {ifLoaded()}
+                        <Start />
+                </div>
+                )
+            }} />
+            <Route path="/" component={() => {
+                return (
+                    <div>
+                        <nav className="mainMenu">
+                            <ul className="">
+                                {menu}
+                            </ul>
+                        </nav>
+                        {ifLoaded()}
+                        <Search 
+                            inputSearchValue={inputSearchValue}
+                            inputSearchChange={inputSearchChange} 
+                        />
+                </div>
+                )
+            }} />
+        </>
     )
 
 }

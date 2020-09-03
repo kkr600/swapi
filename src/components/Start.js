@@ -3,18 +3,15 @@ import '../css/Start.scss';
 import '../css/App.scss';
 
 const Start = props =>{
-    if (props.startVisible) { 
-        return (
-            <div className = "start">
-                <div className = "board">
-                    <p>Witaj na stronie poświęconej sadze Gwiezdnych Wojen.</p>
-                    <p>W menu znajdziesz informacje między innymi o bohaterach, planetach i pojazdach pojawiających się w częściach od I do VI.</p>
-                    <p>Aplikacja została wykonana w środowisku Create React App.</p>
-                </div>
+    return (
+        <div className = "start">
+            <div className = "board">
+                <p>Witaj na stronie poświęconej sadze Gwiezdnych Wojen.</p>
+                <p>W menu znajdziesz informacje między innymi o bohaterach, planetach i pojazdach pojawiających się w częściach od I do VI.</p>
+                <p>Aplikacja została wykonana w środowisku Create React App.</p>
             </div>
-        )
-    }
-    else return null;
+        </div>
+    )
 }
 
 export default Start;

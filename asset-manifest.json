@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/swapi/static/css/main.fcd2f4a9.chunk.css",
+    "main.css": "/swapi/static/css/main.362a86d1.chunk.css",
     "main.js": "/swapi/static/js/main.2d23339b.chunk.js",
     "main.js.map": "/swapi/static/js/main.2d23339b.chunk.js.map",
     "runtime-main.js": "/swapi/static/js/runtime-main.22a7b150.js",
@@ -8,9 +8,9 @@
     "static/js/2.d8ab6df6.chunk.js": "/swapi/static/js/2.d8ab6df6.chunk.js",
     "static/js/2.d8ab6df6.chunk.js.map": "/swapi/static/js/2.d8ab6df6.chunk.js.map",
     "index.html": "/swapi/index.html",
-    "precache-manifest.75d5f3dd8987f43031d2ae9fa92d9e91.js": "/swapi/precache-manifest.75d5f3dd8987f43031d2ae9fa92d9e91.js",
+    "precache-manifest.a87807bf3d5b1098a7c4704545f64c35.js": "/swapi/precache-manifest.a87807bf3d5b1098a7c4704545f64c35.js",
     "service-worker.js": "/swapi/service-worker.js",
-    "static/css/main.fcd2f4a9.chunk.css.map": "/swapi/static/css/main.fcd2f4a9.chunk.css.map",
+    "static/css/main.362a86d1.chunk.css.map": "/swapi/static/css/main.362a86d1.chunk.css.map",
     "static/js/2.d8ab6df6.chunk.js.LICENSE.txt": "/swapi/static/js/2.d8ab6df6.chunk.js.LICENSE.txt",
     "static/media/300_182px-Star_Wars_Logo.png": "/swapi/static/media/300_182px-Star_Wars_Logo.ec1e5917.png",
     "static/media/480_290px-Star_Wars_Logo.png": "/swapi/static/media/480_290px-Star_Wars_Logo.91470f01.png",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.22a7b150.js",
     "static/js/2.d8ab6df6.chunk.js",
-    "static/css/main.fcd2f4a9.chunk.css",
+    "static/css/main.362a86d1.chunk.css",
     "static/js/main.2d23339b.chunk.js"
   ]
 }

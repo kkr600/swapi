@@ -1,0 +1,146 @@
+@media (orientation: portrait) and (min-width: 1px) {
+  .mainWrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .mainWrap .halfWrap {
+    height: 55%;
+  }
+  .mainWrap .contentWrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    overflow: hidden;
+  }
+  .mainWrap .contentWrap .left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    overflow: hidden;
+    height: 40%;
+  }
+  .mainWrap .contentWrap .right {
+    overflow: hidden;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 320px) {
+  .contentWrap .left {
+    height: 30%;
+  }
+  .contentWrap .right {
+    height: 70%;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 540px) {
+  .contentWrap {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 10px;
+  }
+  .contentWrap .left {
+    width: 95%;
+  }
+  .contentWrap .right {
+    width: 95%;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1px) {
+  .mainWrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    max-height: 150vh;
+    overflow: hidden;
+  }
+  .contentWrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    overflow: hidden;
+    margin-top: 50px;
+  }
+  .contentWrap .left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    overflow: auto;
+    width: 30%;
+  }
+  .contentWrap .right {
+    overflow: auto;
+    width: 70%;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 720px) {
+  .contentWrap {
+    margin-bottom: 5px;
+  }
+  .contentWrap .left {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .contentWrap .right {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+  .mainWrap .halfWrap {
+    height: 40%;
+  }
+  .mainWrap .contentWrap {
+    margin: 20px 0 5px 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .mainWrap {
+    overflow: auto;
+    height: 100vh;
+  }
+  .mainWrap .halfWrap {
+    height: auto;
+    height: 35%;
+  }
+  .mainWrap .contentWrap {
+    margin: 40px 0 5px 0;
+    overflow: auto;
+    height: auto;
+  }
+}
+/*# sourceMappingURL=App.css.map */

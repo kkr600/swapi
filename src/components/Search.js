@@ -1,5 +1,5 @@
 import React/*, {useState}*/ from "react";
-import "../css/Search.scss";
+import "../css/style.scss";
 
 const Search = props => {
     const {inputSearchValue, inputSearchChange} = props;
@@ -10,6 +10,11 @@ const Search = props => {
     }
 
     return <input
+            ref={(input) => {
+                if (input) {
+                input.focus();
+                }
+            }}
             type = "text"
             className = "search"
             placeholder = "Wyszukaj... (min. 3 znaki)"

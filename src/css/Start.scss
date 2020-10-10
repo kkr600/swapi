@@ -1,11 +1,11 @@
 
-@media (orientation: portrait) and (min-width: 280px) {
+@media (orientation: portrait) and (min-width: 1px) {
     div.start {
         display: flex;
         height: 100vh;
         justify-content: center;
         div.board {
-            margin-top: 50px;
+            margin-top: 20px;
             background: black;
             padding: 10px 10px;
             flex-basis: 90%;
@@ -43,7 +43,7 @@
     }
 }
 
-@media (orientation: landscape) and (min-width: 653px) {
+@media (orientation: landscape) and (min-width: 1px) {
     div.start {
         display: flex;
         height: 100vh;

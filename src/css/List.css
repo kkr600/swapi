@@ -1,0 +1,104 @@
+.selectedList a {
+  font-size: 3.5rem;
+}
+
+@media (orientation: portrait) and (min-width: 1px) {
+  .selectedList {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    max-height: 95%;
+    overflow: auto;
+    padding: 0px 10px;
+    background-color: black;
+  }
+  .selectedList a {
+    display: block;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: lightgrey;
+  }
+  .selectedList a:hover {
+    background-color: grey;
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+    font-weight: 600;
+  }
+  .selectedList a.active {
+    font-weight: 600;
+    background-color: grey;
+  }
+  .selectedList li {
+    list-style-type: none;
+    cursor: pointer;
+    padding: 0;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 414px) {
+  .selectedList a {
+    font-size: 0.9rem;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 768px) {
+  .selectedList a {
+    font-size: 1.5rem;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1px) {
+  .selectedList {
+    width: 95%;
+    height: 100%;
+    overflow: auto;
+    padding: 0px 10px;
+    background-color: black;
+  }
+  .selectedList a {
+    display: block;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: lightgrey;
+  }
+  .selectedList a:hover {
+    background-color: grey;
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+    font-weight: 600;
+  }
+  .selectedList a.active {
+    font-weight: 600;
+    background-color: grey;
+  }
+  .selectedList li {
+    list-style-type: none;
+    cursor: pointer;
+    padding: 0;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+  .selectedList a {
+    font-size: 1rem;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1366px) {
+  .selectedList a {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .selectedList a {
+    font-size: 1rem;
+  }
+}
+/*# sourceMappingURL=List.css.map */

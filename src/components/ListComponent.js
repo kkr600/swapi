@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import "../css/List.scss";
+import "../css/style.scss";
 
 const ListComponent = props => {
     const {array, inputSearchValue, path} = props;

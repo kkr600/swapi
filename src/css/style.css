@@ -1,0 +1,609 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: #1E1F21;
+  font-size: 0.9rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.clearFix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+body {
+  font-family: 'Roboto', 'Oxygen', sans-serif;
+  background: url("../img/pexels-free-nature-stock-1005309.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #aba0b0;
+  height: 100vh;
+}
+
+.noSelect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+li {
+  list-style-type: none;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
+}
+
+.size {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.size span {
+  font-size: 2rem;
+  color: white;
+}
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@media (orientation: portrait) and (min-width: 280px) {
+  .starWars {
+    padding: 45px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .starWars svg {
+    position: absolute;
+    font-size: 2rem;
+    top: 5px;
+    right: 5px;
+  }
+  .starWars svg > path {
+    fill: white;
+  }
+  div.mainMenuDiv {
+    display: none;
+  }
+  div.mainMenuDiv nav {
+    background-color: black;
+    padding: 5px 0px;
+  }
+  div.mainMenuDiv nav .mainMenu {
+    padding: 5px 0px;
+  }
+  div.mainMenuDiv nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  div.mainMenuDiv nav ul li {
+    display: block;
+  }
+  div.mainMenuDiv nav ul li:not(:first-child) {
+    border-left: 0;
+  }
+  div.mainMenuDiv nav ul li a {
+    display: block;
+    cursor: pointer;
+    float: left;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+    padding: 5px 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  div.mainMenuDiv nav ul li a span {
+    color: lightgrey;
+    font-size: .8rem;
+    margin-left: 5px;
+  }
+  div.mainMenuDiv nav ul li a svg > path {
+    fill: lightgrey;
+  }
+  div.mainMenuDiv nav ul li a.active span {
+    color: white;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+  div.mainMenuDiv nav ul li a:hover span {
+    color: white;
+  }
+  div#mySidebar {
+    display: none;
+    background-color: black;
+    width: 50% !important;
+  }
+  div#mySidebar button {
+    background-color: lightgrey;
+    color: black;
+  }
+  div#mySidebar nav ul li {
+    margin: 15px 0 15px 15px;
+  }
+  div#mySidebar nav ul li a span {
+    margin-left: 5px;
+    color: lightgrey;
+    font-size: 1rem;
+  }
+  div#mySidebar nav ul li a svg > path {
+    fill: lightgrey;
+  }
+  div#mySidebar nav ul li a.active span {
+    color: white;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+  input.search {
+    margin: 5px 0px 10px 0px;
+    font-size: .8rem;
+    padding: 5px 10px;
+    width: 100%;
+  }
+  .selectedList {
+    display: block;
+    max-height: 190px;
+    overflow: auto;
+    padding: 0px 10px;
+    margin: 5px 3px;
+    background-color: black;
+  }
+  .selectedList a {
+    display: block;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: lightgrey;
+  }
+  .selectedList a:hover {
+    background-color: grey;
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+    font-weight: 600;
+  }
+  .selectedList a.active {
+    font-weight: 600;
+    background-color: grey;
+  }
+  .selectedList li {
+    list-style-type: none;
+    cursor: pointer;
+    padding: 0;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+  }
+  .detailsSection {
+    padding: 10px;
+    background-color: black;
+    color: #DCE7F0;
+    width: auto;
+    margin: 5px 3px;
+    overflow: auto;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .detailsSection div {
+    width: 100%;
+  }
+  .detailsSection p.detailsTitle {
+    color: white;
+    text-transform: uppercase;
+    font-size: .9rem;
+  }
+  .detailsSection .detailsWrap {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 10px 0;
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+  }
+  .detailsSection .detailsWrap:not(:first-of-type) {
+    border-top: 1px solid grey;
+  }
+  .detailsSection .detailsWrap .detailsName {
+    -ms-flex-preferred-size: 40%;
+        flex-basis: 40%;
+    font-size: 0.8rem;
+    color: #DCE7F0;
+  }
+  .detailsSection .detailsWrap .detailsProp {
+    color: #DCE7F0;
+    font-size: 0.8rem;
+    -ms-flex-preferred-size: 60%;
+        flex-basis: 60%;
+  }
+  .detailsSection .detailsWrap .detailsProp a {
+    color: #DCE7F0;
+    font-size: .8rem;
+  }
+  .detailsSection .detailsWrap .detailsProp li:hover {
+    background-color: #5AA2EB;
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+    font-weight: 600;
+  }
+  .detailsSection .detailsWrap .detailsProp a:hover {
+    background-color: #5AA2EB;
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+    font-weight: 600;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 320px) {
+  .starWars {
+    padding: 40px 0 25px 0;
+  }
+  .selectedList {
+    max-height: 120px;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 375px) {
+  .selectedList {
+    max-height: 160px;
+  }
+  .selectedList a {
+    font-size: .9rem;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 411px) {
+  .starWars {
+    padding: 50px 0 25px 0;
+  }
+  .starWars img {
+    -webkit-transform: scale(1.4);
+            transform: scale(1.4);
+  }
+  .starWars svg {
+    font-size: 2.2rem;
+    top: 5px;
+    right: 15px;
+  }
+  input.search {
+    font-size: 1rem;
+  }
+  div#mySidebar nav ul li {
+    margin: 20px 0 20px 15px;
+  }
+  div#mySidebar nav ul li a span {
+    font-size: 1.1rem;
+  }
+  div#mySidebar nav ul li a svg {
+    font-size: 1.1rem;
+  }
+  .selectedList {
+    max-height: 170px;
+  }
+  .selectedList a {
+    font-size: 1.1rem;
+  }
+  .detailsSection p.detailsTitle {
+    font-size: 1.3rem;
+  }
+  .detailsSection .detailsWrap .detailsName {
+    font-size: 1rem;
+  }
+  .detailsSection .detailsWrap .detailsProp {
+    font-size: 1rem;
+  }
+  .detailsSection .detailsWrap .detailsProp a {
+    font-size: 1rem;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 768px) {
+  .starWars {
+    padding: 65px 0;
+  }
+  .starWars img {
+    -webkit-transform: scale(2);
+            transform: scale(2);
+  }
+  div#mySidebar button {
+    font-size: 1.7rem !important;
+  }
+  div#mySidebar nav ul li {
+    margin: 35px 0 15px 15px;
+  }
+  div#mySidebar nav ul li a span {
+    margin-left: 10px;
+    font-size: 1.5rem;
+  }
+  div#mySidebar nav ul li a svg {
+    font-size: 1.5rem;
+  }
+  div#mySidebar nav ul li a.active span {
+    color: white;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+  input.search {
+    font-size: 1.4rem;
+  }
+  .selectedList {
+    margin: 15px 3px;
+  }
+  .selectedList a {
+    font-size: 1.4rem;
+  }
+  .detailsSection p.detailsTitle {
+    font-size: 1.6rem;
+  }
+  .detailsSection .detailsWrap .detailsName {
+    font-size: 1.4rem;
+  }
+  .detailsSection .detailsWrap .detailsProp {
+    font-size: 1.4rem;
+  }
+  .detailsSection .detailsWrap .detailsProp a {
+    font-size: 1.4rem;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 1024px) {
+  .starWars {
+    padding: 85px 0;
+  }
+  .starWars svg {
+    font-size: 4rem;
+  }
+  .starWars img {
+    -webkit-transform: scale(2.5);
+            transform: scale(2.5);
+  }
+  div#mySidebar {
+    padding: 0 40px;
+  }
+  div#mySidebar nav ul li {
+    margin: 35px 0 25px 15px;
+  }
+  div#mySidebar nav ul li a span {
+    margin-left: 15px;
+    color: lightgrey;
+    font-size: 2rem;
+  }
+  div#mySidebar nav ul li a svg {
+    font-size: 2rem;
+  }
+  div#mySidebar nav ul li a.active span {
+    color: white;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+  input.search {
+    font-size: 2rem;
+  }
+  .selectedList {
+    max-height: 280px;
+  }
+  .selectedList a {
+    font-size: 1.6rem;
+  }
+  .detailsSection p.detailsTitle {
+    font-size: 1.7rem;
+  }
+  .detailsSection .detailsWrap .detailsName {
+    font-size: 1.5rem;
+  }
+  .detailsSection .detailsWrap .detailsProp {
+    font-size: 1.5rem;
+  }
+  .detailsSection .detailsWrap .detailsProp a {
+    font-size: 1.5rem;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 568px) {
+  .starWars {
+    padding: 15px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .starWars svg {
+    position: absolute;
+    font-size: 2rem;
+    top: 5px;
+    right: 5px;
+  }
+  .starWars svg > path {
+    fill: white;
+  }
+  div.mainMenuDiv {
+    display: none;
+  }
+  div#mySidebar {
+    display: none;
+    background-color: black;
+  }
+  div#mySidebar button {
+    background-color: lightgrey;
+    color: black;
+  }
+  div#mySidebar nav ul li {
+    margin: 15px 0 15px 15px;
+  }
+  div#mySidebar nav ul li a span {
+    margin-left: 5px;
+    color: lightgrey;
+    font-size: 1rem;
+  }
+  div#mySidebar nav ul li a svg > path {
+    fill: lightgrey;
+  }
+  div#mySidebar nav ul li a.active span {
+    color: white;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+    width: 60%;
+    padding: 0 5px 5px 0;
+  }
+  input.search {
+    margin: 5px 0px 10px 10px;
+    font-size: .8rem;
+    padding: 2px 10px;
+  }
+  .selectedList {
+    overflow: auto;
+    padding: 0px 10px;
+    margin: 5px 3px;
+    background-color: black;
+    max-height: 200px;
+  }
+  .selectedList a {
+    display: block;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: lightgrey;
+  }
+  .selectedList a:hover {
+    background-color: grey;
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+    font-weight: 600;
+  }
+  .selectedList a.active {
+    font-weight: 600;
+    background-color: grey;
+  }
+  .selectedList li {
+    list-style-type: none;
+    cursor: pointer;
+    padding: 0;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+  }
+  .detailsSection {
+    padding: 10px;
+    background-color: black;
+    color: #DCE7F0;
+    width: auto;
+    margin: 5px 3px;
+    overflow: auto;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .detailsSection div {
+    width: 100%;
+  }
+  .detailsSection p.detailsTitle {
+    color: white;
+    text-transform: uppercase;
+    font-size: .9rem;
+  }
+  .detailsSection .detailsWrap {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 10px 0;
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+  }
+  .detailsSection .detailsWrap:not(:first-of-type) {
+    border-top: 1px solid grey;
+  }
+  .detailsSection .detailsWrap .detailsName {
+    -ms-flex-preferred-size: 40%;
+        flex-basis: 40%;
+    font-size: 0.8rem;
+    color: #DCE7F0;
+  }
+  .detailsSection .detailsWrap .detailsProp {
+    color: #DCE7F0;
+    font-size: 0.8rem;
+    -ms-flex-preferred-size: 60%;
+        flex-basis: 60%;
+  }
+  .detailsSection .detailsWrap .detailsProp a {
+    color: #DCE7F0;
+    font-size: .8rem;
+  }
+  .detailsSection .detailsWrap .detailsProp li:hover {
+    background-color: #5AA2EB;
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+    font-weight: 600;
+  }
+  .detailsSection .detailsWrap .detailsProp a:hover {
+    background-color: #5AA2EB;
+    -webkit-transition-duration: 0.3s;
+            transition-duration: 0.3s;
+    font-weight: 600;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 568px) {
+  .selectedList {
+    max-height: 250px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 736px) {
+  .selectedList {
+    max-height: 300px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 812px) {
+  .selectedList {
+    max-height: 260px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+  .selectedList {
+    max-height: 260px;
+  }
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,12 +1,5 @@
-@media (orientation: portrait) and (min-width: 280px) {
-    input {
-        &.search {
-            margin: 5px 0px 10px 0px;
-            font-size: .8rem;
-            padding: 5px 10px;
-            width: 100%;
-        }
-    }    
+@media (orientation: portrait) and (min-width: 1px) {
+  
 }
 
 @media (orientation: portrait) and (min-width: 375px) {
@@ -39,7 +32,7 @@
     }    
 }
 
-@media (orientation: landscape) and (min-width: 568px) {
+@media (orientation: landscape) and (min-width: 1px) {
     input {
         &.search {
             margin: 5px 0px;

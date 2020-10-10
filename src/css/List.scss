@@ -1,37 +1,9 @@
 .selectedList a {
-    font-size: 3.5rem;
+    
 }
 
-@media (orientation: portrait) and (min-width: 280px) {
-    .selectedList {
-        flex-grow: 1;
-        max-height: 95%;
-        overflow: auto;
-        padding: 0px 10px; 
-        background-color: black;
-        a {
-            display: block;
-            padding: 5px 10px;
-            font-size: 0.8rem;
-            text-decoration: none;
-            color: lightgrey;
-            &:hover {
-                background-color: grey;
-                transition-duration: 0.3s;
-                font-weight: 600;
-            }
-            &.active {
-                font-weight: 600;
-                background-color: grey;
-            }
-        }
-        li {
-            list-style-type: none;
-            cursor: pointer;
-            padding: 0;
-            transition-property: background-color;
-        }
-    }
+@media (orientation: portrait) and (min-width: 1px) {
+
 }
 
 @media (orientation: portrait) and (min-width: 414px) {
@@ -50,7 +22,7 @@
     }
 }
 
-@media (orientation: landscape) and (min-width: 568px) {
+@media (orientation: landscape) and (min-width: 1px) {
     .selectedList {
         width: 95%;
         height: 100%;

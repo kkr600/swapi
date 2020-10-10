@@ -1,8 +1,12 @@
 @media (orientation: portrait) and (min-width: 1px) {
   .starWars {
     padding: 15px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 
@@ -18,20 +22,27 @@
   }
 }
 
-
 @media (orientation: landscape) and (min-width: 1px) {
   .starWars {
     padding: 15px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-  } 
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 @media (orientation: landscape) and (min-width: 731px) {
   .starWars {
     padding: 10px 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-  } 
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
-
+/*# sourceMappingURL=Header.css.map */

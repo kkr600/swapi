@@ -1,12 +1,11 @@
 import React from 'react';
-import {BrowserRouter as Router, NavLink} from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import axios from 'axios';
 import Menu from './Menu';
 import Header from './Header';
-import ListP from './ListP';
+import ListProperties from './ListProperties';
 import Details from "./Details"
-
-import dictionary from './dictionary'
+import { Sidebar, w3_close } from './Sidebar';
 
 class App extends React.Component {
 
@@ -82,26 +81,7 @@ class App extends React.Component {
     this.setState({
       inputSearchValue: e.target.value,
     })
-  }
-
-  sortObjects = key => {
-    return function innerSort(a, b) {
-      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key))
-        return 0;
-  
-      const varA = (typeof a[key] === 'string')
-        ? a[key].toUpperCase() : a[key];
-      const varB = (typeof b[key] === 'string')
-        ? b[key].toUpperCase() : b[key];
-
-      let comparison = 0;
-      if (varA > varB)
-        comparison = 1;
-      else if (varA < varB) 
-        comparison = -1;
-
-      return comparison
-    };
+    document.querySelector('.search').focus();
   }
 
   componentDidMount = () => {
@@ -139,72 +119,33 @@ class App extends React.Component {
       })
  }
 
-  translate = (word,array) => { 
-    let result = array.filter((a)=>a[0]===word);
-    return result.length > 0 ? result[0][1] : word;
-  }
-
-  getDetails = (value,property,dictionary) => {
-    const {loaded} = this.state;
-    const {translate} = this;
-
-    if (loaded.films && loaded.people && loaded.planets && loaded.species && loaded.starships && loaded.vehicles) {
-      let key = property === "films" ? "title" : "name"
-      property = property === "characters" ? "people": property;
-      property = property === "residents" ? "people" : property;
-      property = property === "pilots" ? "people" : property;
-      property = property === "homeworld" ? "planets" : property;
-      
-      if (value === null)
-        return "Brak";
-      if (typeof value == "number")
-        return value.toString();
-      if (typeof value === "object" && value.length === 0) {
-        return "Brak";
-      } 
-      if (typeof value === "string" && value.indexOf("http://") !== -1) {
-        let filteredValue = translate(this.state[property].filter( element => element.url === value)[0][key],dictionary); 
-        return filteredValue === "Brak danych" ? "Brak danych" : <NavLink to={`/${property}/${filteredValue}`}>{filteredValue}</NavLink>
-      }
-      if (typeof value === "object" && value.length > 0 && this.state[property] !== undefined) {
-        let s3 = "";
-        s3 = value.map( element => (
-          <li key={element}> 
-            <NavLink to={`/${property}/${this.state[property].filter( f => f.url === element)[0][key]}`}>{translate(this.state[property].filter( f => f.url === element)[0][key],dictionary)}</NavLink>
-          </li>))
-          return <ul>{s3}</ul>
-      }
-      if (typeof value === "string" && value.indexOf("http://") === -1) 
-        return translate(value,dictionary);
-      else 
-        return translate(value,dictionary);
-    } 
-  }
-  
   render(){
 
     let { menuPositions, inputSearchValue } = this.state;
     let { loaded, films, people, planets, species, starships, vehicles} = this.state;
-    let { translate, getDetails, sortObjects, inputSearchChange } = this;
-
+    let { getDetails, inputSearchChange } = this;
+    
     return (
       <Router>
+        
         <div className="mainWrap">
           <div className="halfWrap">
+          <Sidebar
+              menuPositions={menuPositions} 
+              loaded={loaded}
+              getDetails={getDetails}
+            />
             <Header/>
             <Menu   
               menuPositions={menuPositions} 
               loaded={loaded}      
-              translate={translate}
-              dictionary={dictionary}
               getDetails={getDetails}
-              inputSearchValue={inputSearchValue}
-              inputSearchChange={inputSearchChange}
             />
           </div>
+
           <div className="contentWrap"> 
             <section className="left">
-              <ListP
+              <ListProperties
                 menuPositions={menuPositions} 
                 films={films}
                 people={people}
@@ -212,9 +153,6 @@ class App extends React.Component {
                 species={species}
                 starships={starships}
                 vehicles={vehicles}
-                dictionary={dictionary}
-                translate={translate}
-                sortObjects={sortObjects}
                 inputSearchValue={inputSearchValue}
                 inputSearchChange={inputSearchChange}
               />            
@@ -227,9 +165,7 @@ class App extends React.Component {
                 species={species}
                 starships={starships}
                 vehicles={vehicles}
-                dictionary={dictionary}
-                translate={translate}
-                getDetails={getDetails}
+                loaded={loaded}
               />
             </section>
           </div>

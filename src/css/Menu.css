@@ -1,0 +1,132 @@
+@media (orientation: portrait) and (min-width: 360px) {
+  nav ul li a {
+    padding: 5px 15px;
+  }
+  nav ul li a span {
+    font-size: 1rem;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 768px) {
+  nav ul li a {
+    padding: 10px 35px;
+  }
+  nav ul li a span {
+    font-size: 1.5rem;
+  }
+  nav ul li a .svg-inline--fa {
+    font-size: 1.5rem;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 1024px) {
+  nav ul {
+    margin: 0 30px;
+  }
+  nav ul li a {
+    padding: 10px 45px;
+  }
+  nav ul li a span {
+    font-size: 1.6rem;
+  }
+  nav ul li a .svg-inline--fa {
+    font-size: 1.6rem;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1px) {
+  nav {
+    background-color: black;
+    padding: 5px 0px;
+  }
+  nav .mainMenu {
+    padding: 5px 0px;
+  }
+  nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  nav ul li {
+    display: block;
+  }
+  nav ul li:not(:first-child) {
+    border-left: 0;
+  }
+  nav ul li a {
+    display: block;
+    cursor: pointer;
+    float: left;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+    padding: 5px 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  nav ul li a span {
+    color: lightgrey;
+    font-size: .8rem;
+    margin-left: 5px;
+  }
+  nav ul li a svg > path {
+    fill: lightgrey;
+  }
+  nav ul li a.active span {
+    color: white;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+  nav ul li a:hover span {
+    color: white;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 568px) {
+  nav ul li a {
+    padding: 5px 10px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+  nav ul li a {
+    padding: 5px 15px;
+  }
+  nav ul li a span {
+    font-size: 1.1rem;
+  }
+  nav ul li a .svg-inline--fa {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (orientation: landscape) and (min-width: 1366px) {
+  nav ul li a span {
+    font-size: 1.7rem;
+  }
+  nav ul li a .svg-inline--fa {
+    font-size: 1.7rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  nav ul li:not(:first-child) {
+    border-left: 1px dotted white;
+  }
+  nav ul li a span {
+    font-size: 1.1rem;
+  }
+  nav ul li a .svg-inline--fa {
+    font-size: 1.1rem;
+  }
+}
+/*# sourceMappingURL=Menu.css.map */

@@ -1,4 +1,4 @@
-const dictionary = [
+export const dictionary = [
     ["films","Filmy"],
     ["people", "Postaci"],
     ["planets","Planety"],
@@ -93,6 +93,9 @@ const dictionary = [
     ["opening_crawl","Wstęp"],
     ["indefinite", "Brak danych"],
     ["start","Start"]
-  ]
+  ];
 
-  export default dictionary;
+export const translate = (word) => { 
+    let result = dictionary.filter((a)=>a[0]===word);
+    return result.length > 0 ? result[0][1] : word;
+}

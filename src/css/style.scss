@@ -1,0 +1,602 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: #1E1F21;
+  font-size: 0.9rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  outline: 0;
+}
+
+.clearFix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+body {
+  font-family: 'Roboto', 'Oxygen', sans-serif;
+  background: url("../img/pexels-free-nature-stock-1005309.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color:#aba0b0;
+  height: 100vh;
+}
+
+.noSelect {
+  -webkit-touch-callout: none;  /* iOS Safari */
+  -webkit-user-select: none;  /* Safari */
+  -moz-user-select: none;  /* Old versions of Firefox */
+  -ms-user-select: none;  /* Internet Explorer/Edge */
+  user-select: none;  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+li {
+  list-style-type: none;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+  color: blue;
+}
+
+.size {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.size span {
+  font-size: 2rem;
+  color: white;
+}
+/*# sourceMappingURL=style.css.map */
+
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+@media (orientation: portrait) and (min-width: 280px) {
+  .starWars {
+    padding: 45px 0;
+    display: flex;
+    justify-content: center;
+    svg {
+      position: absolute;
+      font-size: 2rem;
+      top: 5px;
+      right: 5px;
+      & > path {
+        fill: white;
+      }
+    }
+  }
+  div.mainMenuDiv {
+    display: none;
+    nav {
+      background-color: black;
+      padding: 5px 0px;
+      .mainMenu {
+        padding: 5px 0px;
+      }
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        li {
+          display: block;
+          &:not(:first-child) {
+            border-left: 0;
+          }
+          a {
+            display: block;
+            cursor: pointer;
+            float: left;
+            transition-property: background-color;
+            padding: 5px 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+            span {
+              color: lightgrey;
+              font-size: .8rem;
+              margin-left: 5px;
+            }
+            svg > path{
+              fill: lightgrey;
+            }
+            &.active {
+              span {
+                color: white;
+                text-decoration: underline;
+                font-weight: 700;
+              }
+            }
+            &:hover span {
+              color: white; 
+            }
+          }
+        }
+      }
+    }
+  }
+  div#mySidebar {
+    display: none;
+    background-color: black;
+    width: 50% !important;
+    button {
+      background-color: lightgrey;
+      color: black;
+    }
+    nav ul {
+      li {
+        margin: 15px 0 15px 15px;
+        a {
+          span {
+            margin-left: 5px;
+            color: lightgrey;  
+            font-size: 1rem;
+          }
+          svg > path{
+            fill: lightgrey;
+          }
+          &.active {
+            span {
+              color: white;
+              text-decoration: underline;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+  input.search {
+    margin: 5px 0px 10px 0px;
+    font-size: .8rem;
+    padding: 5px 10px;
+    width: 100%;
+  }  
+  .selectedList {
+    display: block;
+    max-height: 190px;
+    overflow: auto;
+    padding: 0px 10px; 
+    margin: 5px 3px;
+    background-color: black;
+    a {
+      display: block;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: lightgrey;
+      &:hover {
+          background-color: grey;
+          transition-duration: 0.3s;
+          font-weight: 600;
+      }
+      &.active {
+          font-weight: 600;
+          background-color: grey;
+      }
+    }
+    li {
+      list-style-type: none;
+      cursor: pointer;
+      padding: 0;
+      transition-property: background-color;
+    }
+  }
+  .detailsSection {
+    padding: 10px;
+    background-color: black;
+    color: #DCE7F0;
+    width: auto;
+    margin: 5px 3px;
+    // max-height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    div {
+        width: 100%;
+    }
+    p.detailsTitle {
+        color: white;
+        text-transform: uppercase;
+        font-size: .9rem;
+    }
+    .detailsWrap {
+      position: relative; 
+      display: flex;
+      margin: 10px 0;   
+      flex-basis: 100%;
+      &:not(:first-of-type) {
+        border-top: 1px solid grey;
+      }
+      .detailsName {
+        flex-basis: 40%;
+        font-size: 0.8rem;
+        color: #DCE7F0;
+      }
+      .detailsProp {
+        color: #DCE7F0;
+        font-size: 0.8rem;
+        flex-basis: 60%;
+        a {
+          color: #DCE7F0;
+          font-size: .8rem;
+        }
+        li:hover {
+          background-color: #5AA2EB;
+          transition-duration: 0.3s;
+          font-weight: 600;
+        }
+        a:hover {
+          background-color: #5AA2EB;
+          transition-duration: 0.3s;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+@media (orientation: portrait) and (min-width: 320px) {
+  .starWars {
+    padding: 40px 0 25px 0;
+  }
+  .selectedList {
+    max-height: 120px;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 375px) {
+  .selectedList {
+    max-height: 160px;
+    a {
+      font-size: .9rem;
+    }
+  }
+}
+
+
+@media (orientation: portrait) and (min-width: 411px) {
+  .starWars {
+    padding: 50px 0 25px 0;
+    img {
+       transform: scale(1.4);
+    }
+    svg {
+      font-size: 2.2rem;
+      top: 5px;
+      right: 15px;
+    }
+  }
+  input.search {
+    font-size: 1rem;
+  }  
+  div#mySidebar {
+    nav ul {
+      li {
+        margin: 20px 0 20px 15px;
+        a {
+          span {  
+            font-size: 1.1rem;
+          }
+          svg {
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+  }
+  .selectedList {
+    max-height: 170px;
+    a {
+      font-size: 1.1rem;
+    }
+  }
+  .detailsSection {
+    p.detailsTitle {
+      font-size: 1.3rem;
+    }
+    .detailsWrap {
+      .detailsName {
+        font-size: 1rem;
+      }
+      .detailsProp {
+        font-size: 1rem;
+        a {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (orientation: portrait) and (min-width: 768px) {
+  .starWars {
+    padding: 65px 0;
+    img {
+      transform: scale(2);
+   }
+  }
+  div#mySidebar {
+    button {
+      font-size: 1.7rem !important;
+    }
+    nav ul {
+      li {
+        margin: 35px 0 15px 15px;
+        a {
+          span {
+            margin-left: 10px;
+            font-size: 1.5rem;
+          }
+          svg {
+            font-size: 1.5rem;
+          }
+          &.active {
+            span {
+              color: white;
+              text-decoration: underline;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+  input.search {
+    font-size: 1.4rem;
+  }  
+  .selectedList {
+    margin: 15px 3px;
+    a {
+      font-size: 1.4rem;
+    }
+  }
+  .detailsSection {
+    p.detailsTitle {
+      font-size: 1.6rem;
+    }
+    .detailsWrap {
+      .detailsName {
+        font-size: 1.4rem;
+      }
+      .detailsProp {
+        font-size: 1.4rem;
+        a {
+          font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}
+
+@media (orientation: portrait) and (min-width: 1024px) {
+  .starWars {
+    padding: 85px 0;
+    svg {
+      font-size: 4rem;
+    }
+    img {
+      transform: scale(2.5);
+   }
+  }
+  div#mySidebar {
+    padding: 0 40px;
+    nav ul {
+      li {
+        margin: 35px 0 25px 15px;
+        a {
+          span {
+            margin-left: 15px;
+            color: lightgrey;  
+            font-size: 2rem;
+          }
+          svg {
+            font-size: 2rem;
+          }
+          &.active {
+            span {
+              color: white;
+              text-decoration: underline;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+  input.search {
+    font-size: 2rem;
+  }  
+  .selectedList {
+    max-height: 280px;
+    a {
+      font-size: 1.6rem;
+    }
+  }
+  .detailsSection {
+    p.detailsTitle {
+      font-size: 1.7rem;
+    }
+    .detailsWrap {
+      .detailsName {
+        font-size: 1.5rem;
+      }
+      .detailsProp {
+        font-size: 1.5rem;
+        a {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media (orientation: landscape) and (min-width: 568px) {
+  .starWars {
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    svg {
+      position: absolute;
+      font-size: 2rem;
+      top: 5px;
+      right: 5px;
+      & > path {
+        fill: white;
+      }
+    }
+  }
+  div.mainMenuDiv {
+    display: none;
+  }
+  div#mySidebar {
+    display: none;
+    background-color: black;
+    button {
+      background-color: lightgrey;
+      color: black;
+    }
+    nav ul {
+      li {
+        margin: 15px 0 15px 15px;
+        a {
+          span {
+            margin-left: 5px;
+            color: lightgrey;  
+            font-size: 1rem;
+          }
+          svg > path{
+            fill: lightgrey;
+          }
+          &.active {
+            span {
+              color: white;
+              text-decoration: underline;
+              font-weight: 700;
+            }
+          }
+        }
+      }
+    }
+  }
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+    width: 60%;
+    padding: 0 5px 5px 0;
+  }
+  input.search {
+    margin: 5px 0px 10px 10px;
+    font-size: .8rem;
+    padding: 2px 10px;
+  }  
+  .selectedList {
+    overflow: auto;
+    padding: 0px 10px; 
+    margin: 5px 3px;
+    background-color: black;
+    max-height: 200px;
+    a {
+      display: block;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: lightgrey;
+      &:hover {
+          background-color: grey;
+          transition-duration: 0.3s;
+          font-weight: 600;
+      }
+      &.active {
+          font-weight: 600;
+          background-color: grey;
+      }
+    }
+    li {
+      list-style-type: none;
+      cursor: pointer;
+      padding: 0;
+      transition-property: background-color;
+    }
+  }
+  .detailsSection {
+    padding: 10px;
+    background-color: black;
+    color: #DCE7F0;
+    width: auto;
+    margin: 5px 3px;
+    // max-height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    div {
+        width: 100%;
+    }
+    p.detailsTitle {
+        color: white;
+        text-transform: uppercase;
+        font-size: .9rem;
+    }
+    .detailsWrap {
+      position: relative; 
+      display: flex;
+      margin: 10px 0;   
+      flex-basis: 100%;
+      &:not(:first-of-type) {
+        border-top: 1px solid grey;
+      }
+      .detailsName {
+        flex-basis: 40%;
+        font-size: 0.8rem;
+        color: #DCE7F0;
+      }
+      .detailsProp {
+        color: #DCE7F0;
+        font-size: 0.8rem;
+        flex-basis: 60%;
+        a {
+          color: #DCE7F0;
+          font-size: .8rem;
+        }
+        li:hover {
+          background-color: #5AA2EB;
+          transition-duration: 0.3s;
+          font-weight: 600;
+        }
+        a:hover {
+          background-color: #5AA2EB;
+          transition-duration: 0.3s;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+@media (orientation: landscape) and (min-width: 568px) {
+  .selectedList {
+    max-height: 250px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 736px) {
+  .selectedList {
+    max-height: 300px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 812px) {
+  .selectedList {
+    max-height: 260px;
+  }
+}
+@media (orientation: landscape) and (min-width: 1024px) {
+  .selectedList {
+    max-height: 260px;
+  }
+}

@@ -1,21 +1,25 @@
-@media (orientation: portrait) and (min-width: 280px) {
+@media (orientation: portrait) and (min-width: 1px) {
   .mainWrap {
     display: flex;
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
-  }
-  .contentWrap {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden; 
-    .left {
-      display: flex;
-      overflow: hidden;
-      height: 40%;
+    .halfWrap {
+      height: 55%;
     }
-    .right {
-      overflow: hidden;
+    .contentWrap {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden; 
+      .left {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        height: 40%;
+      }
+      .right {
+        overflow: hidden;
+      }
     }
   }
 }
@@ -31,7 +35,19 @@
   }
 }
 
-@media (orientation: portrait) and (min-width: 540px) {
+// @media screen and (min-width: 375px) and(-webkit-min-device-pixel-ratio:0)
+// { 
+//   .contentWrap {
+//     .left {
+//       max-height: 92px;
+//     }
+//     .right {
+//       max-height: 206px;
+//     }
+//   }
+// }
+
+  @media (orientation: portrait) and (min-width: 540px) {
   .contentWrap {
     align-items: center;
     margin-bottom: 10px;
@@ -44,22 +60,24 @@
   }
 }
 
-@media (orientation: landscape) and (min-width: 568px) {
+@media (orientation: landscape) and (min-width: 1px) {
   .mainWrap {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    max-height: 150vh;
     overflow: hidden;
   }
   .halfWrap {
-    height: 45%;
+    // height: 70vh;
   }
   .contentWrap {
     display: flex;
     flex-direction: row;
     overflow: hidden;
+    margin-top: 50px;
     .left {
       display: flex;
+      flex-direction: column;
       overflow: auto;
       width: 30%;
     }

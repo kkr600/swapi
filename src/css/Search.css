@@ -1,0 +1,72 @@
+@media (orientation: portrait) and (min-width: 1px) {
+  input.search {
+    margin: 5px 0px 10px 0px;
+    font-size: .8rem;
+    padding: 5px 10px;
+    width: 100%;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 375px) {
+  input.search {
+    margin: 5px 0px 5px 0px;
+    font-size: .9rem;
+    padding: 5px 10px;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 411px) {
+  input.search {
+    margin: 5px 0px 5px 0px;
+    font-size: .9rem;
+    padding: 5px 10px;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 768px) {
+  input.search {
+    margin: 15px 0px;
+    font-size: 1.7rem;
+    padding: 5px 10px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1px) {
+  input.search {
+    margin: 5px 0px;
+    font-size: .8rem;
+    padding: 5px 10px;
+    width: 200px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 720px) {
+  input.search {
+    margin: 5px 10px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1024px) {
+  input.search {
+    font-size: 1.2rem;
+    width: 300px;
+    margin: 15px 10px;
+  }
+}
+
+@media (orientation: landscape) and (min-width: 1366px) {
+  input.search {
+    margin: 15px 20px;
+    font-size: 1.5rem;
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  input.search {
+    font-size: 1.1rem;
+    width: 300px;
+    margin: 15px 10px;
+  }
+}
+/*# sourceMappingURL=Search.css.map */

@@ -1,6 +1,5 @@
 import React from "react";  
-import '../css/Start.scss';
-import '../css/App.scss';
+import '../css/style.scss';
 
 const Start = props =>{
     return (

@@ -91,60 +91,6 @@ li {
   div.mainMenuDiv {
     display: none;
   }
-  div.mainMenuDiv nav {
-    background-color: black;
-    padding: 5px 0px;
-  }
-  div.mainMenuDiv nav .mainMenu {
-    padding: 5px 0px;
-  }
-  div.mainMenuDiv nav ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  div.mainMenuDiv nav ul li {
-    display: block;
-  }
-  div.mainMenuDiv nav ul li:not(:first-child) {
-    border-left: 0;
-  }
-  div.mainMenuDiv nav ul li a {
-    display: block;
-    cursor: pointer;
-    float: left;
-    -webkit-transition-property: background-color;
-    transition-property: background-color;
-    padding: 5px 1px;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-  div.mainMenuDiv nav ul li a span {
-    color: lightgrey;
-    font-size: .8rem;
-    margin-left: 5px;
-  }
-  div.mainMenuDiv nav ul li a svg > path {
-    fill: lightgrey;
-  }
-  div.mainMenuDiv nav ul li a.active span {
-    color: white;
-    text-decoration: underline;
-    font-weight: 700;
-  }
-  div.mainMenuDiv nav ul li a:hover span {
-    color: white;
-  }
   div#mySidebar {
     display: none;
     background-color: black;
@@ -602,8 +548,130 @@ li {
 }
 
 @media (orientation: landscape) and (min-width: 1024px) {
+  .starWars {
+    padding: 45px 0;
+  }
+  .starWars img {
+    -webkit-transform: scale(1.8);
+            transform: scale(1.8);
+  }
+  .starWars svg {
+    display: none;
+  }
+  div.mainMenuDiv {
+    display: block;
+    margin: 10px 0 20px 0;
+  }
+  div.mainMenuDiv nav {
+    background-color: black;
+    padding: 10px 0px;
+  }
+  div.mainMenuDiv nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  div.mainMenuDiv nav ul li {
+    display: block;
+    margin-left: 20px;
+  }
+  div.mainMenuDiv nav ul li:not(:first-child) {
+    border-left: 0;
+  }
+  div.mainMenuDiv nav ul li a {
+    display: block;
+    cursor: pointer;
+    -webkit-transition-property: background-color;
+    transition-property: background-color;
+    padding: 5px 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  div.mainMenuDiv nav ul li a span {
+    color: lightgrey;
+    font-size: 1.1rem;
+    margin-left: 5px;
+  }
+  div.mainMenuDiv nav ul li a svg > path {
+    fill: lightgrey;
+  }
+  div.mainMenuDiv nav ul li a svg {
+    font-size: 1.1rem;
+  }
+  div.mainMenuDiv nav ul li a.active span {
+    color: white;
+    text-decoration: underline;
+    font-weight: 700;
+  }
+  div.mainMenuDiv nav ul li a:hover span {
+    color: white;
+  }
+  .contentWrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
   .selectedList {
     max-height: 260px;
+  }
+  .left {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-flex: 2;
+        -ms-flex-positive: 2;
+            flex-grow: 2;
+    margin-left: 20px;
+  }
+  .right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: auto;
+    -webkit-box-flex: 5;
+        -ms-flex-positive: 5;
+            flex-grow: 5;
+  }
+  input.search {
+    font-size: 1.2rem;
+    width: 70%;
+    margin: 0 3px;
+  }
+  .selectedList {
+    max-height: 520px;
+    width: 70%;
+  }
+  .selectedList a {
+    font-size: 1.2rem;
+  }
+  .detailsSection {
+    width: 95%;
+  }
+  .detailsSection p.detailsTitle {
+    font-size: 1.3rem;
+  }
+  .detailsSection .detailsWrap .detailsName {
+    font-size: 1.2rem;
+  }
+  .detailsSection .detailsWrap .detailsProp {
+    font-size: 1.2rem;
+  }
+  .detailsSection .detailsWrap .detailsProp a {
+    font-size: 1.2rem;
   }
 }
 /*# sourceMappingURL=style.css.map */

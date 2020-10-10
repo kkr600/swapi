@@ -72,54 +72,6 @@ li {
   }
   div.mainMenuDiv {
     display: none;
-    nav {
-      background-color: black;
-      padding: 5px 0px;
-      .mainMenu {
-        padding: 5px 0px;
-      }
-      ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-        li {
-          display: block;
-          &:not(:first-child) {
-            border-left: 0;
-          }
-          a {
-            display: block;
-            cursor: pointer;
-            float: left;
-            transition-property: background-color;
-            padding: 5px 1px;
-            text-decoration: none;
-            text-transform: uppercase;
-            span {
-              color: lightgrey;
-              font-size: .8rem;
-              margin-left: 5px;
-            }
-            svg > path{
-              fill: lightgrey;
-            }
-            &.active {
-              span {
-                color: white;
-                text-decoration: underline;
-                font-weight: 700;
-              }
-            }
-            &:hover span {
-              color: white; 
-            }
-          }
-        }
-      }
-    }
   }
   div#mySidebar {
     display: none;
@@ -194,7 +146,6 @@ li {
     color: #DCE7F0;
     width: auto;
     margin: 5px 3px;
-    // max-height: 100%;
     overflow: auto;
     box-sizing: border-box;
     div {
@@ -596,7 +547,112 @@ li {
   }
 }
 @media (orientation: landscape) and (min-width: 1024px) {
+  .starWars {
+    padding: 45px 0;
+    img {
+      transform: scale(1.8);
+    }
+    svg {
+      display: none;
+    }
+  }
+  div.mainMenuDiv {
+    display: block;
+    margin: 10px 0 20px 0;
+    nav {
+      background-color: black;
+      padding: 10px 0px;
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        li {
+          display: block;
+          &:not(:first-child) {
+            border-left: 0;
+          }
+          margin-left: 20px;
+          a {
+            display: block;
+            cursor: pointer;
+            transition-property: background-color;
+            padding: 5px 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+            span {
+              color: lightgrey;
+              font-size: 1.1rem;
+              margin-left: 5px;
+            }
+            svg > path{
+              fill: lightgrey;
+            }
+            svg {
+              font-size: 1.1rem;
+            }
+            &.active {
+              span {
+                color: white;
+                text-decoration: underline;
+                font-weight: 700;
+              }
+            }
+            &:hover span {
+              color: white; 
+            }
+          }
+        }
+      }
+    }
+  }
+  .contentWrap {
+    display: flex;
+  }
   .selectedList {
     max-height: 260px;
+  }
+  .left {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    margin-left: 20px;
+  }
+  .right {
+    display: flex;
+    width: auto;
+    flex-grow: 5;
+  }
+  input.search {
+    font-size: 1.2rem;
+    width: 70%;
+    margin: 0 3px;
+  } 
+  .selectedList {
+    max-height: 520px;
+    width: 70%;
+    a {
+      font-size: 1.2rem;
+    }
+  }
+  .detailsSection {
+    width: 95%;
+    p.detailsTitle {
+      font-size: 1.3rem;
+    }
+    .detailsWrap {
+      .detailsName {
+        font-size: 1.2rem;
+      }
+      .detailsProp {
+        font-size: 1.2rem;
+        a {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
   }
 }

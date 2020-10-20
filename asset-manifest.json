@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/swapi/static/css/main.52892de2.chunk.css",
+    "main.css": "/swapi/static/css/main.899a42e4.chunk.css",
     "main.js": "/swapi/static/js/main.2237e586.chunk.js",
     "main.js.map": "/swapi/static/js/main.2237e586.chunk.js.map",
     "runtime-main.js": "/swapi/static/js/runtime-main.22a7b150.js",
@@ -8,16 +8,16 @@
     "static/js/2.20505b45.chunk.js": "/swapi/static/js/2.20505b45.chunk.js",
     "static/js/2.20505b45.chunk.js.map": "/swapi/static/js/2.20505b45.chunk.js.map",
     "index.html": "/swapi/index.html",
-    "precache-manifest.09753fae023ddbe720fcb85f27f8c61f.js": "/swapi/precache-manifest.09753fae023ddbe720fcb85f27f8c61f.js",
+    "precache-manifest.6aaad5939235be8ed26a29f4fba9ba2c.js": "/swapi/precache-manifest.6aaad5939235be8ed26a29f4fba9ba2c.js",
     "service-worker.js": "/swapi/service-worker.js",
-    "static/css/main.52892de2.chunk.css.map": "/swapi/static/css/main.52892de2.chunk.css.map",
+    "static/css/main.899a42e4.chunk.css.map": "/swapi/static/css/main.899a42e4.chunk.css.map",
     "static/js/2.20505b45.chunk.js.LICENSE.txt": "/swapi/static/js/2.20505b45.chunk.js.LICENSE.txt",
     "static/media/style.scss": "/swapi/static/media/pexels-free-nature-stock-1005309.acf2488d.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.22a7b150.js",
     "static/js/2.20505b45.chunk.js",
-    "static/css/main.52892de2.chunk.css",
+    "static/css/main.899a42e4.chunk.css",
     "static/js/main.2237e586.chunk.js"
   ]
 }
